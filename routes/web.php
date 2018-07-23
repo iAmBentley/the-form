@@ -18,3 +18,32 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/* ADMIN SECTION  ---  Managers + Admin Roles Only */
+Route::prefix('admin')->group(function () {
+	
+	/* ADMIN INDEX */
+	Route::view('/', 'admin.index');
+
+	/* ITEMS INDEX + CRUD */
+	Route::resource('items', 'ItemController');
+
+	/* CATEOGORIES INDEX + CRUD */
+	Route::resource('categories', 'CategoryController');
+
+	/* COMPANIES INDEX + CRUD */
+	Route::resource('companies', 'CompanyController');
+
+	/* LOCATIONS INDEX + CRUD */
+	Route::resource('locations', 'LocationController');
+
+	/* SIZES INDEX + CRUD */
+	Route::resource('sizes', 'SizeController');
+
+	/* USERS INDEX + CRUD  ---  Admin Roles Only */
+	Route::resource('users', 'UserController');
+
+	/* USER ROLES INDEX + CRUD  ---  Admin Roles Only */
+	Route::resource('user-roles', 'UserRoleController');
+
+});

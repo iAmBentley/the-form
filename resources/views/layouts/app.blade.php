@@ -6,8 +6,20 @@
 </head>
 
 <body>
-    @yield('content')
-    
-    @include('layouts.scripts')
+	<div class="wrapper ">
+		
+		@include('layouts.sidebar')
+
+		<div class="main-panel">
+
+			@include('layouts.navbar')
+
+	   		@yield('content')
+
+	   	</div> {{-- .main-panel END --}}
+	    
+	    @include('layouts.scripts')
+
+	</div> {{-- .wrapper END --}}
 </body>
 </html>

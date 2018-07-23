@@ -16,5 +16,5 @@
         crossorigin="anonymous" />
     
     <!-- CUSTOM CSS -->
-    <link href="{{ asset('css/paper-dashboard.css?v=2.0.0') }}" rel="stylesheet" />
+    <link href="{{ asset('css/paper-dashboard.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/theform.css') }}" rel="stylesheet" />
