@@ -26,6 +26,13 @@ class CreateCategoriesTable extends Migration
             $table->integer('item_id');
             $table->timestamps();
         });
+
+        Schema::create('category_store', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('category_id');
+            $table->integer('store_id');
+            $table->timestamps();
+        });
     }
 
     /**
