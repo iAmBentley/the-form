@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class SizesTableSeeder extends Seeder
+class CategoriesSizesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,39 +11,39 @@ class SizesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('sizes')->insert(
+        DB::table('category_size')->insert(
         	[
         		[
-        			'name' => '16 oz',
-                    'category_id' => '1',
+        			'category_id' => '1',
+        			'size_id' => '1',
         			'created_at' => date("Y-m-d H:i:s")
         		],[
-        			'name' => '32 oz',
-                    'category_id' => '1',
+        			'category_id' => '1',
+        			'size_id' => '2',
         			'created_at' => date("Y-m-d H:i:s")
         		],[
-        			'name' => '64 oz',
-                    'category_id' => '1',
+        			'category_id' => '1',
+        			'size_id' => '3',
         			'created_at' => date("Y-m-d H:i:s")
         		],[
-        			'name' => '1 gal',
-                    'category_id' => '1',
+        			'category_id' => '1',
+        			'size_id' => '4',
         			'created_at' => date("Y-m-d H:i:s")
         		],[
-        			'name' => '2 gal',
-                    'category_id' => '1',
+        			'category_id' => '1',
+        			'size_id' => '5',
         			'created_at' => date("Y-m-d H:i:s")
         		],[
-        			'name' => '1000',
-                    'category_id' => '2',
+        			'category_id' => '2',
+        			'size_id' => '6',
         			'created_at' => date("Y-m-d H:i:s")
         		],[
-        			'name' => '2000',
-                    'category_id' => '2',
+        			'category_id' => '2',
+        			'size_id' => '7',
         			'created_at' => date("Y-m-d H:i:s")
         		],[
-        			'name' => '3000',
-                    'category_id' => '2',
+        			'category_id' => '2',
+        			'size_id' => '8',
         			'created_at' => date("Y-m-d H:i:s")
         		]
         	]

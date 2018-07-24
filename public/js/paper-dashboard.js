@@ -79,6 +79,12 @@ $(document).ready(function() {
       offText: data_off_label
     });
   });
+
+  // Override Checkbox behavior - Makes it so only one checkbox can be selected at once
+  $('input:checkbox').click(function() {
+      $('input:checkbox').not(this).prop('checked', false);
+  });
+
 });
 
 $(document).on('click', '.navbar-toggle', function() {
@@ -194,3 +200,9 @@ function hexToRGB(hex, alpha) {
     return "rgb(" + r + ", " + g + ", " + b + ")";
   }
 }
+
+// ADD FADEOUT TO SESSION FLASH MESSAGES
+setTimeout(function() {
+    $('#flash-message').fadeOut('2500');
+}, 5000);
+

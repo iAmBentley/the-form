@@ -16,6 +16,7 @@ class CreateSizesTable extends Migration
         Schema::create('sizes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('category_id');
             $table->boolean('is_active')->default(1);
             $table->timestamps();
         });

@@ -13,6 +13,7 @@ class CategoryController extends Controller
         $this->middleware('auth');
     }
 
+
     /** SHOW TABLE OF ALL CATEGORIES (INDEX) */
     public function index()
     {
@@ -31,17 +32,18 @@ class CategoryController extends Controller
     /** SAVE NEW CATEGORY TO DATABASE (STORE) */
     public function store()
     {
-        /* VALIDATE REQUEST DATA */
+        /* VALIDATE DATA COMING IN FROM FORM */
         $this->validate(request(), [
             'name' => 'required',
             'is_active' => 'required'
         ]);
-        /* CREATE AND SAVE NEW CATEGORY */
+        /* CREATE AND SAVE NEW CATEGORY TO DATABASE */
         Category::create([
             'name' => request('name'),
             'is_active' => request('is_active')
         ]);
         /* REDIRECT USER AFTER SAVE */
+        session()->flash('message', 'Category Added Successfully');
         return redirect('admin/categories');
     }
 
@@ -56,19 +58,21 @@ class CategoryController extends Controller
     }
 
 
-    /** SAVE EDITS TO CATEGORY TO DATABASE (UPDATE) */
+    /** SAVE EDITED CATEGORY TO DATABASE (UPDATE) */
     public function update(Request $request, Category $category)
     {
+        /* VALIDATE DATA COMING IN FROM FORM */
         $data = $request->validate([
             'name' => 'required',
             'is_active' => 'required'
         ]);
 
+        /* SAVE VALIDATED DATA TO DATABASE */
         $category->fill($data);
         $category->save();
 
         /* CONFIRM UPDATE AND REDIRECT USER */
-        // NEED TO ADD CONFIRMATION MESSAGE HERE
+        session()->flash('message', 'Category Updated Successfully');
         return redirect('admin/categories');
     }
 }

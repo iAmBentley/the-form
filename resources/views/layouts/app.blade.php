@@ -11,10 +11,13 @@
 		@include('layouts.sidebar')
 
 		<div class="main-panel">
-
+			
 			@include('layouts.navbar')
-
-	   		@yield('content')
+			
+			<div class="content">
+				@include('layouts.alerts')
+	   			@yield('content')
+	   		</div>
 
 	   	</div> {{-- .main-panel END --}}
 	    

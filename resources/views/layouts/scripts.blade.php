@@ -19,4 +19,4 @@
         <script src="{{ asset('/js/bootstrap-switch.min.js') }}"></script>
         <script src="{{ asset('/js/bootstrap-notify.js') }}"></script>
         <!-- CUSTOM JS -->
-        <script src="{{ asset('/js/paper-dashboard.min.js') }}"></script>
+        <script src="{{ asset('/js/paper-dashboard.js') }}"></script>

@@ -10,5 +10,8 @@ class Category extends Model
     public function stores() {
     	return $this->belongsToMany(Store::class);
     }
+    public function sizes() {
+    	return $this->hasMany(Size::class);
+    }
     
 }
