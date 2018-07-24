@@ -2,9 +2,13 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
 class Category extends Model
-{
-    //
+{	
+    public function items() {
+    	return $this->belongsToMany(Item::class);
+    }
+    public function stores() {
+    	return $this->belongsToMany(Store::class);
+    }
+    
 }

@@ -6,7 +6,7 @@
 						<img src="{{asset('img/logo-form.png')}}">
 					</div>
 				</a>
-				<a href="/" class="simple-text logo-normal">il modulo</a>
+				<a href="/home" class="simple-text logo-normal">il modulo</a>
 			</div>
 			<div class="sidebar-wrapper">
 				<ul class="nav">
@@ -58,43 +58,43 @@
 						<div class="collapse " id="adminItems">
 							<ul class="nav">
 								<li>
-									<a href="index.html">
+									<a href="/admin/items">
 										<span class="sidebar-mini-icon">&bull;</span>
 										<span class="sidebar-normal"> Items </span>
 									</a>
 								</li>
 								<li>
-									<a href="index.html">
+									<a href="/admin/users">
 										<span class="sidebar-mini-icon">&bull;</span>
 										<span class="sidebar-normal"> Users </span>
 									</a>
 								</li>
 								<li>
-									<a href="index.html">
+									<a href="/admin/stores">
 										<span class="sidebar-mini-icon">&bull;</span>
 										<span class="sidebar-normal"> Stores </span>
 									</a>
 								</li>
 								<li>
-									<a href="index.html">
+									<a href="/admin/vendors">
 										<span class="sidebar-mini-icon">&bull;</span>
 										<span class="sidebar-normal"> Vendors </span>
 									</a>
 								</li>
 								<li>
-									<a href="index.html">
+									<a href="/admin/sizes">
 										<span class="sidebar-mini-icon">&bull;</span>
 										<span class="sidebar-normal"> Sizes </span>
 									</a>
 								</li>
 								<li>
-									<a href="index.html">
+									<a href="/admin/categories">
 										<span class="sidebar-mini-icon">&bull;</span>
 										<span class="sidebar-normal"> Categories </span>
 									</a>
 								</li>
 								<li>
-									<a href="index.html">
+									<a href="admin/user-roles">
 										<span class="sidebar-mini-icon">&bull;</span>
 										<span class="sidebar-normal"> User Roles </span>
 									</a>

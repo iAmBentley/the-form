@@ -78,6 +78,10 @@
 .chekbox-align {
 	min-width: 158px;
 }
+.create-btn {
+    font-size: 1em;
+    line-height: 1.7em;
+}
 .btn-just-icon {
 	border-radius: 50px;
 	height: 40px;
