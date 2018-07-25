@@ -6,7 +6,7 @@
 				<div class="col-md-12 ml-auto mr-auto">
 					<div class="card card-user">
 						<div class="card-header">
-							<h5 class="card-title">Create Sizes</h5>
+							<h5 class="card-title">Create a Size</h5>
 						</div>
 						<div class="card-body">
 

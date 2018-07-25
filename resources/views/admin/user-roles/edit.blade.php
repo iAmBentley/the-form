@@ -6,7 +6,7 @@
 				<div class="col-md-12 ml-auto mr-auto">
 					<div class="card card-user">
 						<div class="card-header">
-							<h5 class="card-title">Edit User Role</h5>
+							<h5 class="card-title">Edit a User Role</h5>
 						</div>
 						<div class="card-body">
 

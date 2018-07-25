@@ -28,13 +28,13 @@ Route::prefix('admin')->group(function () {
 	/* ITEMS INDEX + CRUD */
 	Route::resource('items', 'ItemController');
 
-	/* CATEOGORIES INDEX + CRUD */
+	/* CATEGORIES INDEX + CRUD */
 	Route::resource('categories', 'CategoryController');
 
-	/* COMPANIES INDEX + CRUD */
+	/* VENDORS INDEX + CRUD */
 	Route::resource('vendors', 'VendorController');
 
-	/* LOCATIONS INDEX + CRUD */
+	/* STORES INDEX + CRUD */
 	Route::resource('stores', 'StoreController');
 
 	/* SIZES INDEX + CRUD */

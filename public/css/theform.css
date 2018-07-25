@@ -89,6 +89,9 @@
 	min-width: 40px;
 	padding: 8px;
 }
+.td-min-height {
+	min-height: 28px;
+}
 .sidebar .nav>li.nav-footer {
 	position: absolute;
 	width: 100%;
