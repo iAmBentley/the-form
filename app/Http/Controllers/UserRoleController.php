@@ -2,83 +2,75 @@
 
 namespace App\Http\Controllers;
 
+use App\UserRole;
 use Illuminate\Http\Request;
 
 class UserRoleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /** CHECK IF USER IS LOGGED IN */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+    /** SHOW TABLE OF ALL USER ROLES (INDEX) */
     public function index()
     {
-        //
+        $userRoles = UserRole::all();
+        return view('admin/user-roles.index', compact('userRoles'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    /** CREATE NEW CATEGORY FORM (CREATE) */
     public function create()
     {
-        //
+        return view('admin/user-roles.create', compact('userRole'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    /** SAVE NEW CATEGORY TO DATABASE (STORE) */
+    public function store()
     {
-        //
+        /* VALIDATE DATA COMING IN FROM FORM */
+        $this->validate(request(), [
+            'name' => 'required'
+        ]);
+        /* CREATE AND SAVE NEW USER ROLE TO DATABASE */
+        UserRole::create([
+            'name' => request('name')
+        ]);
+        /* REDIRECT USER AFTER SAVE */
+        session()->flash('message', 'User Role Added Successfully');
+        return redirect('admin/user-roles');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /** EDIT A USER ROLE FORM (EDIT) */
     public function edit($id)
     {
-        //
+        /* GET THE USER ROLE */
+        $userRole = UserRole::find($id);
+        /* SHOW THE EDIT FORM FOR THE USER ROLE */
+        return view('admin/user-roles.edit', compact('userRole'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    /** SAVE EDITED USER ROLE TO DATABASE (UPDATE) */
+    public function update(Request $request, UserRole $userRole)
     {
-        //
+        /* VALIDATE DATA COMING IN FROM FORM */
+        $data = $request->validate([
+            'name' => 'required'
+        ]);
+
+        /* SAVE VALIDATED DATA TO DATABASE */
+        $userRole->fill($data);
+        $userRole->save();
+
+        /* CONFIRM UPDATE AND REDIRECT USER */
+        session()->flash('message', 'User Role Updated Successfully');
+        return redirect('admin/user-roles');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

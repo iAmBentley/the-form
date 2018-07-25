@@ -42,7 +42,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="/">
+						<a href="/home">
 							<i class="fa fa-list-ul"></i>
 							<p>Past Orders</p>
 						</a>
@@ -94,7 +94,7 @@
 									</a>
 								</li>
 								<li>
-									<a href="admin/user-roles">
+									<a href="/admin/user-roles">
 										<span class="sidebar-mini-icon">&bull;</span>
 										<span class="sidebar-normal"> User Roles </span>
 									</a>

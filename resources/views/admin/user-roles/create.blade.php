@@ -9,18 +9,23 @@
 							<h5 class="card-title">Create / Edit User Roles</h5>
 						</div>
 						<div class="card-body">
-							<form>
+
+							@include('layouts.errors')
+
+							<form method="POST" action="/admin/user-roles">
+								{{ csrf_field() }}
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
 											<label>Name</label>
-											<input type="text" class="form-control" name="name" placeholder="Name of Role">
+											<input type="text" class="form-control" name="name">
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="update ml-auto mr-auto">
 										<button type="submit" class="btn btn-danger btn-round">Save Role</button>
+										<a href="{{ URL::previous() }}" class="btn btn-round">Cancel</a>
 									</div>
 								</div>
 							</form>
