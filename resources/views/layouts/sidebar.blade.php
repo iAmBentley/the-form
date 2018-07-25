@@ -58,27 +58,15 @@
 						<div class="collapse " id="adminItems">
 							<ul class="nav">
 								<li>
+									<a href="/admin/categories">
+										<span class="sidebar-mini-icon">&bull;</span>
+										<span class="sidebar-normal"> Categories </span>
+									</a>
+								</li>
+								<li>
 									<a href="/admin/items">
 										<span class="sidebar-mini-icon">&bull;</span>
 										<span class="sidebar-normal"> Items </span>
-									</a>
-								</li>
-								<li>
-									<a href="/admin/users">
-										<span class="sidebar-mini-icon">&bull;</span>
-										<span class="sidebar-normal"> Users </span>
-									</a>
-								</li>
-								<li>
-									<a href="/admin/stores">
-										<span class="sidebar-mini-icon">&bull;</span>
-										<span class="sidebar-normal"> Stores </span>
-									</a>
-								</li>
-								<li>
-									<a href="/admin/vendors">
-										<span class="sidebar-mini-icon">&bull;</span>
-										<span class="sidebar-normal"> Vendors </span>
 									</a>
 								</li>
 								<li>
@@ -88,15 +76,27 @@
 									</a>
 								</li>
 								<li>
-									<a href="/admin/categories">
+									<a href="/admin/stores">
 										<span class="sidebar-mini-icon">&bull;</span>
-										<span class="sidebar-normal"> Categories </span>
+										<span class="sidebar-normal"> Stores </span>
+									</a>
+								</li>
+								<li>
+									<a href="/admin/users">
+										<span class="sidebar-mini-icon">&bull;</span>
+										<span class="sidebar-normal"> Users </span>
 									</a>
 								</li>
 								<li>
 									<a href="/admin/user-roles">
 										<span class="sidebar-mini-icon">&bull;</span>
 										<span class="sidebar-normal"> User Roles </span>
+									</a>
+								</li>
+								<li>
+									<a href="/admin/vendors">
+										<span class="sidebar-mini-icon">&bull;</span>
+										<span class="sidebar-normal"> Vendors </span>
 									</a>
 								</li>
 							</ul>

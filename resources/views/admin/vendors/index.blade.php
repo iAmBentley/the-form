@@ -5,15 +5,20 @@
 			<div class="row">
 				<div class="col-md-12 ml-auto mr-auto">
 					<div class="card">
+
+						<!-- TABLE TITLE -->
 						<div class="card-header">
 							<h4 class="card-title pull-left">Vendors</h4>
-							<button type="button" class="btn btn-danger btn-just-icon pull-right">
+							<a href="vendors/create" class="create-btn btn btn-danger btn-just-icon pull-right">
 								<i class="fa fa-plus"></i>
-							</button>
+							</a>
 						</div>
+
+						<!-- TABLE -->
 						<div class="card-body">
 							<div class="table-responsive">
 								<table class="table">
+
 									<thead class="text-primary">
 										<tr>
 											<th>Name</th>
@@ -22,71 +27,28 @@
 											<th class="text-right">Actions</th>
 										</tr>
 									</thead>
+
 									<tbody>
-										<tr>
-											<td>Capella</td>
-											<td>CAP</td>
-											<td class="d-none d-sm-block">Active</td>
-											<td class="text-right">
-												<button type="button" class="btn btn-info btn-icon btn-sm">
-													<i class="fa fa-pencil"></i>
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td>Flavor West</td>
-											<td>FW</td>
-											<td class="d-none d-sm-block">Active</td>
-											<td class="text-right">
-												<button type="button" class="btn btn-info btn-icon btn-sm">
-													<i class="fa fa-pencil"></i>
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td>Flavour Art</td>
-											<td>FA</td>
-											<td class="d-none d-sm-block">Active</td>
-											<td class="text-right">
-												<button type="button" class="btn btn-info btn-icon btn-sm">
-													<i class="fa fa-pencil"></i>
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td>Mt Baker Vapor</td>
-											<td>MBV</td>
-											<td class="d-none d-sm-block">Active</td>
-											<td class="text-right">
-												<button type="button" class="btn btn-info btn-icon btn-sm">
-													<i class="fa fa-pencil"></i>
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td>Lorann</td>
-											<td>LA</td>
-											<td class="d-none d-sm-block">Active</td>
-											<td class="text-right">
-												<button type="button" class="btn btn-info btn-icon btn-sm">
-													<i class="fa fa-pencil"></i>
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td>Flavor Apprentice</td>
-											<td>TFA</td>
-											<td class="d-none d-sm-block">Active</td>
-											<td class="text-right">
-												<button type="button" class="btn btn-info btn-icon btn-sm">
-													<i class="fa fa-pencil"></i>
-												</button>
-											</td>
-										</tr>
+										<!-- BRING IN CATEGORIES FROM DATABASE -->
+										@foreach($vendors as $vendor)
+											<tr>
+												<td class="text-capitalize">{{ $vendor->name }}</td>
+												<td class="text-uppercase">{{ $vendor->short_name }}</td>
+												<td class="d-none d-sm-block">{{ $vendor->is_active == 1 ? 'Active' : 'Disabled' }}</td>
+												<td class="text-right">
+													<a href="/admin/vendors/{{ $vendor->id }}/edit" class="btn btn-info btn-icon btn-sm">
+														<i class="fa fa-pencil"></i>
+													</a>
+												</td>
+											</tr>
+										@endforeach
+
 									</tbody>
+
 								</table>
 							</div>
 						</div>
+						
 					</div>
 				</div>
 			</div>

@@ -32,10 +32,10 @@ Route::prefix('admin')->group(function () {
 	Route::resource('categories', 'CategoryController');
 
 	/* COMPANIES INDEX + CRUD */
-	Route::resource('companies', 'CompanyController');
+	Route::resource('vendors', 'VendorController');
 
 	/* LOCATIONS INDEX + CRUD */
-	Route::resource('locations', 'LocationController');
+	Route::resource('stores', 'StoreController');
 
 	/* SIZES INDEX + CRUD */
 	Route::resource('sizes', 'SizeController');
