@@ -81,8 +81,8 @@ $(document).ready(function() {
   });
 
   // Override Checkbox behavior - Makes it so only one checkbox can be selected at once
-  $('input:checkbox').click(function() {
-      $('input:checkbox').not(this).prop('checked', false);
+  $('.only-one-chekbox').click(function() {
+      $('.only-one-chekbox').not(this).prop('checked', false);
   });
 
 });
