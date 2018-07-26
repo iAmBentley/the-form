@@ -18,8 +18,10 @@ class SizeController extends Controller
     /** SHOW TABLE OF ALL SIZES (INDEX) */
     public function index()
     {
-        $sizes = Size::with('categories')->get();
-        return view('admin/sizes.index', compact('sizes', 'categories'));
+        $sizes = Size::all();
+        return view('admin/sizes.index', compact('sizes'));
+        // $sizes = Size::with('categories')->get();
+        // return view('admin/sizes.index', compact('sizes', 'categories'));
     }
 
 

@@ -43,10 +43,10 @@
 											User Role
 										</div>
 										<div class="form-check form-group">
-											<select class="form-control" id="user_role_id" name="user_role_id">
-												<option value="3" {{ $user->user_role_id == 3 ? 'selected' : '' }}>Staff</option>
-												<option value="2" {{ $user->user_role_id == 2 ? 'selected' : '' }}>Manager</option>
-												<option value="1" {{ $user->user_role_id == 1 ? 'selected' : '' }}>Admin</option>
+											<select class="form-control" id="role_id" name="role_id">
+												<option value="3" {{ $user->role_id == 3 ? 'selected' : '' }}>Staff</option>
+												<option value="2" {{ $user->role_id == 2 ? 'selected' : '' }}>Manager</option>
+												<option value="1" {{ $user->role_id == 1 ? 'selected' : '' }}>Admin</option>
 											</select>
 										</div>
 									</div>

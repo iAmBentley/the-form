@@ -32,7 +32,7 @@
 											<tr>
 												<td class="text-capitalize">{{ $user->name }}</td>
 												<td class="d-none d-sm-block td-min-height">{{ $user->email }}</td>
-												<td class="text-capitalize ">{{ $user->role['name'] }}</td>
+												<td class="text-capitalize ">{{ $user->role->name }}</td>
 												<td class="d-none d-sm-block">{{ $user->is_active == 1 ? 'Active' : 'Disabled' }}</td>
 												<td class="text-right">
 													<a href="/admin/users/{{ $user->id }}/edit" class="btn btn-info btn-icon btn-sm">

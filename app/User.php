@@ -2,10 +2,10 @@
 
 namespace App;
 
-use App\User;
-use App\UserRole;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\User;
+use App\Role;
 
 class User extends Authenticatable
 {
@@ -13,7 +13,7 @@ class User extends Authenticatable
 
     /** The attributes that are mass assignable. */
     protected $fillable = [
-        'name', 'email', 'password', 'user_role_id', 'is_active',
+        'name', 'email', 'password', 'role_id', 'is_active',
     ];
 
     /** The attributes that should be hidden for arrays. */
@@ -22,7 +22,7 @@ class User extends Authenticatable
     ];
 
     /** A USER BELONGS TO ONE ROLE */
-    public function roles() {
+    public function role() {
         return $this->belongsTo(Role::class);
     }
 

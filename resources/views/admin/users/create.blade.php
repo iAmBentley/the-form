@@ -41,7 +41,7 @@
 											User Role
 										</div>
 										<div class="form-check form-group">
-											<select class="form-control" name="user_role_id" id="user_role_id">
+											<select class="form-control" name="role_id" id="user_role_id">
 												<option value="3">Staff</option>
 												<option value="2">Manager</option>
 												<option value="1">Admin</option>

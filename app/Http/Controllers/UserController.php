@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Role;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -18,9 +19,8 @@ class UserController extends Controller
     /** SHOW TABLE OF ALL USER (INDEX) */
     public function index()
     {
-        $users = User::with('roles')->get();
-        return view('admin/users.index', compact('users', 'roles'));
-        
+        $users = User::all();
+        return view('admin/users.index', compact('users'));
     }
 
 
@@ -47,8 +47,8 @@ class UserController extends Controller
         User::create([
             'name' => request('name'),
             'email' => request('email'),
-            'password' => bcrypt('password'),
-            'user_role_id' => request('role_id'),
+            'password' => Hash::make(request('password')),
+            'role_id' => request('role_id'),
             'is_active' => request('is_active')
         ]);
         /* REDIRECT USER AFTER SAVE */
@@ -71,7 +71,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         /* VALIDATE DATA COMING IN FROM FORM */
-        $data = $request->validate([
+        $request->validate([
             'name' => 'required',
             'email' => 'nullable|email',
             'password' => 'required|min:4',
@@ -80,8 +80,13 @@ class UserController extends Controller
         ]);
 
         /* SAVE VALIDATED DATA TO DATABASE */
-        $user->fill($data);
-        $user->save();
+        $user->fill([
+            'name' => request('name'),
+            'email' => request('email'),
+            'password' => Hash::make(request('password')),
+            'role_id' => request('role_id'),
+            'is_active' => request('is_active')
+        ])->save();
 
         /* CONFIRM UPDATE AND REDIRECT USER */
         session()->flash('message', 'User Updated Successfully');
