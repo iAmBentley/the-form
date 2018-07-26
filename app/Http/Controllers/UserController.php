@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\UserRole;
+use App\Role;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -18,18 +18,17 @@ class UserController extends Controller
     /** SHOW TABLE OF ALL USER (INDEX) */
     public function index()
     {
-        $users = User::with('userRoles')->get();
-        dd($users);
-        return view('admin/users.index', compact('users', 'userRoles'));
-
+        $users = User::with('roles')->get();
+        return view('admin/users.index', compact('users', 'roles'));
+        
     }
 
 
     /** CREATE NEW USER FORM (CREATE) */
     public function create()
     {
-        $userRoles = UserRole::all();
-        return view('admin/users.create', compact('user', 'userRoles'));
+        $role = Role::all();
+        return view('admin/users.create', compact('user', 'role'));
     }
 
 
@@ -41,7 +40,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'nullable|email',
             'password' => 'required|min:4',
-            'user_role_id' => 'required',
+            'role_id' => 'required',
             'is_active' => 'required|boolean'
         ]);
         /* CREATE AND SAVE NEW USER TO DATABASE */
@@ -49,7 +48,7 @@ class UserController extends Controller
             'name' => request('name'),
             'email' => request('email'),
             'password' => bcrypt('password'),
-            'user_role_id' => request('user_role_id'),
+            'user_role_id' => request('role_id'),
             'is_active' => request('is_active')
         ]);
         /* REDIRECT USER AFTER SAVE */
@@ -76,7 +75,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'nullable|email',
             'password' => 'required|min:4',
-            'user_role_id' => 'required',
+            'role_id' => 'required',
             'is_active' => 'required|boolean'
         ]);
 

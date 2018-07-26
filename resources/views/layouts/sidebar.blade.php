@@ -88,9 +88,9 @@
 									</a>
 								</li>
 								<li>
-									<a href="/admin/user-roles">
+									<a href="/admin/roles">
 										<span class="sidebar-mini-icon">&bull;</span>
-										<span class="sidebar-normal"> User Roles </span>
+										<span class="sidebar-normal"> Roles </span>
 									</a>
 								</li>
 								<li>

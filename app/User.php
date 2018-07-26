@@ -21,11 +21,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    /** USERS BELONG TO ONE USER ROLE */
-    public function userRoles() {
-        return $this->belongsTo(UserRole::class);
+    /** A USER BELONGS TO ONE ROLE */
+    public function roles() {
+        return $this->belongsTo(Role::class);
     }
 
+    /** A USER HAS MANY ORDERS */
     public function orders() {
         return $this->hasMany(Order::class);
     }

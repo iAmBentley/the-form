@@ -43,7 +43,7 @@ Route::prefix('admin')->group(function () {
 	/* USERS INDEX + CRUD  ---  Admin Roles Only */
 	Route::resource('users', 'UserController');
 
-	/* USER ROLES INDEX + CRUD  ---  Admin Roles Only */
-	Route::resource('user-roles', 'UserRoleController');
+	/* ROLES INDEX + CRUD  ---  Admin Roles Only */
+	Route::resource('roles', 'RoleController');
 
 });

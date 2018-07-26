@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 		@section('content')
-			<!-- USER ROLES TABLE -->
+			<!-- ROLES TABLE -->
 			<div class="row">
 				<div class="col-md-12 ml-auto mr-auto">
 					<div class="card">
 
 						<!-- TABLE TITLE -->
 						<div class="card-header">
-							<h4 class="card-title pull-left">User Roles</h4>
-							<a href="user-roles/create" class="create-btn btn btn-danger btn-just-icon pull-right">
+							<h4 class="card-title pull-left">ROLES</h4>
+							<a href="roles/create" class="create-btn btn btn-danger btn-just-icon pull-right">
 								<i class="fa fa-plus"></i>
 							</a>
 						</div>
@@ -28,11 +28,11 @@
 
 									<tbody>
 										<!-- BRING IN CATEGORIES FROM DATABASE -->
-										@foreach($userRoles as $userRole)
+										@foreach($roles as $role)
 											<tr>
-												<td class="text-capitalize">{{ $userRole->name }}</td>
+												<td class="text-capitalize">{{ $role->name }}</td>
 												<td class="text-right">
-													<a href="/admin/user-roles/{{ $userRole->id }}/edit" class="btn btn-info btn-icon btn-sm">
+													<a href="/admin/roles/{{ $role->id }}/edit" class="btn btn-info btn-icon btn-sm">
 														<i class="fa fa-pencil"></i>
 													</a>
 												</td>

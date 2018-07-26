@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 		@section('content')
-			<!-- USERS ROLES FORM -->
+			<!-- ROLES FORM -->
 			<div class="row">
 				<div class="col-md-12 ml-auto mr-auto">
 					<div class="card card-user">
 						<div class="card-header">
-							<h5 class="card-title">Create a User Role</h5>
+							<h5 class="card-title">Create a Role</h5>
 						</div>
 						<div class="card-body">
 
 							@include('layouts.errors')
 
-							<form method="POST" action="/admin/user-roles">
+							<form method="POST" action="/admin/roles">
 								{{ csrf_field() }}
 								<div class="row">
 									<div class="col-md-12">
