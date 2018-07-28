@@ -7,9 +7,9 @@
 					<div class="card">
 						<div class="card-header">
 							<h4 class="card-title pull-left">Items</h4>
-							<button type="button" class="btn btn-danger btn-just-icon pull-right">
+							<a href="items/create" class="create-btn btn btn-danger btn-just-icon pull-right">
 								<i class="fa fa-plus"></i>
-							</button>
+							</a>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -23,56 +23,25 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>Serendipity</td>
-											<td class="d-none d-sm-table-cell">Juices, Labels</td>
-											<td class="d-none d-sm-table-cell">Active</td>
-											<td class="text-right">
-												<button type="button" class="btn btn-info btn-icon btn-sm">
-													<i class="fa fa-pencil"></i>
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td>Strawberry (Ripe)</td>
-											<td class="d-none d-sm-table-cell">Flavors</td>
-											<td class="d-none d-sm-table-cell">Active</td>
-											<td class="text-right">
-												<button type="button" class="btn btn-info btn-icon btn-sm">
-													<i class="fa fa-pencil"></i>
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td>650 Starter Kits - Black</td>
-											<td class="d-none d-sm-table-cell">Products</td>
-											<td class="d-none d-sm-table-cell">Active</td>
-											<td class="text-right">
-												<button type="button" class="btn btn-info btn-icon btn-sm">
-													<i class="fa fa-pencil"></i>
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td>Paper Towels</td>
-											<td class="d-none d-sm-table-cell">Supplies</td>
-											<td class="d-none d-sm-table-cell">Active</td>
-											<td class="text-right">
-												<button type="button" class="btn btn-info btn-icon btn-sm">
-													<i class="fa fa-pencil"></i>
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td>30mL Bottles - Black</td>
-											<td class="d-none d-sm-table-cell">Supplies</td>
-											<td class="d-none d-sm-table-cell">Active</td>
-											<td class="text-right">
-												<button type="button" class="btn btn-info btn-icon btn-sm">
-													<i class="fa fa-pencil"></i>
-												</button>
-											</td>
-										</tr>
+										@foreach($items as $item)
+											<tr>
+												<td class="text-capitalize">{{ $item->name }}</td>
+												<td class="d-none d-sm-table-cell text-capitalize">
+													@foreach($item->categories as $key => $category)
+														@if($key)
+															,&nbsp;
+														@endif
+														{{ $category->name }}
+													@endforeach
+												</td>
+												<td class="d-none d-sm-table-cell">{{ $item->is_active == 1 ? 'Active' : 'Disabled' }}</td>
+												<td class="text-right">
+													<a href="items/{{ $item->id }}/edit" class="btn btn-info btn-icon btn-sm">
+														<i class="fa fa-pencil"></i>
+													</a>
+												</td>
+											</tr>
+										@endforeach
 									</tbody>
 								</table>
 							</div>

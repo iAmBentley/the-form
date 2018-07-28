@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('orders', 'OrderController');
+
 /* ADMIN SECTION  ---  Managers + Admin Roles Only */
 Route::prefix('admin')->group(function () {
 	
@@ -28,10 +30,10 @@ Route::prefix('admin')->group(function () {
 	/* ITEMS INDEX + CRUD */
 	Route::resource('items', 'ItemController');
 
-	/* CATEGORIES INDEX + CRUD */
+	/* CATEGORIES INDEX + CRUD  ---  Admin Roles Only */
 	Route::resource('categories', 'CategoryController');
 
-	/* VENDORS INDEX + CRUD */
+	/* VENDORS INDEX + CRUD  ---  Admin Roles Only */
 	Route::resource('vendors', 'VendorController');
 
 	/* STORES INDEX + CRUD */

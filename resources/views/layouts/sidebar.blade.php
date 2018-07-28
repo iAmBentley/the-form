@@ -42,7 +42,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="/home">
+						<a href="/orders">
 							<i class="fa fa-list-ul"></i>
 							<p>Past Orders</p>
 						</a>

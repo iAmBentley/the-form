@@ -33,7 +33,7 @@
 										@foreach($sizes as $size)
 										<tr>
 											<td class="text-capitalize">{{ $size->name }}</td>
-											<td class="text-capitalize">{{ $size->categories['name'] }}</td>
+											<td class="text-capitalize">{{ $size->categories->name }}</td>
 											<td class="d-none d-sm-block">{{ $size->is_active == 1 ? 'Active' : 'Disabled' }}</td>
 											<td class="text-right">
 												<a href="/admin/sizes/{{$size->id}}/edit" class="btn btn-info btn-icon btn-sm">

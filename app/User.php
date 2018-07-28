@@ -26,8 +26,8 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    /** A USER HAS MANY ORDERS */
+    /** A USER BELONGS TO ONE ORDER */
     public function orders() {
-        return $this->hasMany(Order::class);
+        return $this->belongsTo(Order::class);
     }
 }

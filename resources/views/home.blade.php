@@ -393,12 +393,12 @@
 					</div>
 				</div>
 
-				<!-- STORES FORM -->
+				<!-- DONE --- STORES FORM -->
 				<div class="row">
 					<div class="col-md-12 ml-auto mr-auto">
 						<div class="card card-user">
 							<div class="card-header">
-								<h5 class="card-title">Create / Edit Stores</h5>
+								<h5 class="card-title">DONE --- Create / Edit Stores</h5>
 							</div>
 							<div class="card-body">
 								<form>
@@ -432,12 +432,12 @@
 					</div>
 				</div>
 
-				<!-- STORES TABLE -->
+				<!-- DONE --- STORES TABLE -->
 			<div class="row">
 				<div class="col-md-12 ml-auto mr-auto">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title pull-left">Stores</h4>
+							<h4 class="card-title pull-left">DONE --- Stores</h4>
 							<button type="button" class="btn btn-danger btn-just-icon pull-right">
 								<i class="fa fa-plus"></i>
 							</button>

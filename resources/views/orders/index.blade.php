@@ -8,9 +8,9 @@
 						<div class="card">
 							<div class="card-header">
 								<h4 class="card-title pull-left">Orders</h4>
-								<button type="button" class="btn btn-danger btn-just-icon pull-right">
+								<a href="orders/create" class="create-btn btn btn-danger btn-just-icon pull-right">
 									<i class="fa fa-plus"></i>
-								</button>
+								</a>
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">
@@ -19,96 +19,30 @@
 											<tr>
 												<th>Status</th>
 												<th>Date</th>
-												<th>Location</th>
+												<th>Store</th>
 												<th class="d-none d-sm-block">User</th>
 												<th class="text-right">Actions</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>Open</td>
-												<td>07-05-18</td>
-												<td>Lab</td>
-												<td class="d-none d-sm-block">John J</td>
-												<td class="text-right">
-													<button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
-														<i class="fa fa-eye"></i>
-													</button>
-													<button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
-														<i class="fa fa-check"></i>
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td>Open</td>
-												<td>07-03-18</td>
-												<td>Surfside</td>
-												<td class="d-none d-sm-block">Darrell S</td>
-												<td class="text-right">
-													<button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
-														<i class="fa fa-eye"></i>
-													</button>
-													<button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
-														<i class="fa fa-check"></i>
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td>Closed</td>
-												<td>06-28-18</td>
-												<td>N Myrtle</td>
-												<td class="d-none d-sm-block">Jenn B</td>
-												<td class="text-right">
-													<button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
-														<i class="fa fa-eye"></i>
-													</button>
-													<button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm " disabled data-original-title="" title="">
-														<i class="fa fa-check"></i>
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td>Closed</td>
-												<td>06-25-18</td>
-												<td>Folly</td>
-												<td class="d-none d-sm-block">Dave E</td>
-												<td class="text-right">
-													<button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
-														<i class="fa fa-eye"></i>
-													</button>
-													<button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm " disabled data-original-title="" title="">
-														<i class="fa fa-check"></i>
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td>Closed</td>
-												<td>06-23-18</td>
-												<td>Socastee</td>
-												<td class="d-none d-sm-block">John A</td>
-												<td class="text-right">
-													<button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
-														<i class="fa fa-eye"></i>
-													</button>
-													<button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm " disabled data-original-title="" title="">
-														<i class="fa fa-check"></i>
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td>Closed</td>
-												<td>06-15-18</td>
-												<td>Dunkin-VV</td>
-												<td class="d-none d-sm-block">Mike B</td>
-												<td class="text-right">
-													<button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
-														<i class="fa fa-eye"></i>
-													</button>
-													<button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm " disabled data-original-title="" title="">
-														<i class="fa fa-check"></i>
-													</button>
-												</td>
-											</tr>
+
+											@foreach($orders as $order)
+												<tr>
+													<td>{{ $order->is_active == 1 ? 'Open' : 'Closed' }}</td>
+													<td>{{ $order->created_at->format('m.d.Y') }}</td>
+													<td class="text-capitalize">{{ $order->stores->name }}</td>
+													<td class="d-none d-sm-block text-capitalize">{{ $order->users->name }}</td>
+													<td class="text-right">
+														<a href="orders/{{ $order->id }}/edit" class="btn btn-info btn-icon btn-sm ">
+															<i class="fa fa-pencil"></i>
+														</a>
+														<a href="orders/{{ $order->id }}" class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
+															<i class="fa fa-eye"></i>
+														</a>
+													</td>
+												</tr>
+											@endforeach
+											
 										</tbody>
 									</table>
 								</div>

@@ -2,83 +2,67 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
+use App\Store;
+use App\Category;
+use App\Vendor;
+use App\Item;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /** CHECK IF USER IS LOGGED IN */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+    /** SHOW TABLE OF ALL ORDERS (INDEX) */
     public function index()
     {
-        //
+        $orders = Order::all();
+        // dd($orders);
+        return view('orders.index', compact('orders'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    /** CREATE NEW ORDER FORM (CREATE) */
     public function create()
     {
-        //
+        $orders = Order::all();
+        $vendors = Vendor::all();
+        $categories = Category::all();
+        $stores = Store::all();
+        return view('orders.create', compact('orders', 'vendors', 'categories', 'stores'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
+    /** SAVE NEW ORDER TO DATABASE (STORE) */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    /** SHOW A SINGLE ORDER (SHOW) */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    /** EDIT AN ORDER FORM (EDIT) */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    /** SAVE EDITED ORDER TO DATABASE (UPDATE) */
+    public function update(Request $request, Order $order)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
