@@ -61,7 +61,7 @@ class OrderController extends Controller
     /** SAVE NEW ORDER TO DATABASE (STORE) */
     public function store(Request $request)
     {
-        //
+        return response()->json($request);
     }
 
 

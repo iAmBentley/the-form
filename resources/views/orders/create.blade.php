@@ -68,14 +68,14 @@
 
 												<div class="form-check-radio pull-right ml-2">
 												    <label class="form-check-label">
-												        <input class="form-check-input" type="radio" name="{{$products->name}}" value="0" checked>
+												        <input class="form-check-input" type="radio" name="{{$products->name}}" value="No" checked>
 												        No
 												        <span class="form-check-sign"></span>
 												    </label>
 												</div>
 												<div class="form-check-radio pull-right ml-2">
 												    <label class="form-check-label">
-												        <input class="form-check-input" type="radio" name="{{$products->name}}" value="1" >
+												        <input class="form-check-input" type="radio" name="{{$products->name}}" value="Yes" >
 												        Yes
 												        <span class="form-check-sign"></span>
 												    </label>
@@ -126,13 +126,13 @@
 
 												<div class="form-check form-check-inline chekbox-align">
 													<label class="form-check-label text-capitalize">
-														<input class="form-check-input only-one-chekbox" name="size_id" type="checkbox" value="">
+														<input class="form-check-input" name="{{$flavor->name}}" type="checkbox" value="No">
 														None
 														<span class="chekbox form-check-sign"></span>
 													</label>
 													@foreach($flavor->sizes as $size)
 														<label class="form-check-label text-capitalize">
-															<input class="form-check-input only-one-chekbox" name="size[]" type="checkbox" value="{{ $size->id }}">
+															<input class="form-check-input" name="{{$flavor->name}}" type="checkbox" value="{{ $size->name }}">
 															{{ $size->name }}
 															<span class="chekbox form-check-sign"></span>
 														</label>
@@ -159,7 +159,6 @@
 								</div>
 								<div class="card-body">
 									<div class="row">
-										
 										@foreach($juice->items as $juices)
 											<div class="col-md-6">
 												<div class="chekbox-title text-capitalize">
@@ -168,14 +167,14 @@
 
 												<div class="form-check form-check-inline chekbox-align">
 													<label class="form-check-label text-capitalize" hidden>
-														<input class="form-check-input only-one-chekbox" name="size_id" type="checkbox" value="0">
+														<input class="form-check-input" name="{{$juices->name}}" type="checkbox" value="No">
 														None
 														<span class="chekbox form-check-sign"></span>
 													</label>
 													
 													@foreach($juiceSizes as $size)
 														<label class="form-check-label text-capitalize">
-															<input class="form-check-input only-one-chekbox" name="size_id" type="checkbox" value="{{ $size->id }}">
+															<input class="form-check-input" name="{{$juices->name}}" type="checkbox" value="{{ $size->name }}">
 															{{ $size->name }}
 															<span class="chekbox form-check-sign"></span>
 														</label>
@@ -184,35 +183,32 @@
 												</div>
 											</div>
 										@endforeach
-
 										@foreach($juice->items as $dripline)
+											@if($dripline->is_drip == 1)
+												<div class="col-md-6">
+													<div class="chekbox-title text-capitalize">
+														{{ $dripline->name }} | Drip Line
+													</div>
 
-										@if($dripline->is_drip == 1)
-											<div class="col-md-6">
-												<div class="chekbox-title text-capitalize">
-													{{ $dripline->name }} | Drip Line
-												</div>
-
-												<div class="form-check form-check-inline chekbox-align">
-													<label class="form-check-label text-capitalize" hidden>
-														<input class="form-check-input only-one-chekbox" name="size_id" type="checkbox" value="0">
-														None
-														<span class="chekbox form-check-sign"></span>
-													</label>
-													
-													@foreach($juiceSizes as $size)
-														<label class="form-check-label text-capitalize">
-															<input class="form-check-input only-one-chekbox" name="size[]" type="checkbox" value="{{ $size->id }}">
-															{{ $size->name }}
+													<div class="form-check form-check-inline chekbox-align">
+														<label class="form-check-label text-capitalize" hidden>
+															<input class="form-check-input" name="{{$dripline->name}}" type="checkbox" value="No">
+															None
 															<span class="chekbox form-check-sign"></span>
 														</label>
-													@endforeach
+														
+														@foreach($juiceSizes as $size)
+															<label class="form-check-label text-capitalize">
+																<input class="form-check-input" name="{{$dripline->name}}" type="checkbox" value="{{ $size->name }}">
+																{{ $size->name }}
+																<span class="chekbox form-check-sign"></span>
+															</label>
+														@endforeach
 
+													</div>
 												</div>
-											</div>
 											@endif
 										@endforeach
-
 									</div>
 
 									<div class="row">
@@ -240,13 +236,13 @@
 
 												<div class="form-check form-check-inline chekbox-align">
 													<label class="form-check-label text-capitalize">
-														<input class="form-check-input" name="size_id" type="checkbox" value="">
+														<input class="form-check-input" name="{{$labels->name}}" type="checkbox" value="No">
 														None
 														<span class="chekbox form-check-sign"></span>
 													</label>
 													@foreach($labelSizes as $size)
 														<label class="form-check-label text-capitalize">
-															<input class="form-check-input" name="size[]" type="checkbox" value="{{ $size->id }}">
+															<input class="form-check-input" name="{{$labels->name}}" type="checkbox" value="{{ $size->name }}">
 															{{ $size->name }}
 															<span class="chekbox form-check-sign"></span>
 														</label>
@@ -283,12 +279,12 @@
 													
 													@foreach($supplies->sizes as $size)
 														<label class="form-check-label text-capitalize ">
-															<input class="form-check-input " name="{{ $size->name }}" type="checkbox" value="">
+															<input class="form-check-input " name="{{ $supplies->name }}" type="checkbox" value="no">
 															No
 															<span class="chekbox form-check-sign"></span>
 														</label>
 														<label class="form-check-label text-capitalize">
-															<input class="form-check-input " name="{{ $size->name }}" type="checkbox" value="{{ $size->name }}">
+															<input class="form-check-input " name="{{ $supplies->name }}" type="checkbox" value="yes">
 															{{ $size->name }}
 															<span class="chekbox form-check-sign"></span>
 														</label>

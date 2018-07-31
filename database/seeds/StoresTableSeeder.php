@@ -49,7 +49,10 @@ class StoresTableSeeder extends Seeder
         		],[
         			'name' => 'ph-saluda',
         			'created_at' => date("Y-m-d H:i:s")
-        		]
+        		],[
+                    'name' => 'ph-dunkin',
+                    'created_at' => date("Y-m-d H:i:s")
+                ]
         	]
         );
     }
