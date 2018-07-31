@@ -20,7 +20,7 @@
 									<div class="col-md-8">
 										<div class="form-group">
 											<label>Name</label>
-											<input type="text" class="form-control" name="name" value="{{ $item->name }}">
+											<input type="text" class="form-control" name="name" value="{{ $item->name }}" autofocus>
 										</div>
 									</div>
 									{{-- ITEM STATUS SELECT DROPDOWN --}}
@@ -45,7 +45,7 @@
 
 								<div class="row">
 									{{-- CATEGORY CHECKBOXES --}}
-									<div class="col-sm-4">
+									<div class="col-sm-6">
 										<div class="chekbox-title">
 											Category (Choose All That Apply)
 										</div>
@@ -67,8 +67,33 @@
 											</div>
 										@endforeach
 									</div>
+
+									{{-- SIZE CHECKBOXES --}}
+									<div class="col-sm-6">
+										<div class="chekbox-title">
+											Size (Choose All That Apply)
+										</div>
+										@foreach($sizes as $size)
+											<div class="form-check form-check-inline chekbox-align">
+												<label class="form-check-label text-capitalize">
+													<input class="form-check-input"
+														type="checkbox" 
+														name="size[]"
+														value="{{ $size->id }}"
+														@foreach ($item->sizes as $associatedCat)
+                                                            @if ($associatedCat->id == $size->id)
+                                                                checked="checked"
+                                                            @endif
+                                                        @endforeach>
+														{{ $size->name }}
+													<span class="chekbox form-check-sign"></span>
+												</label>
+											</div>
+										@endforeach
+									</div>
+
 									{{-- STORE CHECKBOXES --}}
-									<div class="col-sm-8">
+									<div class="col-sm-6">
 										<div class="chekbox-title">
 											Store (Choose All That Apply)
 										</div>

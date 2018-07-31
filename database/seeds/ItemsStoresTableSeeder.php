@@ -15,84 +15,64 @@ class ItemsStoresTableSeeder extends Seeder
         	[
         		[
         			'store_id' => '1',
-        			'item_id' => '1',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '1'
         		],[
         			'store_id' => '1',
-        			'item_id' => '2',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '2'
         		],[
         			'store_id' => '1',
-        			'item_id' => '3',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '3'
         		],[
         			'store_id' => '2',
-        			'item_id' => '3',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '3'
         		],[
         			'store_id' => '1',
-        			'item_id' => '4',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '4'
         		],[
         			'store_id' => '2',
-        			'item_id' => '4',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '4'
         		],[
         			'store_id' => '1',
-        			'item_id' => '5',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '5'
         		],[
         			'store_id' => '1',
-        			'item_id' => '6',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '6'
         		],[
         			'store_id' => '1',
-        			'item_id' => '7',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '7'
         		],[
         			'store_id' => '2',
-        			'item_id' => '7',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '7'
         		],[
         			'store_id' => '1',
-        			'item_id' => '8',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '8'
         		],[
         			'store_id' => '2',
-        			'item_id' => '8',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '8'
         		],[
         			'store_id' => '2',
-        			'item_id' => '9',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '9'
         		],[
         			'store_id' => '3',
-        			'item_id' => '9',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '9'
         		],[
         			'store_id' => '4',
-        			'item_id' => '9',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '9'
         		],[
         			'store_id' => '5',
-        			'item_id' => '9',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '9'
         		],[
         			'store_id' => '2',
-        			'item_id' => '10',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '10'
         		],[
         			'store_id' => '3',
-        			'item_id' => '10',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '10'
         		],[
         			'store_id' => '4',
-        			'item_id' => '10',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '10'
         		],[
         			'store_id' => '5',
-        			'item_id' => '10',
-        			'created_at' => date("Y-m-d H:i:s")
+        			'item_id' => '10'
         		]
         	]
         );

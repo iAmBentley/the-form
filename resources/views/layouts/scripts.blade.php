@@ -16,7 +16,8 @@
         </script>
         <!-- PLUGINS -->
         <script src="{{ asset('/js/perfect-scrollbar.jquery.min.js') }}"></script>
-        <script src="{{ asset('/js/bootstrap-switch.min.js') }}"></script>
-        <script src="{{ asset('/js/bootstrap-notify.js') }}"></script>
+        <script src="{{ asset('/js/bootstrap-switch.js') }}"></script>
         <!-- CUSTOM JS -->
         <script src="{{ asset('/js/paper-dashboard.js') }}"></script>
+        <script src="{{ asset('/js/jquery-ui-1.12.1.custom.min.js') }}"></script>
+       

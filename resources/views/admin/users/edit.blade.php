@@ -21,7 +21,7 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<label>Name</label>
-											<input type="text" class="form-control" name="name" value="{{ $user->name }}">
+											<input type="text" class="form-control" name="name" value="{{ $user->name }} autofocus">
 										</div>
 									</div>
 									<div class="col-md-6">

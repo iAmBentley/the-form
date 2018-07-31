@@ -16,7 +16,7 @@
 									<div class="col-md-8">
 										<div class="form-group">
 											<label>Name</label>
-											<input type="text" class="form-control" name="name" placeholder="Name of Item">
+											<input type="text" class="form-control" name="name" placeholder="Name of Item" autofocus>
 										</div>
 									</div>
 									{{-- ITEM STATUS SELECT DROPDOWN --}}
@@ -35,7 +35,7 @@
 
 								<div class="row">
 									{{-- CATEGORY CHECKBOXES --}}
-									<div class="col-sm-4">
+									<div class="col-md-12">
 										<div class="chekbox-title">
 											Category (Choose All That Apply)
 										</div>
@@ -49,19 +49,34 @@
 											</div>
 										@endforeach
 									</div>
+									{{-- SIZES CHECKBOXES --}}
+									<div class="col-md-12">
+										<div class="chekbox-title">
+											Sizes (Choose All That Apply)
+										</div>
+										@foreach($sizes as $size)
+											<div class="form-check form-check-inline chekbox-align">
+												<label class="form-check-label text-capitalize">
+													<input class="form-check-input" name="size[]" type="checkbox" value="{{ $size->id }}">
+													{{ $size->name }}
+													<span class="chekbox form-check-sign"></span>
+												</label>
+											</div>
+										@endforeach
+									</div>
 									{{-- STORE CHECKBOXES --}}
-									<div class="col-sm-8">
+									<div class="col-md-12">
 										<div class="chekbox-title">
 											Store (Choose All That Apply)
 										</div>
 										@foreach($stores as $store)
-										<div class="form-check form-check-inline chekbox-align">
-											<label class="form-check-label text-capitalize">
-												<input class="form-check-input" type="checkbox" name="store[]" value="{{ $store->id }}">
-												{{ $store->name }}
-												<span class="chekbox form-check-sign"></span>
-											</label>
-										</div>
+											<div class="form-check form-check-inline chekbox-align">
+												<label class="form-check-label text-capitalize">
+													<input class="form-check-input" type="checkbox" name="store[]" value="{{ $store->id }}">
+													{{ $store->name }}
+													<span class="chekbox form-check-sign"></span>
+												</label>
+											</div>
 										@endforeach
 									</div>
 								</div>
@@ -81,6 +96,7 @@
 											</select>
 										</div>
 									</div>
+
 									{{-- DRIP LINE CHECKBOXES --}}
 									<div class="col-sm-4">
 										<div class="chekbox-title">

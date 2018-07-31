@@ -18,7 +18,7 @@
 									<div class="col-md-8">
 										<div class="form-group">
 											<label>Name</label>
-											<input type="text" class="form-control" name="name" placeholder="Store Prefix + Store Street (ex: PH-Saluda)">
+											<input type="text" class="form-control" name="name" placeholder="Store Prefix + Store Street (ex: PH-Saluda)" autofocus>
 										</div>
 									</div>
 

@@ -6,6 +6,7 @@ use App\Item;
 use App\Store;
 use App\Category;
 use App\Vendor;
+use App\Size;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -32,8 +33,9 @@ class ItemController extends Controller
         $categories = Category::all();
         $stores = Store::all();
         $vendors = Vendor::all();
+        $sizes = Size::all();
         /* SHOW THE CREATE FORM FOR THE ITEM */
-        return view('admin/items.create', compact('item', 'categories', 'stores', 'vendors'));
+        return view('admin/items.create', compact('item', 'categories', 'stores', 'vendors', 'sizes'));
     }
 
 
@@ -59,6 +61,7 @@ class ItemController extends Controller
         /* SAVE NEW ITEM TO DATABASE */
         $item->save();
         $item->categories()->attach($request->category);
+        $item->sizes()->attach($request->size);
         $item->stores()->attach($request->store);
         /* CONFIRM CREATION AND REDIRECT USER */
         session()->flash('message', 'Item Created Successfully');
@@ -73,8 +76,9 @@ class ItemController extends Controller
         $categories = Category::all();
         $stores = Store::all();
         $vendors = Vendor::all();
+        $sizes = Size::all();
         /* SHOW THE EDIT FORM FOR THE ITEM */
-        return view('admin/items.edit', compact('item', 'categories', 'stores', 'vendors'));
+        return view('admin/items.edit', compact('item', 'categories', 'stores', 'vendors', 'sizes'));
     }
 
 
@@ -97,6 +101,7 @@ class ItemController extends Controller
         ]);
         /* SAVE UPDATED ITEM TO DATABASE */
         $item->categories()->sync($request->category);
+        $item->sizes()->sync($request->size);
         $item->stores()->sync($request->store);
         /* CONFIRM CREATION AND REDIRECT USER */
         session()->flash('message', 'Item Updated Successfully');

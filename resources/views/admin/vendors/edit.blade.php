@@ -19,7 +19,7 @@
 									<div class="col-md-4">
 										<div class="form-group">
 											<label>Name</label>
-											<input type="text" class="form-control" name="name" value="{{ $vendor->name }}">
+											<input type="text" class="form-control" name="name" value="{{ $vendor->name }}" autofocus>
 										</div>
 									</div>
 									<div class="col-md-4">

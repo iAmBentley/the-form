@@ -205,4 +205,3 @@ function hexToRGB(hex, alpha) {
 setTimeout(function() {
     $('#flash-message').fadeOut('2500');
 }, 5000);
-

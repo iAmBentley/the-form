@@ -22,10 +22,9 @@ class CreateSizesTable extends Migration
         });
 
         Schema::create('item_size', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('size_id');
             $table->integer('item_id');
-            $table->timestamps();
+            $table->primary(['size_id', 'item_id']);
         });
     }
 

@@ -1,3 +1,38 @@
+.checkbox-slider {
+  display:flex;
+  align-items:center;
+}
+.slider {
+  position: relative;
+  margin-right: 10px;
+  width: 50px;
+  height: 30px;
+  background: #ddd;
+  transition: .4s;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.slider::before {
+  position:absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 5px;
+  top: 5px;
+  background: white;
+  transition: .4s;
+  border-radius: 50%;
+  box-shade: 0 0 1px rgba(0,0,0,0.15);
+}
+input {
+  display: none;
+}
+input:checked + .slider {
+  background: #ef8157;
+}
+input:checked + .slider::before {
+  transform: translateX(20px);
+}
 /* -- LOGIN PAGE - START -- */
 .login-name {
 	padding-top: 7px;
@@ -118,6 +153,8 @@
 	min-height: 43px;
 }
 
+
+
 @media (max-width: 768px) {
 	.full-height {
 		min-height: 63px;
@@ -130,15 +167,8 @@
 	}
 }
 
-/*@media (min-width: 992px) {
-	.sidebar .nav>li.nav-footer {
-		position: absolute;
-		width: 100%;
-		bottom: 10px;
-		text-align: center;
-	    color: rgba(255, 255, 255, 0.5);
-	}
-	.content > :first-child {
-		margin-top:110px;
-	}
-}*/
+/* STYLING FOR PRINTING AN ORDER */
+@media print {
+   /* ONCE ORDERS/SHOW HAS BEEN CREATED
+      HIT PRINT, VIEW PREVIEW, AND BEGIN STYLING */
+}

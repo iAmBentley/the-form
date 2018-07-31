@@ -15,23 +15,21 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
 
         Schema::create('category_item', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('category_id');
             $table->integer('item_id');
-            $table->timestamps();
+            $table->primary(['category_id', 'item_id']);
         });
 
         Schema::create('category_store', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('category_id');
             $table->integer('store_id');
-            $table->timestamps();
+            $table->primary(['category_id', 'store_id']);
         });
     }
 
@@ -44,5 +42,6 @@ class CreateCategoriesTable extends Migration
     {
         Schema::dropIfExists('categories');
         Schema::dropIfExists('category_item');
+        Schema::dropIfExists('category_store');
     }
 }

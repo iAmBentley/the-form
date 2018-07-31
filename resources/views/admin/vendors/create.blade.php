@@ -18,7 +18,7 @@
 									<div class="col-md-4">
 										<div class="form-group">
 											<label>Name</label>
-											<input type="text" class="form-control" name="name">
+											<input type="text" class="form-control" name="name" autofocus>
 										</div>
 									</div>
 									<div class="col-md-4">

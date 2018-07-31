@@ -22,10 +22,9 @@ class CreateOrdersTable extends Migration
         });
 
         Schema::create('item_order', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('order_id');
             $table->integer('item_id');
-            $table->timestamps();
+            $table->primary(['order_id', 'item_id']);
         });
     }
 

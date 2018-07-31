@@ -19,7 +19,7 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<label>Name</label>
-											<input type="text" class="form-control" name="name" placeholder="No two names the same">
+											<input type="text" class="form-control" name="name" placeholder="No two names the same" autofocus>
 										</div>
 									</div>
 									<div class="col-md-6">
