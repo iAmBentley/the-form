@@ -30,38 +30,49 @@ class OrderController extends Controller
     /** CREATE NEW ORDER FORM (CREATE) */
     public function create()
     {
-        $vendors = Vendor::all();
+        /* CORE VARIABLES */
         $categories = Category::all();
         $stores = Store::all();
         $items = Item::with('sizes')->get();
         $dripline = Item::where('is_drip', 1)->get();
 
+        /* ITEM FILTERING BY CATEGORY */
         $products = Category::with('items')->where('name', 'products')->get();
         $flavors = Category::with('items')->where('name', 'flavors')->get();
         $juices = Category::with('items')->where('name', 'juices')->get();
         $labels = Category::with('items')->where('name', 'labels')->get();
         $supplies = Category::with('items')->where('name', 'supplies')->get();
 
+        /* STORE FILTERING BY CATEGORY */
+        $productStores = Category::with('stores')->where('name', 'products')->get();
+        $flavorStores = Category::with('stores')->where('name', 'flavors')->get();
+        $juiceStores = Category::with('stores')->where('name', 'juices')->get();
+        $labelStores = Category::with('stores')->where('name', 'labels')->get();
+        $supplyStores = Category::with('stores')->where('name', 'supplies')->get();
+
+        /* SIZE FILTERING VARIABLES */
         $labelSizes = Size::where('category_id', 2)->get();
         $juiceSizes = Size::where('category_id', 4)->get();
 
-        // return response()->json($juices);
+        // return response()->json($flavorStores);
         
         return view('orders.create', 
             compact(
-                'orders', 'vendors',
-                'categories', 'stores',
+                'orders', 'categories', 'stores',
                 'items', 'products', 'supplies',
                 'flavors', 'juices', 'labels',
-                'labelSizes', 'juiceSizes', 'dripline'
-            ));
+                'labelSizes', 'juiceSizes', 'dripline',
+                'productStores', 'flavorStores', 'juiceStores',
+                'labelStores', 'supplyStores'
+            )
+        );
     }
 
 
     /** SAVE NEW ORDER TO DATABASE (STORE) */
     public function store(Request $request)
     {
-        return response()->json($request);
+        // return response()->json($request);
     }
 
 

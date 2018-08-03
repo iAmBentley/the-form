@@ -13,4 +13,8 @@ class Category extends Model
 	public function sizes() {
 		return $this->hasMany(Size::class);
 	}
+	// public function getSizes() {
+	// 	return Category::where('name', 'sizes');
+	// }
+	// Category::getSizes();
 }

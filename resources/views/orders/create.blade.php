@@ -16,12 +16,12 @@
 									<input type="text" hidden class="form-control" name="user_id" value="{{ Auth::user()->id }}">
 									<input type="text" hidden class="form-control" name="is_active" value="1">
 
-									<div class="col-md-6">
+									<div id="form-category" class="col-md-6">
 										<div class="chekbox-title-dropdowns">
 											Form - What do you need?
 										</div>
 										<div class="form-check form-group">
-											<select class="text-capitalize form-control" id="category_id" name="category_id">
+											<select class="text-capitalize form-control" id="category_select" name="category_id">
 												<option value="">Choose One</option>
 												@foreach($categories as $category)
 													<option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -29,22 +29,24 @@
 											</select>
 										</div>
 									</div>
-									<div class="col-md-6">
+									<div id="form-store" class="col-md-6">
 										<div class="chekbox-title-dropdowns">
 											Store - Where is it needed?
 										</div>
 										<div class="form-check form-group">
-											<select class="text-capitalize form-control" id="store_id" name="store_id">
+											<select class="text-capitalize form-control" id="store_select" name="store_id">
 												<option value="">Choose One</option>
-												@foreach($stores as $store)
+												{{-- @foreach($stores as $store)
 													<option value="{{ $store->id }}">{{ $store->name }}</option>
-												@endforeach
+												@endforeach --}}
 											</select>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+
+						<div id="form-body" class="card card-user"></div>
 
 			            {{-- PRODUCTS FORM --}}
 						@foreach($products as $products) 
@@ -307,5 +309,6 @@
 					</form>
 
 				</div>
+				
 			</div>
 		@endsection
