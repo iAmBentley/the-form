@@ -206,45 +206,5 @@ setTimeout(function() {
 	$('#flash-message').fadeOut('2500');
 }, 5000);
 
-// ORDER FORM AJAX STUFF
-Log selected category_id from dropdown selected for categories
-$("#category_select").on('change', function(){
-	var val = $(this).val();
-	console.log("category_id selected is " + val);
-});
 
-// A busted attempt
-// $(document).ready(function(){
-
-// 	$("#category_select").on('change', function(){
-// 		var catid = $(this).val();
-
-// 		$.ajaxSetup({
-// 			headers: {
-// 				'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-// 			}
-// 		});
-
-// 		$.ajax({
-// 			url: '/orders/create/stores-filtered',
-// 			method: 'post',
-// 			data: {category:catid},
-// 			dataType: 'json',
-// 			success:function(response){
-
-// 				var len = response.length;
-
-// 				$("#store_select").empty();
-// 				for( var i = 0; i<len; i++){
-// 					var id = response[i]['id'];
-// 					var name = response[i]['name'];
-					
-// 					$("#store_select").append("<option value='"+id+"'>"+name+"</option>");
-
-// 				}
-// 			}
-// 		});
-// 	});
-
-// });
 

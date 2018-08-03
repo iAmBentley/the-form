@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('orders-ajax-scripts')
+<script src="{{ asset('/js/orders-ajax.js') }}"></script>
+@endsection
+
 		@section('content')
 			<!-- ITEMS FORM -->
 			<div class="row">

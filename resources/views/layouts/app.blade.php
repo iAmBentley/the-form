@@ -22,6 +22,7 @@
 	   	</div> {{-- .main-panel END --}}
 	    
 	    @include('layouts.scripts')
+	    @yield('orders-ajax-scripts')
 
 	</div> {{-- .wrapper END --}}
 </body>
