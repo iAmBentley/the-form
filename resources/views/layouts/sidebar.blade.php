@@ -1,38 +1,38 @@
 		<!-- SIDEBAR - START -->
 		<div class="sidebar" data-color="" data-active-color="danger">
 			<div class="logo">
-				<a href="#" class="simple-text logo-mini">
+				<a href="/" class="simple-text logo-mini">
 					<div class="logo-image-small">
 						<img src="{{asset('img/logo-form.png')}}">
 					</div>
 				</a>
-				<a href="/home" class="simple-text logo-normal">il modulo</a>
+				<a href="/" class="simple-text logo-normal">il modulo</a>
 			</div>
 			<div class="sidebar-wrapper">
 				<ul class="nav">
 					@if(Auth::check())
-					<li>
-						<a data-toggle="collapse" href="#userItems" style="border-bottom: 1px solid rgba(255, 255, 255, .3);">
-							<i class="fa fa-user"></i>
-								<p>Hello {{ Auth::user()->name }} <b class="caret"></b></p>
-						</a>
-						<div class="collapse " id="userItems">
-							<ul class="nav">
-								<li>
-									<a class="collapse " style="border-bottom: 1px solid rgba(255, 255, 255, .3);"
-										href="{{ route('logout') }}" onclick="event.preventDefault();
-										document.getElementById('logout-form').submit();">
-										<span class="sidebar-mini-icon">&bull;</span>
-										<span class="sidebar-normal"> {{ __('Logout') }} </span>
-									</a>
+						<li>
+							<a data-toggle="collapse" href="#userItems" style="border-bottom: 1px solid rgba(255, 255, 255, .3);">
+								<i class="fa fa-user"></i>
+									<p>Hello {{ Auth::user()->name }} <b class="caret"></b></p>
+							</a>
+							<div class="collapse " id="userItems">
+								<ul class="nav">
+									<li>
+										<a class="collapse " style="border-bottom: 1px solid rgba(255, 255, 255, .3);"
+											href="{{ route('logout') }}" onclick="event.preventDefault();
+											document.getElementById('logout-form').submit();">
+											<span class="sidebar-mini-icon">&bull;</span>
+											<span class="sidebar-normal"> {{ __('Logout') }} </span>
+										</a>
 
-									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-										@csrf
-									</form>
-								</li>
-							</ul>
-						</div>
-					</li>
+										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+											@csrf
+										</form>
+									</li>
+								</ul>
+							</div>
+						</li>
 					@endif
 					<li>
 						<a href="/orders/create">

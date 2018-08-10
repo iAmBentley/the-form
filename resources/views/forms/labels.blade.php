@@ -6,24 +6,18 @@
 							<div class="card-body">
 								<div class="row">
 									@foreach($labels->items as $labels)
-										<div class="col-md-6">
-											<div class="chekbox-title text-capitalize">
+
+										<div id="form-category" class="col-lg-6 col-xl-4">
+											<div class="chekbox-title-dropdowns text-capitalize">
 												{{ $labels->name }}
 											</div>
-
-											<div class="form-check form-check-inline chekbox-align">
-												<label class="form-check-label text-capitalize">
-													<input class="form-check-input" name="{{$labels->name}}" type="checkbox" value="No">
-													None
-													<span class="chekbox form-check-sign"></span>
-												</label>
-												@foreach($labelSizes as $size)
-													<label class="form-check-label text-capitalize">
-														<input class="form-check-input" name="{{$labels->name}}" type="checkbox" value="{{ $size->name }}">
-														{{ $size->name }}
-														<span class="chekbox form-check-sign"></span>
-													</label>
-												@endforeach
+											<div class="form-check form-group">
+												<select class="text-capitalize form-control" id="category_select" name="{{ $labels->name }}">
+													<option value="NULL">None</option>
+													@foreach($labelSizes as $size)
+														<option value="{{ $size->name }}">{{ $size->name }}</option>
+													@endforeach
+												</select>
 											</div>
 										</div>
 									@endforeach

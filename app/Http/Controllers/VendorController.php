@@ -18,7 +18,8 @@ class VendorController extends Controller
     public function index()
     {
         $vendors = Vendor::all();
-        return view('admin/vendors.index', compact('vendors'));
+        $count = Vendor::all()->count();
+        return view('admin/vendors.index', compact('vendors', 'count'));
     }
 
 

@@ -15,6 +15,7 @@
 
 							<form method="POST" action="/admin/users">
 								{{ csrf_field() }}
+								<input type="hidden" name="is_active" value="1">
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
@@ -30,13 +31,13 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-md-4">
+									<div class="col-md-6">
 										<div class="form-group">
 											<label>Password</label>
 											<input type="password" class="form-control" name="password" placeholder="Ex: last 4 of SSN">
 										</div>
 									</div>
-									<div class="col-md-4">
+									<div class="col-md-6">
 										<div class="chekbox-title-dropdowns">
 											User Role
 										</div>
@@ -45,17 +46,6 @@
 												<option value="3">Staff</option>
 												<option value="2">Manager</option>
 												<option value="1">Admin</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="chekbox-title-dropdowns">
-											Status
-										</div>
-										<div class="form-check form-group">
-											<select class="form-control" name="is_active" id="status">
-												<option value="1">Active</option>
-												<option value="0">Disabled</option>
 											</select>
 										</div>
 									</div>

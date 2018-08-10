@@ -11,24 +11,13 @@
 						<div class="card-body">
 							<form method="POST" action="/admin/items">
 								{{ csrf_field() }}
+								<input type="hidden" class="form-control" name="is_active" value="1">
 								<div class="row">
 									{{-- ITEM NAME FIELD --}}
-									<div class="col-md-8">
+									<div class="col-md-12">
 										<div class="form-group">
 											<label>Name</label>
-											<input type="text" class="form-control" name="name" placeholder="Name of Item" autofocus>
-										</div>
-									</div>
-									{{-- ITEM STATUS SELECT DROPDOWN --}}
-									<div class="col-md-4">
-										<div class="chekbox-title-dropdowns">
-											Status
-										</div>
-										<div class="form-check form-group">
-											<select class="form-control" name="is_active" id="status">
-												<option value="1">Active</option>
-												<option value="0">Disabled</option>
-											</select>
+											<input type="text" name="name" placeholder="Name of Item" autofocus>
 										</div>
 									</div>
 								</div>

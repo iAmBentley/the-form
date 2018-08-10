@@ -8,7 +8,7 @@
 
 						<!-- TABLE TITLE -->
 						<div class="card-header">
-							<h4 class="card-title pull-left">Sizes</h4>
+							<h4 class="card-title pull-left">Sizes <small class="sm-text-jb">({{ $count }} Total)</small></h4>
 							<a href="sizes/create" class="create-btn btn btn-danger btn-just-icon pull-right">
 								<i class="fa fa-plus"></i>
 							</a>

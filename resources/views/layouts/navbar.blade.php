@@ -9,7 +9,7 @@
 								<span class="navbar-toggler-bar bar3"></span>
 							</button>
 						</div>
-						<a class="navbar-brand" style="background-color:#fff;color:#333;" href="#">il modulo</a>
+						<a class="navbar-brand" style="background-color:#fff;color:#333;" href="/">il modulo</a>
 					</div>
 				</div>
 			</nav>

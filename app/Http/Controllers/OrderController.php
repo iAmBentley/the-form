@@ -28,7 +28,7 @@ class OrderController extends Controller
 
 
     /** CREATE NEW ORDER FORM (CREATE) */
-    public function create()
+    public function create(Request $request)
     {
         /* CORE VARIABLES */
         $categories = Category::all();
@@ -44,26 +44,30 @@ class OrderController extends Controller
         $supplies = Category::with('items')->where('name', 'supplies')->get();
 
         /* STORE FILTERING BY CATEGORY */
-        $productStores = Category::with('stores')->where('name', 'products')->get();
-        $flavorStores = Category::with('stores')->where('name', 'flavors')->get();
-        $juiceStores = Category::with('stores')->where('name', 'juices')->get();
-        $labelStores = Category::with('stores')->where('name', 'labels')->get();
-        $supplyStores = Category::with('stores')->where('name', 'supplies')->get();
+
+        $category_id = $request->get('category_id');          
+        $storesByCat=Category::with('stores')->where('id','=',$category_id)->get();
+    
+        // $productStores = Category::with('stores')->where('name', 'products')->get();
+        // $flavorStores = Category::with('stores')->where('name', 'flavors')->get();
+        // $juiceStores = Category::with('stores')->where('name', 'juices')->get();
+        // $labelStores = Category::with('stores')->where('name', 'labels')->get();
+        // $supplyStores = Category::with('stores')->where('name', 'supplies')->get();
 
         /* SIZE FILTERING VARIABLES */
         $labelSizes = Size::where('category_id', 2)->get();
         $juiceSizes = Size::where('category_id', 4)->get();
 
-        // return response()->json($flavorStores);
+        // return response()->json($request);
         
         return view('orders.create', 
             compact(
                 'orders', 'categories', 'stores',
                 'items', 'products', 'supplies',
                 'flavors', 'juices', 'labels',
-                'labelSizes', 'juiceSizes', 'dripline',
-                'productStores', 'flavorStores', 'juiceStores',
-                'labelStores', 'supplyStores'
+                'labelSizes', 'juiceSizes', 'dripline', 'storesByCat'
+                // 'productStores', 'flavorStores', 'juiceStores',
+                // 'labelStores', 'supplyStores'
             )
         );
     }

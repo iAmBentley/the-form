@@ -18,7 +18,8 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::all();
-        return view('admin/roles.index', compact('roles'));
+        $count = Role::all()->count();
+        return view('admin/roles.index', compact('roles', 'count'));
     }
 
 

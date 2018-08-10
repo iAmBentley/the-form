@@ -20,8 +20,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        // dd($users);
-        return view('admin/users.index', compact('users'));
+        $count = User::all()->count();
+        return view('admin/users.index', compact('users', 'count'));
     }
 
 
@@ -34,15 +34,15 @@ class UserController extends Controller
 
 
     /** SAVE NEW USER TO DATABASE (STORE) */
-    public function store()
+    public function store(Request $request)
     {
         /* VALIDATE DATA COMING IN FROM FORM */
         $this->validate(request(), [
             'name' => 'required',
-            'email' => 'nullable|email',
+            'email' => 'nullable',
             'password' => 'required|min:4',
             'role_id' => 'required',
-            'is_active' => 'required|boolean'
+            'is_active' => 'required|boolean',
         ]);
         /* CREATE AND SAVE NEW USER TO DATABASE */
         User::create([

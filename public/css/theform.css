@@ -1,37 +1,37 @@
 .checkbox-slider {
-  display:flex;
-  align-items:center;
+	display:flex;
+	align-items:center;
 }
 .slider {
-  position: relative;
-  margin-right: 10px;
-  width: 50px;
-  height: 30px;
-  background: #ddd;
-  transition: .4s;
-  border-radius: 15px;
-  cursor: pointer;
+	position: relative;
+	margin-right: 10px;
+	width: 50px;
+	height: 30px;
+	background: #ddd;
+	transition: .4s;
+	border-radius: 15px;
+	cursor: pointer;
 }
 .slider::before {
-  position:absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: 5px;
-  top: 5px;
-  background: white;
-  transition: .4s;
-  border-radius: 50%;
-  box-shade: 0 0 1px rgba(0,0,0,0.15);
+	position:absolute;
+	content: "";
+	height: 20px;
+	width: 20px;
+	left: 5px;
+	top: 5px;
+	background: white;
+	transition: .4s;
+	border-radius: 50%;
+	box-shade: 0 0 1px rgba(0,0,0,0.15);
 }
 input {
-  display: none;
+	display: none;
 }
 input:checked + .slider {
-  background: #ef8157;
+	background: #ef8157;
 }
 input:checked + .slider::before {
-  transform: translateX(20px);
+	transform: translateX(20px);
 }
 /* -- LOGIN PAGE - START -- */
 .login-name {
@@ -44,46 +44,46 @@ input:checked + .slider::before {
 	margin: 0 20px;
 }
 .card-register .title {
-    color: #ef8157; /*#B33C12*/
-    text-align: center;
+	color: #ef8157; /*#B33C12*/
+	text-align: center;
 }
 .logo.ml-auto.mr-auto.text-center {
-    color: #ef8157;
-    font-size: 2em;
-    text-transform: uppercase;
-    font-weight: 400;
+	color: #ef8157;
+	font-size: 2em;
+	text-transform: uppercase;
+	font-weight: 400;
 }
 .btn-danger  {
-    background-color: #ef8157 !important;
-    color: #FFFFFF;
+	background-color: #ef8157 !important;
+	color: #FFFFFF;
 }
 .btn-danger.btn-link {
-    color: #ef8157; /*#f5593d*/
+	color: #ef8157; /*#f5593d*/
 }
 .btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active, .show > .btn-danger.dropdown-toggle {
-    background-color: #f33816;
-    color: #FFFFFF;
-    border-color: #f33816;
+	background-color: #f33816;
+	color: #FFFFFF;
+	border-color: #f33816;
 }
 .btn:hover, .btn:focus {
-    outline: 0 !important;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+	outline: 0 !important;
+	-webkit-box-shadow: none;
+	box-shadow: none;
 }
 .form-control { 
 	background-color: #FFFFFF;
-    border: 1px solid #DDDDDD;
-    border-radius: 4px;
-    color: #66615b;
-    line-height: normal;
-    font-size: 14px;
-    -webkit-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    -moz-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    -o-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    -ms-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;
+	color: #66615b;
+	line-height: normal;
+	font-size: 14px;
+	-webkit-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+	-moz-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+	-o-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+	-ms-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+	transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+	-webkit-box-shadow: none;
+	box-shadow: none;
 }
 /* -- LOGIN PAGE - END -- */
 
@@ -114,8 +114,8 @@ input:checked + .slider::before {
 	min-width: 158px;
 }
 .create-btn {
-    font-size: 1em;
-    line-height: 1.8em;
+	font-size: 1em;
+	line-height: 1.8em;
 }
 .btn-just-icon {
 	border-radius: 50px;
@@ -128,31 +128,33 @@ input:checked + .slider::before {
 	min-height: 28px;
 }
 .sidebar .nav>li.nav-footer {
-	position: absolute;
-	width: 100%;
+	position: fixed;
+	/*width: 90%;*/
 	bottom: 10px;
-	text-align: center;
-    color: rgba(255, 255, 255, 0.5);
+	margin-left: 26px;
+	background-color: #000000;
+	color: rgba(255, 255, 255, 0.5);
 }
 .sidebar-mini-icon {
-    /*text-transform: uppercase;*/
-    width: 34px;
-    margin-right: 10px;
-    /*margin-left: 0;*/
-    font-size: 34px;
-    text-align: center;
-    line-height: 20px;
-    position: relative;
-    float: left;
-    z-index: 1;
-    display: inherit;
-    color: hsla(0,0%,100%,.5);
+	/*text-transform: uppercase;*/
+	width: 34px;
+	margin-right: 10px;
+	/*margin-left: 0;*/
+	font-size: 34px;
+	text-align: center;
+	line-height: 20px;
+	position: relative;
+	float: left;
+	z-index: 1;
+	display: inherit;
+	color: hsla(0,0%,100%,.5);
 }
-
 .full-height {
 	min-height: 43px;
 }
-
+.sm-text-jb {
+	font-size: 0.6em;
+}
 
 
 @media (max-width: 768px) {
@@ -163,12 +165,12 @@ input:checked + .slider::before {
 
 @media (min-width: 992px) {
 	.navbar .navbar-brand {
-	    display: none;
+		display: none;
 	}
 }
 
 /* STYLING FOR PRINTING AN ORDER */
 @media print {
-   /* ONCE ORDERS/SHOW HAS BEEN CREATED
-      HIT PRINT, VIEW PREVIEW, AND BEGIN STYLING */
+/* ONCE ORDERS/SHOW HAS BEEN CREATED
+HIT PRINT, VIEW PREVIEW, AND BEGIN STYLING */
 }

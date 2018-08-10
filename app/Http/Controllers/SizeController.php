@@ -19,7 +19,8 @@ class SizeController extends Controller
     public function index()
     {
         $sizes = Size::all();
-        return view('admin/sizes.index', compact('sizes'));
+        $count = Size::all()->count();
+        return view('admin/sizes.index', compact('sizes', 'count'));
         // $sizes = Size::with('categories')->get();
         // return view('admin/sizes.index', compact('sizes', 'categories'));
     }
