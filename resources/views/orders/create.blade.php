@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('orders-ajax-scripts')
+<script> var orderCreateURL = '/orders/storesbycat'; </script>
 <script src="{{ asset('/js/orders-ajax.js') }}"></script>
 @endsection
-
+<
 		@section('content')
 			<!-- ITEMS FORM -->
 			<div class="row">
@@ -42,9 +43,7 @@
 										<div class="form-check form-group">
 											<select class="text-capitalize form-control" id="store_select" name="store_id">
 												<option value="" selected>Choose One</option>
-												@foreach($storesByCat as $store)
-													<option value="{{ $store->id }}">{{ $store->name }}</option>
-												@endforeach
+												
 											</select>
 										</div>
 									</div>
