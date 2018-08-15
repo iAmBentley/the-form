@@ -18,7 +18,8 @@ $this->post('/', 'Auth\LoginController@login');
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // ORDERS
-Route::get('/orders/storesbycat', 'OrderController@storesbycat');
+Route::get('/orders/getStoresByCat', 'OrderController@getStoresByCat');
+Route::get('/orders/getFormItems', 'OrderController@getFormItems');
 Route::resource('orders', 'OrderController');
 
 /* ADMIN SECTION  ---  Managers + Admin Roles Only */

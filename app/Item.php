@@ -16,7 +16,7 @@ class Item extends Model
     public function sizes() {
     	return $this->belongsToMany(Size::class);
     }
-    public function products() {
-        return $this->belongsToMany(Item::withPivot('categories')->where('category_id', '=', 5));
-    }
+    // public function products() {
+    //     return $this->belongsToMany(Item::withPivot('categories')->where('category_id', '=', 5));
+    // }
 }

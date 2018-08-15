@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('orders-ajax-scripts')
-<script> var orderCreateURL = '/orders/storesbycat'; </script>
+<script> var storesByCatURL = '/orders/getStoresByCat'; var formItemsURL = '/orders/getFormItems'; </script>
 <script src="{{ asset('/js/orders-ajax.js') }}"></script>
 @endsection
-<
+
 		@section('content')
 			<!-- ITEMS FORM -->
 			<div class="row">
@@ -43,7 +43,6 @@
 										<div class="form-check form-group">
 											<select class="text-capitalize form-control" id="store_select" name="store_id">
 												<option value="" selected>Choose One</option>
-												
 											</select>
 										</div>
 									</div>
@@ -52,10 +51,10 @@
 						</div>
 
 						<div id="form-body" class="card card-user">
-							@include('forms.flavors')
+							{{-- @include('forms.flavors') --}}
 						</div>
 
-						<div class="card card-user">
+						{{-- <div class="card card-user">
 							@include('forms.juices')
 						</div>
 
@@ -69,7 +68,7 @@
 
 						<div class="card card-user">
 							@include('forms.supplies')
-						</div>
+						</div> --}}
 
 					</form>
 

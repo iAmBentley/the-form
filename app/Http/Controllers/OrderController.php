@@ -43,7 +43,7 @@ class OrderController extends Controller
 		$labels = Category::with('items')->where('name', 'labels')->get();
 		$supplies = Category::with('items')->where('name', 'supplies')->get();
 
-		/* SIZE FILTERING VARIABLES */
+		/* SIZE FILTERING BY CATEGORY */
 		$labelSizes = Size::where('category_id', 2)->get();
 		$juiceSizes = Size::where('category_id', 4)->get();
 		
@@ -57,12 +57,25 @@ class OrderController extends Controller
 	}
 
 
-	/** GET STORES BY CATEGORY (AJAX - DROPDOWN) */
-	public function storesbycat(Request $request)
+	/** GET STORES BY CATEGORY (AJAX - DROPDOWN ON.CHANGE) */
+	public function getStoresByCat(Request $request)
 	{
 
-		$storesByCat = Category::with('stores')->where('id','=',$request->category_id)->get();
-		return response()->json($storesByCat);
+		$selectedCatId = $request->selectedCat;
+
+		$storesByCat = Category::with('stores')->where('id', $selectedCatId)->get(); 
+
+		return response()->json($storesByCat->toArray());
+		
+	}
+
+	/** GET ITEMS BY STORE BASED ON CATEGORY (AJAX - DROPDOWN ON.CHANGE) */
+	public function getFormItems(Request $request)
+	{
+
+		$selectedStoreId = $request->selectedStore;
+		$formItems = Category::with('items')->where('id', $selectedStoreId)->get();
+		return response()->json($formItems->toArray());
 		
 	}
 
