@@ -22,6 +22,13 @@ Route::get('/orders/getStoresByCat', 'OrderController@getStoresByCat');
 Route::get('/orders/getFormItems', 'OrderController@getFormItems');
 Route::resource('orders', 'OrderController');
 
+// FORMS
+Route::get('/forms/juices', 'FormController@getJuiceForm');
+Route::get('/forms/flavors', 'FormController@getFlavorForm');
+Route::get('/forms/products', 'FormController@getProductForm');
+Route::get('/forms/supplies', 'FormController@getSupplyForm');
+Route::get('/forms/labels', 'FormController@getLabelForm');
+
 /* ADMIN SECTION  ---  Managers + Admin Roles Only */
 Route::prefix('admin')->group(function () {
 	/* ADMIN INDEX */

@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Order;
 use App\Store;
 use App\Category;
-use App\Vendor;
-use App\Item;
-use App\Size;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -22,49 +19,32 @@ class OrderController extends Controller
 	/** SHOW TABLE OF ALL ORDERS (INDEX) */
 	public function index()
 	{
+		/* SET CORE VARIABLES */
 		$orders = Order::all();
+		/* RETURN VIEW AND PASS VARIABLES */
 		return view('orders.index', compact('orders'));
 	}
 
 
-	/** CREATE NEW ORDER FORM (CREATE) */
+	/** CREATE NEW GENERIC ORDER FORM (CREATE) */
 	public function create(Request $request)
 	{
-		/* CORE VARIABLES */
+		/* SET CORE VARIABLES */
 		$categories = Category::all();
 		$stores = Store::all();
-		$items = Item::with('sizes')->get();
-		$dripline = Item::where('is_drip', 1)->get();
+		/* RETURN VIEW AND PASS VARIABLES */
+		return view('orders.create', compact('orders', 'categories', 'stores'));
 
-		/* ITEM FILTERING BY CATEGORY */
-		$products = Category::with('items')->where('name', 'products')->get();
-		$flavors = Category::with('items')->where('name', 'flavors')->get();
-		$juices = Category::with('items')->where('name', 'juices')->get();
-		$labels = Category::with('items')->where('name', 'labels')->get();
-		$supplies = Category::with('items')->where('name', 'supplies')->get();
-
-		/* SIZE FILTERING BY CATEGORY */
-		$labelSizes = Size::where('category_id', 2)->get();
-		$juiceSizes = Size::where('category_id', 4)->get();
-		
-		return view('orders.create', 
-			compact(
-				'orders', 'categories', 'stores', 'items', 'dripline',
-				'products', 'flavors', 'juices', 'labels', 'supplies',
-				'labelSizes', 'juiceSizes'
-			)
-		);
 	}
 
 
 	/** GET STORES BY CATEGORY (AJAX - DROPDOWN ON.CHANGE) */
 	public function getStoresByCat(Request $request)
 	{
-
+		/* SET CORE VARIABLES */
 		$selectedCatId = $request->selectedCat;
-
-		$storesByCat = Category::with('stores')->where('id', $selectedCatId)->get(); 
-
+		$storesByCat = Category::with('stores')->where('id', $selectedCatId)->get();
+		/* PASS JSON BACK TO AJAX FILE */
 		return response()->json($storesByCat->toArray());
 		
 	}
@@ -72,9 +52,10 @@ class OrderController extends Controller
 	/** GET ITEMS BY STORE BASED ON CATEGORY (AJAX - DROPDOWN ON.CHANGE) */
 	public function getFormItems(Request $request)
 	{
-
+		/* SET CORE VARIABLES */
 		$selectedStoreId = $request->selectedStore;
 		$formItems = Category::with('items')->where('id', $selectedStoreId)->get();
+		/* PASS JSON BACK TO AJAX FILE */
 		return response()->json($formItems->toArray());
 		
 	}
@@ -84,6 +65,32 @@ class OrderController extends Controller
 	public function store(Request $request)
 	{
 		// return response()->json($request);
+
+		/* VALIDATE DATA COMING IN FROM FORM */
+		$this->validate(request(), [
+			'user_id' => 'required',
+			'store_id' => 'required',
+			'is_active' => 'required',
+			'category_id' => 'required',
+			'items' => 'required'   
+		]);
+		/* CREATE NEW ITEM */
+		$order = new Order(
+			[
+				'user_id' => $request->user_id,
+				'store_id' => $request->store_id,
+				'is_active' => $request->is_active,
+				'category_id' => $request->category_id,
+				'items' => $request->items,
+			]
+		);
+		/* SAVE NEW ITEM TO DATABASE */
+		$order->save();
+		/* CONFIRM CREATION AND REDIRECT USER */
+		session()->flash('message', 'Order Created Successfully');
+		return redirect('orders');
+		// return response()->json($request);
+
 	}
 
 

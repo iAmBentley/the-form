@@ -14,14 +14,14 @@
 
 											<div class="form-check-radio pull-right ml-2">
 											    <label class="form-check-label">
-											        <input class="form-check-input" type="radio" name="{{ $supplies->name }}" value="No" checked>
+											        <input class="form-check-input" type="radio" name="items[{{ $supplies->name }}]" value="No" checked>
 											        No
 											        <span class="form-check-sign"></span>
 											    </label>
 											</div>
 											<div class="form-check-radio pull-right ml-2">
 											    <label class="form-check-label">
-											        <input class="form-check-input" type="radio" name="{{ $supplies->name }}" value="Yes" >
+											        <input class="form-check-input" type="radio" name="items[{{ $supplies->name }}]" value="Yes" >
 											        Yes
 											        <span class="form-check-sign"></span>
 											    </label>

@@ -7,20 +7,21 @@ $(document).ready(function(){
 		// Set variable of the selected category id
 		var selectedCat = $(this).val();
 		console.log(selectedCat);
-
-		// $("#form-body").load("/forms/juices.blade.php");
 		
 		// $.post(url, data, function(x){
 			// $("#store_select").append(x);
 		// });
 
-		// $.getJSON(storesByCatURL, function(storeData) {
-		// 	console.log(storeData[0].stores[0].name);
-		// 	$.each(storeData, function() { 
+		// $.getJSON(storesByCatURL, selectedCat, function(storeData){
+		// 	var length = storeData[0].stores.length;
+		// 	$("store_select").empty();
+		// 	for(var i = 0; i<length; i++) {
+		// 		var id = storeData[0].stores[i].id;
+		// 		var name = storeData[0].stores[i].name;
 		// 		$("#store_select").append(
 		// 			"<option value='"+id+"'>"+name+"</option>"
 		// 		);
-		// 	});
+		// 	}
 		// });
 
 		$.ajax({
@@ -29,9 +30,10 @@ $(document).ready(function(){
 			dataType: 'json',
 			data: { selectedCat: selectedCat },
 			success:function(storeData){
+				$("#form-body").load("/forms/"+storeData[0].name);
 				if(storeData) {
 					var length = storeData[0].stores.length;
-					$("store_select").empty();
+					$("#store_select option").remove();
 					for(var i = 0; i<length; i++) {
 						var id = storeData[0].stores[i].id;
 						var name = storeData[0].stores[i].name;

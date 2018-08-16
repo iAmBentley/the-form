@@ -17,7 +17,9 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('store_id');
+            $table->integer('category_id');
             $table->boolean('is_active')->default(1);
+            $table->json('items');
             $table->timestamps();
         });
 

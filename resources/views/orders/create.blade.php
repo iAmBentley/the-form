@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('orders-ajax-scripts')
-<script> var storesByCatURL = '/orders/getStoresByCat'; var formItemsURL = '/orders/getFormItems'; </script>
+<script>
+	var storesByCatURL = '/orders/getStoresByCat';
+	var formItemsURL = '/orders/getFormItems';
+</script>
 <script src="{{ asset('/js/orders-ajax.js') }}"></script>
 @endsection
 
@@ -10,7 +13,7 @@
 			<div class="row">
 				<div class="col-md-12 ml-auto mr-auto">
 					
-					<form method="POST" action="/orders/create">
+					<form method="POST" action="/orders">
 						{{ csrf_field() }}
 
 						{{-- ITEMS SETUP CARD --}}
@@ -51,24 +54,8 @@
 						</div>
 
 						<div id="form-body" class="card card-user">
-							{{-- @include('forms.flavors') --}}
+							{{-- FORM INJECTED BY JAVASCRIPT BASED ON CATEGORY CHOSEN IN DROPDOWN ON TOP OF FORM --}}
 						</div>
-
-						{{-- <div class="card card-user">
-							@include('forms.juices')
-						</div>
-
-						<div class="card card-user">
-							@include('forms.labels')
-						</div>
-
-						<div class="card card-user">
-							@include('forms.products')
-						</div>
-
-						<div class="card card-user">
-							@include('forms.supplies')
-						</div> --}}
 
 					</form>
 

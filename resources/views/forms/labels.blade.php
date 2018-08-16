@@ -12,7 +12,7 @@
 												{{ $labels->name }}
 											</div>
 											<div class="form-check form-group">
-												<select class="text-capitalize form-control" id="category_select" name="{{ $labels->name }}">
+												<select class="text-capitalize form-control" id="category_select" name="items[{{ $labels->name }}]">
 													<option value="NULL">None</option>
 													@foreach($labelSizes as $size)
 														<option value="{{ $size->name }}">{{ $size->name }}</option>
