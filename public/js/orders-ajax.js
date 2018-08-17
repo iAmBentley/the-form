@@ -6,23 +6,6 @@ $(document).ready(function(){
 
 		// Set variable of the selected category id
 		var selectedCat = $(this).val();
-		console.log(selectedCat);
-		
-		// $.post(url, data, function(x){
-			// $("#store_select").append(x);
-		// });
-
-		// $.getJSON(storesByCatURL, selectedCat, function(storeData){
-		// 	var length = storeData[0].stores.length;
-		// 	$("store_select").empty();
-		// 	for(var i = 0; i<length; i++) {
-		// 		var id = storeData[0].stores[i].id;
-		// 		var name = storeData[0].stores[i].name;
-		// 		$("#store_select").append(
-		// 			"<option value='"+id+"'>"+name+"</option>"
-		// 		);
-		// 	}
-		// });
 
 		$.ajax({
 			url: storesByCatURL,

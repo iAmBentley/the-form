@@ -24,7 +24,7 @@
 							<div class="card-body">
 								<div class="row">
 									<input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id }}">
-									<input type="hidden" class="form-control" name="is_active" value="1">
+									<input type="hidden" class="form-control" name="is_filled" value="0">
 
 									<div id="form-category" class="col-md-6">
 										<div class="chekbox-title-dropdowns">

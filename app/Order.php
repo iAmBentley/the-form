@@ -15,6 +15,7 @@ class Order extends Model
 	public function categories() {
 		return $this->belongsTo(Category::class, 'category_id');
 	}
+
 	/** CONVERTS ITEMS IN THE ITEMS COLUMN TO AN ARRAY (IN DB) */
 	protected $casts = [
 		'items' => 'array'

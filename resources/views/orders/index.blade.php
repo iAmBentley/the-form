@@ -17,10 +17,9 @@
 									<table class="table">
 										<thead class="text-primary">
 											<tr>
-												<th>Status</th>
 												<th>Date</th>
 												<th>Store</th>
-												<th class="d-none d-sm-block">User</th>
+												<th class="d-none d-sm-block">Items</th>
 												<th class="text-right">Actions</th>
 											</tr>
 										</thead>
@@ -28,15 +27,14 @@
 
 											@foreach($orders as $order)
 												<tr>
-													<td>{{ $order->is_active == 1 ? 'Open' : 'Closed' }}</td>
-													<td>{{ $order->created_at->format('m.d.Y') }}</td>
+													<td>{{ $order->created_at->format('m.d.y') }}</td>
 													<td class="text-capitalize">{{ $order->stores->name }}</td>
-													<td class="d-none d-sm-block text-capitalize">{{ $order->users->name }}</td>
+													<td class="d-none d-sm-block text-capitalize">{{ $order->categories->name }}</td>
 													<td class="text-right">
-														<a href="orders/{{ $order->id }}/edit" class="btn btn-info btn-icon btn-sm ">
-															<i class="fa fa-pencil"></i>
+														<a href="orders/{{ $order->id }}/edit" id="fill-order" class="{{ $order->is_filled == 1 ? 'btn-success disabled' : 'btn-default' }} btn btn-icon btn-sm " data-toggle="tooltip" title="Mark as Filled">
+															<i class="fa fa-check"></i>
 														</a>
-														<a href="orders/{{ $order->id }}" class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
+														<a href="orders/{{ $order->id }}" class="btn btn-info btn-icon btn-sm " data-toggle="tooltip" title="View Order">
 															<i class="fa fa-eye"></i>
 														</a>
 													</td>

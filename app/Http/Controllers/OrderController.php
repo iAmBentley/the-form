@@ -20,9 +20,10 @@ class OrderController extends Controller
 	public function index()
 	{
 		/* SET CORE VARIABLES */
-		$orders = Order::all();
+		$orders = Order::orderBy('created_at', 'desc')->get();
 		/* RETURN VIEW AND PASS VARIABLES */
 		return view('orders.index', compact('orders'));
+
 	}
 
 
@@ -64,40 +65,38 @@ class OrderController extends Controller
 	/** SAVE NEW ORDER TO DATABASE (STORE) */
 	public function store(Request $request)
 	{
-		// return response()->json($request);
-
 		/* VALIDATE DATA COMING IN FROM FORM */
 		$this->validate(request(), [
 			'user_id' => 'required',
 			'store_id' => 'required',
-			'is_active' => 'required',
+			'is_filled' => 'required',
 			'category_id' => 'required',
 			'items' => 'required'   
 		]);
-		/* CREATE NEW ITEM */
+		/* CREATE NEW ORDER */
 		$order = new Order(
 			[
 				'user_id' => $request->user_id,
 				'store_id' => $request->store_id,
-				'is_active' => $request->is_active,
+				'is_filled' => $request->is_filled,
 				'category_id' => $request->category_id,
 				'items' => $request->items,
 			]
 		);
-		/* SAVE NEW ITEM TO DATABASE */
+		/* SAVE NEW ORDER TO DATABASE */
 		$order->save();
-		/* CONFIRM CREATION AND REDIRECT USER */
+		/* REDIRECT USER AND SHOW CONFIRMATION */
 		session()->flash('message', 'Order Created Successfully');
 		return redirect('orders');
-		// return response()->json($request);
 
 	}
 
 
 	/** SHOW A SINGLE ORDER (SHOW) */
-	public function show($id)
+	public function show(Order $order)
 	{
-		//
+		$items = $order['items'];
+		return view('orders.show', compact('order', 'items'));
 	}
 
 
