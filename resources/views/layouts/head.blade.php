@@ -19,3 +19,5 @@
     <!-- CUSTOM CSS -->
     <link href="{{ asset('css/paper-dashboard.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/theform.css') }}" rel="stylesheet" />
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">

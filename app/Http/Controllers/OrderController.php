@@ -55,9 +55,10 @@ class OrderController extends Controller
 	{
 		/* SET CORE VARIABLES */
 		$selectedStoreId = $request->selectedStore;
+		dd($selectedStoreID);
 		$formItems = Category::with('items')->where('id', $selectedStoreId)->get();
 		/* PASS JSON BACK TO AJAX FILE */
-		return response()->json($formItems->toArray());
+		return response()->json($formItems);
 		
 	}
 
@@ -101,7 +102,7 @@ class OrderController extends Controller
 
 
 	/** EDIT AN ORDER FORM (EDIT) */
-	public function edit($id)
+	public function edit(Order $order)
 	{
 		//
 	}
@@ -110,7 +111,25 @@ class OrderController extends Controller
 	/** SAVE EDITED ORDER TO DATABASE (UPDATE) */
 	public function update(Request $request, Order $order)
 	{
-		//
+		/* VALIDATE DATA COMING IN FROM FORM */
+        $this->validate(request(), [
+            'user_id' => 'required',
+			'store_id' => 'required',
+			'is_filled' => 'required',
+			'category_id' => 'required',
+			'items' => 'required'   
+        ]);
+        /* CREATE UPDATED ITEM */
+        $order->update( [
+            'user_id' => $request->user_id,
+			'store_id' => $request->store_id,
+			'is_filled' => 1,
+			'category_id' => $request->category_id,
+			'items' => $request->items,
+        ]);
+        /* REDIRECT USER AND CONFIRM EDIT  */
+        session()->flash('message', 'Order Marked as Filled');
+        return redirect('orders');
 	}
 
 }

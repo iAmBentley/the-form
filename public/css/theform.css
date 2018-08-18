@@ -1,7 +1,19 @@
 .checkbox-slider {
-	display:flex;
-	align-items:center;
+	display: flex;
+	align-items: center;
 }
+.items hr {
+	width: 100%;
+	margin: 45px 0 25px 0;
+}
+.order-items-title th {
+	font-size: 1em !important;
+}
+.order-meta {
+	margin-top: 1.5em;
+	padding: 0 0.45em;
+}
+
 .slider {
 	position: relative;
 	margin-right: 10px;
@@ -24,7 +36,10 @@
 	border-radius: 50%;
 	box-shade: 0 0 1px rgba(0,0,0,0.15);
 }
-#fill-order:hover {
+.fill-order {
+	padding: 16px 18px;
+}
+.fill-order:hover {
     background-color: #6bd098 !important;
 }
 input {

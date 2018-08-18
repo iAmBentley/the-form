@@ -16,7 +16,7 @@ class Order extends Model
 		return $this->belongsTo(Category::class, 'category_id');
 	}
 
-	/** CONVERTS ITEMS IN THE ITEMS COLUMN TO AN ARRAY (IN DB) */
+	/** CONVERT DATA IN THE ITEMS COLUMN INTO AN ARRAY (IN DB) */
 	protected $casts = [
 		'items' => 'array'
 	];

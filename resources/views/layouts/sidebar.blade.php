@@ -109,7 +109,7 @@
 						</li>
 					@endif
 					<li class="nav-footer">
-						©<script>document.write(new Date().getFullYear())</script> | Moticorp Creative
+						©<script>document.write(new Date().getFullYear());</script> | Moticorp Creative
 					</li>
 				</ul>
 			</div>

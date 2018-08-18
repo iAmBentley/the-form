@@ -11,12 +11,9 @@ class Item extends Model
     	return $this->belongsToMany(Store::class);
     }
     public function vendors() {
-    	return $this->belongsToMany(Vendor::class);
+    	return $this->belongsTo(Vendor::class);
     }
     public function sizes() {
     	return $this->belongsToMany(Size::class);
     }
-    // public function products() {
-    //     return $this->belongsToMany(Item::withPivot('categories')->where('category_id', '=', 5));
-    // }
 }

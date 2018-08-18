@@ -12,7 +12,7 @@ $(document).ready(function(){
 			method: 'get',
 			dataType: 'json',
 			data: { selectedCat: selectedCat },
-			success:function(storeData){
+			success: function (storeData) {
 				$("#form-body").load("/forms/"+storeData[0].name);
 				if(storeData) {
 					var length = storeData[0].stores.length;
@@ -25,7 +25,10 @@ $(document).ready(function(){
 						);
 					}
 				}
-			}
+			},
+	        error: function (storeData) {
+	            console.log('Error:', storeData);
+	        }
 		});
 		
 	});
@@ -35,18 +38,48 @@ $(document).ready(function(){
 
 		// Set variable of the selected store id
 		var selectedStore = $(this).val();
+		console.log(selectedStore);
 
-		$.ajax({
-			url: formItemsURL,
-			method: 'get',
-			dataType: 'json',
-			data: { selectedStore: selectedStore },
-			success:function(formData){
-				// $("#form-body").html(/forms/'formName')
-				console.log(formData)
-			}
-		});
+		// $.ajax({
+		// 	url: formItemsURL,
+		// 	method: 'get',
+		// 	dataType: 'json',
+		// 	data: { selectedStore: selectedStore },
+		// 	success:function(formData){
+				// var length = formData[0].items.length;
+				// var allItems = formData[0];
+				// var items = allItems;
+				// console.log('items = '+items);
+				// $("#").remove();
+				// for(var i = 0; i<length; i++) {
+				// 	var item = formData[0].items[i].name;
+				// 	console.log(item)
+				// }
+		// 	}
+		// });
 		
+	});
+
+	// Update Order to Filled on Button Click
+	$('.fill-order').click(function () {
+	    var order_id = $(this).val();
+	    console.log(order_id);
+	    $.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+		})
+	    $.ajax({
+	        type: "PATCH",
+	        url: "/orders/"+order_id+"/edit",
+	        data: {order_id: order_id},
+	        success: function (itemsData) {
+	            console.log('success');
+	        },
+	        error: function (itemsData) {
+	            console.log('Error:', itemsData);
+	        }
+	    });
 	});
 
 });
