@@ -16,9 +16,9 @@
 					<h5 class="card-title mb-3">Order for {{ $order->categories->name }}</h5>
 					<div class="row order-meta">
 						<div class="col-8">
-							<div class="mb-2"><strong>Store: </strong> {{ $order->stores->name }}</div>
-							<div class="mb-2"><strong>Date: </strong> {{ $order->created_at->format('m-d-y') }}</div>
-							<div class="mb-2"><strong>By: </strong> {{ $order->users->name }}</div>
+							<div class="mb-2"><strong>Store: </strong> {{ $order->stores->name }} </div>
+							<div class="mb-2"><strong>Date: </strong> {{ $order->created_at->format('m-d-y') }} </div>
+							<div class="mb-2"><strong>By: </strong> {{ $order->users->name }} </div>
 						</div>
 						<div class="col-4">
 							<form method="POST" action="/orders/{{ $order->id }}">
@@ -53,11 +53,11 @@
 							
 							<tbody>
 								{{-- LOOP THROUGH ITEMS ARRAY ON DATABASE --}}
-								@foreach ($items as $key => $item)
-									@if($item && $item != "No")
+								@foreach ($items as $item => $size)
+									@if($size && $size != "No")
 										<tr>
-									        <td class="text-capitalize"> {{ $key }} </td>
-									        <td class="text-capitalize text-right"> {{ $item == "Yes" ? "" : $item }} </td>
+									        <td class="text-capitalize"> {{ $item }} </td>
+									        <td class="text-capitalize text-right"> {{ $size == "Yes" ? "" : $size }} </td>
 									    </tr>
 								    @endif
 								@endforeach

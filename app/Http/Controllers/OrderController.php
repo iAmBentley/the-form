@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Order;
 use App\Store;
 use App\Category;
+use App\User;
+use App\Mail\OrderEmail;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -55,7 +57,6 @@ class OrderController extends Controller
 	{
 		/* SET CORE VARIABLES */
 		$selectedStoreId = $request->selectedStore;
-		dd($selectedStoreID);
 		$formItems = Category::with('items')->where('id', $selectedStoreId)->get();
 		/* PASS JSON BACK TO AJAX FILE */
 		return response()->json($formItems);
@@ -74,6 +75,7 @@ class OrderController extends Controller
 			'category_id' => 'required',
 			'items' => 'required'   
 		]);
+
 		/* CREATE NEW ORDER */
 		$order = new Order(
 			[
@@ -84,8 +86,15 @@ class OrderController extends Controller
 				'items' => $request->items,
 			]
 		);
+
 		/* SAVE NEW ORDER TO DATABASE */
 		$order->save();
+
+        /* SEND ITEMS REQUEST EMAIL TO MANAGER */
+        $manager = User::where('name', 'bentley')->get();
+        $items = $order['items'];
+        \Mail::to($manager)->send(new OrderEmail($order, $items));
+
 		/* REDIRECT USER AND SHOW CONFIRMATION */
 		session()->flash('message', 'Order Created Successfully');
 		return redirect('orders');
@@ -127,6 +136,7 @@ class OrderController extends Controller
 			'category_id' => $request->category_id,
 			'items' => $request->items,
         ]);
+
         /* REDIRECT USER AND CONFIRM EDIT  */
         session()->flash('message', 'Order Marked as Filled');
         return redirect('orders');
