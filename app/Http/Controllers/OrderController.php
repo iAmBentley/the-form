@@ -92,7 +92,7 @@ class OrderController extends Controller
 		/* SAVE NEW ORDER TO DATABASE */
 		$order->save();
 
-        /* SEND ITEMS REQUEST EMAIL TO MANAGER */
+        /* SEND ORDER EMAIL TO MANAGER */
         $manager = User::where('name', 'bentley')->get();
         $items = $order['items'];
         \Mail::to($manager)->send(new OrderEmail($order, $items));
@@ -112,14 +112,10 @@ class OrderController extends Controller
 	}
 
 
-	/** EDIT AN ORDER FORM (EDIT) */
-	public function edit(Order $order)
-	{
-		//
-	}
-
-
-	/** SAVE EDITED ORDER TO DATABASE (UPDATE) */
+	/** UPDATE ORDER FROM IS_FILLED=0 TO IS_FILLED=1 + UPDATE ON DB
+	    This is done via ajax - see orders-ajax.js
+	    Can be done by button click on order view page and orders index page
+	*/
 	public function update(Request $request, Order $order)
 	{
 		/* VALIDATE DATA COMING IN FROM FORM */

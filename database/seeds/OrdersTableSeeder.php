@@ -17,7 +17,7 @@ class OrdersTableSeeder extends Seeder
         			'user_id' => '1',
                     'store_id' => '2',
                     'category_id' => '1',
-                    'is_filled' => 0,
+                    'is_filled' => 1,
                     'notes' => 'This is a note for order number 1',
                     'items' => json_encode( ["Butter" => "16 oz"] ),
         			'created_at' => date("Y-m-d H:i:s")

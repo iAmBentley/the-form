@@ -191,7 +191,16 @@ input:checked + .slider::before {
     background-color: inherit;
     border-radius: inherit;
 }
-
+.note-title {
+	font-size:1em;
+	font-weight:700;
+	text-transform:uppercase;
+	padding-left:1.5em;
+}
+.note-body {
+	border-top: 1px solid #dee2e6;
+	padding:12px 7px;
+}
 
 @media (max-width: 768px) {
 	.full-height {

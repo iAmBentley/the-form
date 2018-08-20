@@ -56,11 +56,12 @@
 										</table>
 									</div>
 								</div>
-
+								@if($order->notes)
 								<div>
 									<h5 style="color:#ef8157;font-size:1em;font-weight:700;text-transform:uppercase;">Notes:</h5>
 									<p style="padding:12px 7px;">{{ $order->notes }}</p>
 								</div>
+								@endif
 							</div>
 						</div>
 					</div>

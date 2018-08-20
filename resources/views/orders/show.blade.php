@@ -24,12 +24,13 @@
 							<form method="POST" action="/orders/{{ $order->id }}">
 								{{ csrf_field() }}
 								{{ method_field('PATCH') }}
-								<input type="hidden" class="form-control" name="user_id" value="{{ $order->user_id }}">
-								<input type="hidden" class="form-control" name="store_id" value="{{ $order->store_id }}">
-								<input type="hidden" class="form-control" name="is_filled" value="1">
-								<input type="hidden" class="form-control" name="category_id" value="{{ $order->category_id }}">
+								<input type="hidden" name="user_id" value="{{ $order->user_id }}">
+								<input type="hidden" name="store_id" value="{{ $order->store_id }}">
+								<input type="hidden" name="is_filled" value="1">
+								<input type="hidden" name="category_id" value="{{ $order->category_id }}">
+								<input type="hidden" name="notes" value="{{ $order->notes }}"
 								@foreach($order->items as $item => $size)
-									<input type="hidden" class="form-control" name="items[{{$item}}]" value="{{ $size }}">
+									<input type="hidden" name="items[{{$item}}]" value="{{ $size }}">
 								@endforeach
 								{{-- MARK AS FILLED BUTTON (TRIGGERS UPDATE() ON ORDERS) --}}
 								<button value="{{ $order->id }}" class="fill-order {{ $order->is_filled == 1 ? 'btn-success disabled' : 'btn-default' }} btn btn-round pull-right mt-0" data-toggle="tooltip" title="Mark as Filled">
@@ -65,11 +66,13 @@
 							</tbody>
 						</table>
 					</div>
-
-					<div >
-						<h5 class="text-primary" style="font-size:1em;font-weight:700;text-transform:uppercase;">Notes</h5>
-						<p style="border-top: 1px solid #dee2e6;padding:12px 7px;">{{ $order->notes }}</p>
-					</div>
+					
+					@if($order->notes)
+						<div >
+							<h5 class="text-primary note-title">Notes</h5>
+							<p class="note-body">{{ $order->notes }}</p>
+						</div>
+					@endif
 
 				</div>
 			</div>
