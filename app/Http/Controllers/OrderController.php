@@ -73,6 +73,7 @@ class OrderController extends Controller
 			'store_id' => 'required',
 			'is_filled' => 'required',
 			'category_id' => 'required',
+			'notes' => 'nullable',
 			'items' => 'required'   
 		]);
 
@@ -83,6 +84,7 @@ class OrderController extends Controller
 				'store_id' => $request->store_id,
 				'is_filled' => $request->is_filled,
 				'category_id' => $request->category_id,
+				'notes' => $request->notes,
 				'items' => $request->items,
 			]
 		);
@@ -126,6 +128,7 @@ class OrderController extends Controller
 			'store_id' => 'required',
 			'is_filled' => 'required',
 			'category_id' => 'required',
+			'notes' => 'nullable',
 			'items' => 'required'   
         ]);
         /* CREATE UPDATED ITEM */
@@ -134,6 +137,7 @@ class OrderController extends Controller
 			'store_id' => $request->store_id,
 			'is_filled' => 1,
 			'category_id' => $request->category_id,
+			'notes' => $request->notes,
 			'items' => $request->items,
         ]);
 

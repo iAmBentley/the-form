@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->integer('store_id');
             $table->integer('category_id');
             $table->boolean('is_filled')->default(0);
+            $table->text('notes')->nullable();
             $table->json('items');
             $table->timestamps();
         });

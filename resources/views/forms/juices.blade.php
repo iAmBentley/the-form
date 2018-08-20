@@ -64,6 +64,15 @@
 								</div>
 
 								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label name="notes">Notes</label>
+											<textarea class="form-control textarea" name="notes" value="" placeholder="Leave a note about this order"></textarea>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
 									<div class="update ml-auto mr-auto">
 										<button type="submit" class="btn btn-danger btn-round">Send Order</button>
 										<a href="{{ route('orders.index') }}" class="btn btn-round">Cancel</a>

@@ -66,6 +66,11 @@
 						</table>
 					</div>
 
+					<div >
+						<h5 class="text-primary" style="font-size:1em;font-weight:700;text-transform:uppercase;">Notes</h5>
+						<p style="border-top: 1px solid #dee2e6;padding:12px 7px;">{{ $order->notes }}</p>
+					</div>
+
 				</div>
 			</div>
 		</div>

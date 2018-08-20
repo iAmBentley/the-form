@@ -18,6 +18,7 @@ class OrdersTableSeeder extends Seeder
                     'store_id' => '2',
                     'category_id' => '1',
                     'is_filled' => 0,
+                    'notes' => 'This is a note for order number 1',
                     'items' => json_encode( ["Butter" => "16 oz"] ),
         			'created_at' => date("Y-m-d H:i:s")
         		],[
@@ -25,6 +26,7 @@ class OrdersTableSeeder extends Seeder
                     'store_id' => '4',
                     'category_id' => '3',
                     'is_filled' => 1,
+                    'notes' => 'This is a note for order number 2',
                     'items' => json_encode( ["Windex" => "Yes", "Paper Towels" => "Yes"] ),
         			'created_at' => date("Y-m-d H:i:s")
         		],[
@@ -32,6 +34,7 @@ class OrdersTableSeeder extends Seeder
                     'store_id' => '1',
                     'category_id' => '5',
                     'is_filled' => 1,
+                    'notes' => 'This is a note for order number 3',
                     'items' => json_encode( ["650 Starter Kits - Blk" => "Yes"] ),
                     'created_at' => date("Y-m-d H:i:s")
                 ]
