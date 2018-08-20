@@ -1,3 +1,10 @@
+a {
+	color: #ef8157;
+}
+a:hover, a:focus {
+	color: #f33816;
+	text-decoration: none;
+}
 .checkbox-slider {
 	display: flex;
 	align-items: center;
@@ -172,6 +179,17 @@ input:checked + .slider::before {
 }
 .sm-text-jb {
 	font-size: 0.6em;
+}
+.breadcrumb {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 0rem 1rem;
+    margin-bottom: 16px;
+    list-style: none;
+    background-color: inherit;
+    border-radius: inherit;
 }
 
 

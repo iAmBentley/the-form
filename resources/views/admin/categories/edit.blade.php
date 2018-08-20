@@ -28,6 +28,7 @@
 										</div>
 										<div class="form-check form-group">
 											<select class="form-control" name="is_active" id="status">
+												{{-- IF CATEGORY IS_ACTIVE MARK SELECTED --}}
 												<option value="1" {{ $category->is_active == 1 ? 'selected' : '' }}>Active</option>
 												<option value="0" {{ $category->is_active == 0 ? 'selected' : '' }}>Disabled</option>
 											</select>
@@ -37,7 +38,7 @@
 								<div class="row">
 									<div class="update ml-auto mr-auto">
 										<button type="submit" class="btn btn-danger btn-round">Save Category</button>
-										<a href="{{ URL::previous() }}" class="btn btn-round">Cancel</a>
+										<a href="{{ route('categories.index') }}" class="btn btn-round">Cancel</a>
 									</div>
 								</div>
 							</form>

@@ -111,7 +111,7 @@
 								<div class="row">
 									<div class="update ml-auto mr-auto">
 										<button type="submit" class="btn btn-danger btn-round">Save Item</button>
-										<a href="{{ URL::previous() }}" class="btn btn-round">Cancel</a>
+										<a href="{{ route('items.index') }}" class="btn btn-round">Cancel</a>
 									</div>
 								</div>
 							</form>

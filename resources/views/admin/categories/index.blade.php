@@ -28,10 +28,11 @@
 									</thead>
 									
 									<tbody>
-										<!-- BRING IN CATEGORIES FROM DATABASE -->
+										<!-- BRING IN AND LOOP THROUGH CATEGORIES FROM DATABASE -->
 										@foreach($categories as $category)
 											<tr>
 												<td class="text-capitalize">{{ $category->name }}</td>
+												{{-- IF CATEGORY IS_ACTIVE MARK ACTIVE ELSE DISABLED --}}
 												<td class="d-none d-sm-block">{{ $category->is_active == 1 ? 'Active' : 'Disabled' }}</td>
 												<td class="text-right">
 													<a href="/admin/categories/{{ $category->id }}/edit" class="btn btn-info btn-icon btn-sm">

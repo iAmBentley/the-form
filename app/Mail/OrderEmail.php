@@ -30,8 +30,8 @@ class OrderEmail extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(Order $order)
     {
-        return $this->view('emails.order');
+        return $this->subject('New Store Order')->view('emails.order');
     }
 }

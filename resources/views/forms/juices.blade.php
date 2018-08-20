@@ -7,7 +7,7 @@
 								<div class="row">
 									
 									@foreach($juice->items as $juices)	
-										<div class="items col-lg-6 col-xl-4">
+										<div class="items col-lg-6">
 											
 											<div class="chekbox-title text-capitalize pull-left">
 												{{ $juices->name }}
@@ -35,7 +35,7 @@
 
 									@foreach($juice->items as $dripline)
 										@if($dripline->is_drip == 1)
-											<div class="items col-lg-6 col-xl-4">
+											<div class="items col-lg-6">
 
 												<div class="chekbox-title text-capitalize pull-left">
 													{{ $dripline->name }} | Drip Line

@@ -7,7 +7,7 @@
 								<div class="row">
 
 									@foreach($products->items as $products)
-										<div class="col-lg-6 col-xl-4">
+										<div class="col-lg-6">
 											
 											<div class="chekbox-title text-capitalize pull-left">
 												{{ $products->name }}

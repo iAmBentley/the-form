@@ -8,7 +8,7 @@
 
 						<!-- TABLE TITLE -->
 						<div class="card-header">
-							<h4 class="card-title pull-left">ROLES <small class="sm-text-jb">({{ $count }} Total)</small></h4>
+							<h4 class="card-title pull-left">Roles <small class="sm-text-jb">({{ $count }} Total)</small></h4>
 							<a href="roles/create" class="create-btn btn btn-danger btn-just-icon pull-right">
 								<i class="fa fa-plus"></i>
 							</a>
@@ -27,7 +27,7 @@
 									</thead>
 
 									<tbody>
-										<!-- BRING IN CATEGORIES FROM DATABASE -->
+										<!-- BRING IN AND LOOP THROUGH CATEGORIES FROM DATABASE -->
 										@foreach($roles as $role)
 											<tr>
 												<td class="text-capitalize">{{ $role->name }}</td>

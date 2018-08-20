@@ -6,7 +6,7 @@
 							<div class="card-body">
 								<div class="row">
 									@foreach($supplies->items as $supplies)
-										<div class="col-lg-6 col-xl-4">
+										<div class="col-lg-6">
 											
 											<div class="chekbox-title text-capitalize pull-left">
 												{{ $supplies->name }}

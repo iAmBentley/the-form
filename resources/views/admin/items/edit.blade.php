@@ -45,7 +45,7 @@
 
 								<div class="row">
 									{{-- CATEGORY CHECKBOXES --}}
-									<div class="col-sm-6">
+									<div class="col-md-12">
 										<div class="chekbox-title">
 											Category (Choose All That Apply)
 										</div>
@@ -69,7 +69,7 @@
 									</div>
 
 									{{-- SIZE CHECKBOXES --}}
-									<div class="col-sm-6">
+									<div class="col-md-12">
 										<div class="chekbox-title">
 											Size (Choose All That Apply)
 										</div>
@@ -93,7 +93,7 @@
 									</div>
 
 									{{-- STORE CHECKBOXES --}}
-									<div class="col-sm-6">
+									<div class="col-md-12">
 										<div class="chekbox-title">
 											Store (Choose All That Apply)
 										</div>
@@ -162,7 +162,7 @@
 								<div class="row">
 									<div class="update ml-auto mr-auto">
 										<button type="submit" class="btn btn-danger btn-round">Save Item</button>
-										<a href="{{ URL::previous() }}" class="btn btn-round">Cancel</a>
+										<a href="{{ route('items.index') }}" class="btn btn-round">Cancel</a>
 									</div>
 								</div>
 							</form>
