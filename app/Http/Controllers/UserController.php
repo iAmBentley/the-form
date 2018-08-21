@@ -19,9 +19,8 @@ class UserController extends Controller
     /** SHOW TABLE OF ALL USER (INDEX) */
     public function index()
     {
-        $users = User::all();
-        $count = User::all()->count();
-        return view('admin/users.index', compact('users', 'count'));
+        $users = User::orderBy('created_at', 'desc')->get();
+        return view('admin/users.index', compact('users'));
     }
 
 
@@ -79,7 +78,6 @@ class UserController extends Controller
             'role_id' => 'required',
             'is_active' => 'required|boolean'
         ]);
-
         /* SAVE VALIDATED DATA TO DATABASE */
         $user->fill([
             'name' => request('name'),
@@ -88,7 +86,6 @@ class UserController extends Controller
             'role_id' => request('role_id'),
             'is_active' => request('is_active')
         ])->save();
-
         /* CONFIRM UPDATE AND REDIRECT USER */
         session()->flash('message', 'User Updated Successfully');
         return redirect('admin/users');

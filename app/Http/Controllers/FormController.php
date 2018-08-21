@@ -20,9 +20,7 @@ class FormController extends Controller
 	public function getJuiceForm(Request $request)
 	{
 		$juices = Category::with('items')->where('name', 'juices')->get();
-		$juiceSizes = Size::where('category_id', 4)->get();
-		$dripline = Item::where('is_drip', 1)->get();
-		return view('forms.juices', compact('juices', 'juiceSizes', 'dripline'));
+		return view('forms.juices', compact('juices'));
 	}
 
 
@@ -54,7 +52,6 @@ class FormController extends Controller
 	public function getLabelForm(Request $request)
 	{
 		$labels = Category::with('items')->where('name', 'labels')->get();
-		$labelSizes = Size::where('category_id', 2)->get();
-		return view('forms.labels', compact('labels', 'labelSizes'));
+		return view('forms.labels', compact('labels'));
 	}
 }

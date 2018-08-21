@@ -7,7 +7,7 @@
 			<div class="col-md-12 ml-auto mr-auto">
 				<div class="card">
 					<div class="card-header">
-						<h4 class="card-title pull-left">Orders</h4>
+						<h4 class="card-title pull-left">Orders <small class="sm-text-jb">({{ $orders->count() }} Total)</small></h4>
 						<a href="orders/create" class="create-btn btn btn-danger btn-just-icon pull-right">
 							<i class="fa fa-plus"></i>
 						</a>

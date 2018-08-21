@@ -18,18 +18,15 @@ class SizeController extends Controller
     /** SHOW TABLE OF ALL SIZES (INDEX) */
     public function index()
     {
-        $sizes = Size::all();
-        $count = Size::all()->count();
-        return view('admin/sizes.index', compact('sizes', 'count'));
-        // $sizes = Size::with('categories')->get();
-        // return view('admin/sizes.index', compact('sizes', 'categories'));
+        $sizes = Size::orderBy('created_at', 'desc')->get();
+        return view('admin/sizes.index', compact('sizes'));
     }
 
 
     /** CREATE NEW SIZE FORM (CREATE) */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::where('is_active', 1)->get();
         return view('admin/sizes.create', compact('size', 'categories'));
     }
 
@@ -60,8 +57,7 @@ class SizeController extends Controller
     {
         /* GET THE CATEGORY */
         $size = Size::find($id);
-        $categories = Category::all();
-
+        $categories = Category::where('is_active', 1)->get();
         /* SHOW THE EDIT FORM FOR THE SIZE */
         return view('admin/sizes.edit', compact('size', 'categories'));
     }
@@ -76,11 +72,9 @@ class SizeController extends Controller
             'category_id' => 'required',
             'is_active' => 'required'
         ]);
-
         /* SAVE VALIDATED DATA TO DATABASE */
         $size->fill($data);
         $size->save();
-
         /* CONFIRM UPDATE AND REDIRECT USER */
         session()->flash('message', 'Size Updated Successfully');
         return redirect('admin/sizes');

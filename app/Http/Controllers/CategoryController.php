@@ -17,9 +17,8 @@ class CategoryController extends Controller
     /** SHOW TABLE OF ALL CATEGORIES (INDEX) */
     public function index()
     {
-        $categories = Category::all();
-        $count = Category::all()->count();
-        return view('admin/categories.index', compact('categories', 'count'));
+        $categories = Category::orderBy('created_at', 'desc')->get();
+        return view('admin/categories.index', compact('categories'));
     }
 
 
@@ -67,11 +66,9 @@ class CategoryController extends Controller
             'name' => 'required',
             'is_active' => 'required'
         ]);
-
         /* SAVE VALIDATED DATA TO DATABASE */
         $category->fill($data);
         $category->save();
-
         /* CONFIRM UPDATE AND REDIRECT USER */
         session()->flash('message', 'Category Updated Successfully');
         return redirect('admin/categories');

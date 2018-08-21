@@ -1,28 +1,28 @@
 						{{-- JUICES FORM --}}
-						@foreach($juices as $juice)
+						@foreach($juices as $juices)
 							<div class="card-header">
 								<h5 class="card-title text-capitalize">juices</h5>
 							</div>
 							<div class="card-body">
 								<div class="row">
 									
-									@foreach($juice->items as $juices)	
+									@foreach($juices->items as $juice)	
 										<div class="items col-lg-6">
 											
 											<div class="chekbox-title text-capitalize pull-left">
-												{{ $juices->name }}
+												{{ $juice->name }}
 											</div>
 
 											<div class="form-check-radio pull-right ml-2">
 											    <label class="form-check-label">
-											        <input class="form-check-input" type="radio" name="items[{{$juices->name}}]" value="No" checked>
+											        <input class="form-check-input" type="radio" name="items[{{$juice->name}}]" value="No" checked>
 											        No
 											        <span class="form-check-sign"></span>
 											    </label>
 											</div>
 											<div class="form-check-radio pull-right ml-2">
 											    <label class="form-check-label">
-											        <input class="form-check-input" type="radio" name="items[{{$juices->name}}]" value="Yes" >
+											        <input class="form-check-input" type="radio" name="items[{{$juice->name}}]" value="Yes" >
 											        Yes
 											        <span class="form-check-sign"></span>
 											    </label>
@@ -33,7 +33,7 @@
 										</div>
 									@endforeach
 
-									@foreach($juice->items as $dripline)
+									@foreach($juices->items as $dripline)
 										@if($dripline->is_drip == 1)
 											<div class="items col-lg-6">
 

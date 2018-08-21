@@ -17,9 +17,8 @@ class RoleController extends Controller
     /** SHOW TABLE OF ALL ROLES (INDEX) */
     public function index()
     {
-        $roles = Role::all();
-        $count = Role::all()->count();
-        return view('admin/roles.index', compact('roles', 'count'));
+        $roles = Role::orderBy('created_at', 'desc')->get();
+        return view('admin/roles.index', compact('roles'));
     }
 
 

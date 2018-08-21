@@ -6,15 +6,15 @@
 	<div class="card-body">
 
 		<div class="row">
-			@foreach($labels->items as $labels)
+			@foreach($labels->items as $label)
 				<div id="form-category" class="col-lg-6 col-xl-4">
 					<div class="chekbox-title-dropdowns text-capitalize">
-						{{ $labels->name }}
+						{{ $label->name }}
 					</div>
 					<div class="form-check form-group">
-						<select class="text-capitalize form-control" id="category_select" name="items[{{ $labels->name }}]">
+						<select class="text-capitalize form-control" id="category_select" name="items[{{ $label->name }}]">
 							<option value="">None</option>
-							@foreach($labelSizes as $size)
+							@foreach($label->sizes as $size)
 								<option value="{{ $size->name }}">{{ $size->name }}</option>
 							@endforeach
 						</select>

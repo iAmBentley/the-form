@@ -6,7 +6,7 @@
 				<div class="col-md-12 ml-auto mr-auto">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title pull-left">Items <small class="sm-text-jb">({{ $count }} Total)</small></h4>
+							<h4 class="card-title pull-left">Items <small class="sm-text-jb">({{ $items->count() }} Total)</small></h4>
 							<a href="items/create" class="create-btn btn btn-danger btn-just-icon pull-right">
 								<i class="fa fa-plus"></i>
 							</a>

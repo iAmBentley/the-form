@@ -17,9 +17,8 @@ class VendorController extends Controller
     /** SHOW TABLE OF ALL VENDORS (INDEX) */
     public function index()
     {
-        $vendors = Vendor::all();
-        $count = Vendor::all()->count();
-        return view('admin/vendors.index', compact('vendors', 'count'));
+        $vendors = Vendor::orderBy('created_at', 'desc')->get();
+        return view('admin/vendors.index', compact('vendors'));
     }
 
 
@@ -70,11 +69,9 @@ class VendorController extends Controller
             'short_name' => 'required',
             'is_active' => 'required'
         ]);
-
         /* SAVE VALIDATED DATA TO DATABASE */
         $vendor->fill($data);
         $vendor->save();
-
         /* CONFIRM UPDATE AND REDIRECT USER */
         session()->flash('message', 'Vendor Updated Successfully');
         return redirect('admin/vendors');

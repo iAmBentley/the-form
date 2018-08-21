@@ -18,16 +18,15 @@ class StoreController extends Controller
     /** SHOW TABLE OF ALL STORES (INDEX) */
     public function index()
     {
-        $stores = Store::all();
-        $count = Store::all()->count();
-        return view('admin/stores.index', compact('stores', 'count'));
+        $stores = Store::orderBy('created_at', 'desc')->get();
+        return view('admin/stores.index', compact('stores'));
     }
 
 
     /** CREATE NEW STORE FORM (CREATE) */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::where('is_active', 1)->get();
         return view('admin/stores.create', compact('store', 'categories'));
     }
 
@@ -60,7 +59,7 @@ class StoreController extends Controller
     public function edit(Store $store)
     {
         /* GET THE CATEGORY */
-        $categories = Category::all();
+        $categories = Category::where('is_active', 1)->get();
         /* SHOW THE EDIT FORM FOR THE STORE */
         return view('admin/stores.edit', compact('store', 'categories'));
     }

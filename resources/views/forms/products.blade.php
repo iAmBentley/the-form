@@ -6,23 +6,23 @@
 							<div class="card-body">
 								<div class="row">
 
-									@foreach($products->items as $products)
+									@foreach($products->items as $product)
 										<div class="col-lg-6">
 											
 											<div class="chekbox-title text-capitalize pull-left">
-												{{ $products->name }}
+												{{ $product->name }}
 											</div>
 
 											<div class="form-check-radio pull-right ml-2">
 											    <label class="form-check-label">
-											        <input class="form-check-input" type="radio" name="items[{{$products->name}}]" value="No" checked>
+											        <input class="form-check-input" type="radio" name="items[{{$product->name}}]" value="No" checked>
 											        No
 											        <span class="form-check-sign"></span>
 											    </label>
 											</div>
 											<div class="form-check-radio pull-right ml-2">
 											    <label class="form-check-label">
-											        <input class="form-check-input" type="radio" name="items[{{$products->name}}]" value="Yes" >
+											        <input class="form-check-input" type="radio" name="items[{{$product->name}}]" value="Yes" >
 											        Yes
 											        <span class="form-check-sign"></span>
 											    </label>

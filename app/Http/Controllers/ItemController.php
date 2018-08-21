@@ -21,9 +21,8 @@ class ItemController extends Controller
     /** SHOW TABLE OF ALL CATEGORIES (INDEX) */
     public function index()
     {
-        $items = Item::all();
-        $count = Item::all()->count();
-        return view('admin/items.index', compact('items', 'count'));
+        $items = Item::orderBy('created_at', 'desc')->get();
+        return view('admin/items.index', compact('items'));
     }
 
 
@@ -31,10 +30,10 @@ class ItemController extends Controller
     public function create()
     {
         /* GET THE CATEGORIES + STORES + VENDORS */
-        $categories = Category::all();
-        $stores = Store::all();
-        $vendors = Vendor::all();
-        $sizes = Size::all();
+        $categories = Category::where('is_active', 1)->get();
+        $stores = Store::where('is_active', 1)->get();
+        $vendors = Vendor::where('is_active', 1)->get();
+        $sizes = Size::where('is_active', 1)->get();
         /* SHOW THE CREATE FORM FOR THE ITEM */
         return view('admin/items.create', compact('item', 'categories', 'stores', 'vendors', 'sizes'));
     }
@@ -74,10 +73,10 @@ class ItemController extends Controller
     public function edit(Item $item)
     {
         /* GET THE CATEGORIES + STORES + VENDORS */
-        $categories = Category::all();
-        $stores = Store::all();
-        $vendors = Vendor::all();
-        $sizes = Size::all();
+        $categories = Category::where('is_active', 1)->get();
+        $stores = Store::where('is_active', 1)->get();
+        $vendors = Vendor::where('is_active', 1)->get();
+        $sizes = Size::where('is_active', 1)->get();
         /* SHOW THE EDIT FORM FOR THE ITEM */
         return view('admin/items.edit', compact('item', 'categories', 'stores', 'vendors', 'sizes'));
     }
