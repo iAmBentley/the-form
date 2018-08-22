@@ -63,11 +63,9 @@ class RoleController extends Controller
         $data = $request->validate([
             'name' => 'required'
         ]);
-
         /* SAVE VALIDATED DATA TO DATABASE */
         $role->fill($data);
         $role->save();
-
         /* CONFIRM UPDATE AND REDIRECT USER */
         session()->flash('message', 'Role Updated Successfully');
         return redirect('admin/roles');

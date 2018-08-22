@@ -59,19 +59,25 @@ class OrderController extends Controller
 		$store_id = $request->selectedStore;
 
 		/* QUERY ITEMS WITH SELECTED CAT_ID AND SELECTED STORE_ID */
-		$items = Item::whereHas('categories',function($query) use ($category_id){
-			$query->where('id', '=',$category_id);
+		$items = Item::whereHas('categories', function ($query) use ($category_id){
+			$query->where('id','=',$category_id);
 		})
-		->whereHas('stores', function($query) use($store_id) {
-			$query->where('id','=' ,$store_id);
+		->whereHas('stores', function ($query) use ($store_id) {
+			$query->where('id','=',$store_id);
 		})
 		->with(['categories','stores'])
 		->where('is_active', 1)
 		->get();
 
+		// echo '<pre>';
+		// print_r($items);
+		// exit();
+		// echo '</pre>';
+
 		/* PASS JSON BACK TO AJAX FILE */
+		// \Session::put($items);
 		return response()->json($items);
-		// return view('forms.supplies', compact('supplies'));
+		// return view('forms.flavors', compact('items'));
 	}
 
 

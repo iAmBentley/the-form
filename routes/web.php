@@ -1,11 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-*/
-
 // HOME / LOGIN ROUTE
 Route::get('/', function () {
     return view('auth/login');
@@ -29,29 +23,22 @@ Route::get('/forms/products', 'FormController@getProductForm');
 Route::get('/forms/supplies', 'FormController@getSupplyForm');
 Route::get('/forms/labels', 'FormController@getLabelForm');
 
-/* ADMIN SECTION  ---  Managers + Admin Roles Only */
+/* ADMIN SECTION */
 Route::prefix('admin')->group(function () {
 	/* ADMIN INDEX */
 	Route::view('/', 'admin.index');
-
 	/* ITEMS INDEX + CRUD */
 	Route::resource('items', 'ItemController');
-
-	/* CATEGORIES INDEX + CRUD  ---  Admin Roles Only */
+	/* CATEGORIES INDEX + CRUD */
 	Route::resource('categories', 'CategoryController');
-
-	/* VENDORS INDEX + CRUD  ---  Admin Roles Only */
+	/* VENDORS INDEX + CRUD */
 	Route::resource('vendors', 'VendorController');
-
 	/* STORES INDEX + CRUD */
 	Route::resource('stores', 'StoreController');
-
 	/* SIZES INDEX + CRUD */
 	Route::resource('sizes', 'SizeController');
-
-	/* USERS INDEX + CRUD  ---  Admin Roles Only */
+	/* USERS INDEX + CRUD */
 	Route::resource('users', 'UserController');
-
-	/* ROLES INDEX + CRUD  ---  Admin Roles Only */
+	/* ROLES INDEX + CRUD */
 	Route::resource('roles', 'RoleController');
 });

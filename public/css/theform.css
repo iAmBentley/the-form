@@ -20,7 +20,6 @@ a:hover, a:focus {
 	margin-top: 1.5em;
 	padding: 0 0.45em;
 }
-
 .slider {
 	position: relative;
 	margin-right: 10px;
@@ -111,7 +110,6 @@ input:checked + .slider::before {
 	box-shadow: none;
 }
 /* -- LOGIN PAGE - END -- */
-
 .form-horizontal .col-form-label, .form-horizontal .label-on-right {
 	padding: 10px 5px 0 15px;
 	text-align: right;
@@ -212,10 +210,4 @@ input:checked + .slider::before {
 	.navbar .navbar-brand {
 		display: none;
 	}
-}
-
-/* STYLING FOR PRINTING AN ORDER */
-@media print {
-/* ONCE ORDERS/SHOW HAS BEEN CREATED
-HIT PRINT, VIEW PREVIEW, AND BEGIN STYLING */
 }

@@ -16,8 +16,4 @@ class Category extends Model
 	public function orders() {
 		return $this->belongsTo(Order::class);
 	}
-	// public  function getSizes() {
-	// 	return $this->all();
-	// }
-	// Category::getSizes();
 }

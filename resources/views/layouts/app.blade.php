@@ -19,11 +19,11 @@
 	   			@yield('content')
 	   		</div>
 
-	   	</div> {{-- .main-panel END --}}
+	   	</div>
 	    
 	    @include('layouts.scripts')
 	    @yield('orders-ajax-scripts')
 
-	</div> {{-- .wrapper END --}}
+	</div>
 </body>
 </html>

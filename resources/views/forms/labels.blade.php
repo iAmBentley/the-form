@@ -4,7 +4,6 @@
 		<h5 class="card-title text-capitalize">Labels</h5>
 	</div>
 	<div class="card-body">
-
 		<div class="row">
 			@foreach($labels->items as $label)
 				<div id="form-category" class="col-lg-6 col-xl-4">
@@ -22,7 +21,6 @@
 				</div>
 			@endforeach
 		</div>
-
 		<div class="row">
 			<div class="col-md-12">
 				<div class="form-group">
@@ -31,13 +29,11 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="row">
 			<div class="update ml-auto mr-auto">
 				<button type="submit" class="btn btn-danger btn-round">Send Order</button>
 				<a href="{{ route('orders.index') }}" class="btn btn-round">Cancel</a>
 			</div>
 		</div>
-		
 	</div>
 @endforeach

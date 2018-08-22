@@ -2,7 +2,7 @@
 
 @section('content')
 	<div class="content">
-		<!-- ORDERS TABLE -->
+		{{-- ORDERS TABLE --}}
 		<div class="row">
 			<div class="col-md-12 ml-auto mr-auto">
 				<div class="card">
@@ -24,7 +24,6 @@
 									</tr>
 								</thead>
 								<tbody>
-
 									@foreach($orders as $order)
 										<tr>
 											<td>{{ $order->created_at->format('m.d.y') }}</td>
@@ -54,7 +53,6 @@
 											</td>
 										</tr>
 									@endforeach
-									
 								</tbody>
 							</table>
 						</div>

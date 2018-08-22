@@ -16,7 +16,4 @@ class Store extends Model
     public function orders() {
     	return $this->hasMany(Order::class);
     }
-    public function formItems($selectedStore) {
-        return $this->belongsToMany(Items::class)->wherePivot('store_id', $selectedStore)->get();
-    }
 }

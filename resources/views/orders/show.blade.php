@@ -1,16 +1,14 @@
 @extends('layouts.app')
 
 @section('orders-ajax-scripts')
-<script src="{{ asset('/js/orders-ajax.js') }}"></script>
+	<script src="{{ asset('/js/orders-ajax.js') }}"></script>
 @endsection
 
 @section('content')
-
-	<!-- ORDER VIEW -->
+	{{-- ORDER VIEW --}}
 	<div class="row">
 		<div class="col-md-12 ml-auto mr-auto">
 			<div class="card card-user">
-
 				{{-- ORDER DETAILS --}}
 				<div class="card-header text-capitalize">
 					<h5 class="card-title mb-3">Order for {{ $order->categories->name }}</h5>
@@ -40,18 +38,15 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="card-body">
 					{{-- TABLE OF REQUESTED ITEMS --}}
 					<div class="table-responsive">
 						<table class="table">
-							
 							<thead class="text-primary order-items-title">
 								<tr>
 									<th>Items Needed:</th>
 								</tr>
 							</thead>
-							
 							<tbody>
 								{{-- LOOP THROUGH ITEMS ARRAY ON DATABASE --}}
 								@foreach ($items as $item => $size)
@@ -62,23 +57,19 @@
 									    </tr>
 								    @endif
 								@endforeach
-								
 							</tbody>
 						</table>
 					</div>
-					
 					@if($order->notes)
 						<div >
 							<h5 class="text-primary note-title">Notes</h5>
 							<p class="note-body">{{ $order->notes }}</p>
 						</div>
 					@endif
-
 				</div>
 			</div>
 		</div>
 	</div>
-	
 @endsection
 
 

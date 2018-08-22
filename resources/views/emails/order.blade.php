@@ -4,21 +4,17 @@
 		<meta charset="utf-8">
 		<title>Order for {{ $order->categories->name }}</title>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-	</head>
-
+	</head>=
 	<body style="background-color:#f4f3ef;font-family:'Montserrat',sans-serif;margin:0;">
-		<div class="wrapper">
-
-			<div class="main-panel">
-
+		<div class="wrapper">=
+			<div class="main-panel">=
 				<nav style="background-color:#fff;height:54px;">
 					<div>
 						<div>
 							<h1 style="margin:0;text-transform:uppercase;text-align:center;font-size:18px;font-weight:400;padding:15px;">New {{ $order->categories->name }} Order</h1>
 						</div>
 					</div>
-				</nav>
-
+				</nav>=
 				<div class="content">
 					<div>
 						<div style="padding:30px;">
@@ -32,8 +28,7 @@
 											<div style="text-transform:capitalize;margin-bottom:1em;"><strong>By: </strong> {{ $order->users->name }} </div>
 										</div>
 									</div>
-								</div>
-
+								</div>=
 								<div >
 									<div>
 										<table style="width:100%;margin-bottom: 40px;">
