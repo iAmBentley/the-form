@@ -40,10 +40,8 @@ $(document).ready(function(){
 
 		// Set variable of the selected category_id to be sent to the controller below
 		_selectedCat = $('#category_select').val();
-		console.log('Selected Cat ID: '+_selectedCat);
 		// Set variable of the selected store_id to be sent to the controller below
 		var selectedStore = $(this).val();
-		console.log('Selected Store ID: '+selectedStore);
 
 		// Pass variables to Order Controller to query items
 		$.ajax({
@@ -60,13 +58,6 @@ $(document).ready(function(){
 	        }
 		});
 		
-	});
-	$('#OrderForm').on('submit', function(evt) {
-		$('#submit-btn').attr('disabled','disabled');
-	});
-	// Disable submit button after submit
-	$("#submit-btn").click(function (evt) {
-		$("#submit-btn").addClass("disabled");
 	});
 
 	// Update Order to Filled on Button Click

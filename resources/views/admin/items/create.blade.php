@@ -9,7 +9,10 @@
 					<h5 class="card-title">Create an Item</h5>
 				</div>
 				<div class="card-body">
-					<form method="POST" action="/admin/items">
+
+					@include('layouts.errors')
+					
+					<form id="modulo" method="POST" action="/admin/items">
 						{{ csrf_field() }}
 						<input type="hidden" class="form-control" name="is_active" value="1">
 						<div class="row">
@@ -106,7 +109,7 @@
 						</div>
 						<div class="row">
 							<div class="update ml-auto mr-auto">
-								<button type="submit" class="btn btn-danger btn-round">Save Item</button>
+								<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save Item</button>
 								<a href="{{ route('items.index') }}" class="btn btn-round">Cancel</a>
 							</div>
 						</div>

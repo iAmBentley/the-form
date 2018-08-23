@@ -1,18 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-	{{-- SIZES TABLE --}}
+	{{-- BREADCRUMBS --}}
+	{{-- CONSIDER THIS PART OF MY SANDBOX - DID IT TO SEE HOW IT WORKED, KEPT IN CASE I WANT TO USE ACCROSS APP --}}
 	<nav aria-label="breadcrumb" role="navigation">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="/orders">Home</a>
             </li>
-            {{-- <li class="breadcrumb-item">
-                <a href="#">Breadcrumb2</a>
-            </li> --}}
             <li class="breadcrumb-item active" aria-current="page">Admin</li>
         </ol>
     </nav>
+    {{-- SIZES TABLE --}}
 	<div class="row">
 		<div class="col-md-12 ml-auto mr-auto">
 			<div class="card">

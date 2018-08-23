@@ -5,6 +5,14 @@
 @endsection
 
 @section('content')
+	{{-- BREADCRUMBS --}}
+	<nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/orders"><i class="fa fa-arrow-left"></i>  Back to Orders</a>
+            </li>
+        </ol>
+    </nav>
 	{{-- ORDER VIEW --}}
 	<div class="row">
 		<div class="col-md-12 ml-auto mr-auto">

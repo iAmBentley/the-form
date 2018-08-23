@@ -12,7 +12,7 @@
 
 					@include('layouts.errors')
 
-					<form method="POST" action="/admin/vendors">
+					<form id="modulo" method="POST" action="/admin/vendors">
 						{{ csrf_field() }}
 						<input type="hidden" name="is_active" value="1">
 						<div class="row">
@@ -31,7 +31,7 @@
 						</div>
 						<div class="row">
 							<div class="update ml-auto mr-auto">
-								<button type="submit" class="btn btn-danger btn-round">Save Vendor</button>
+								<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save Vendor</button>
 								<a href="{{ route('vendors.index') }}" class="btn btn-round">Cancel</a>
 							</div>
 						</div>

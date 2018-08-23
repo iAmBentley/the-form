@@ -12,7 +12,7 @@
 
 					@include('layouts.errors')
 
-					<form method="POST" action="/admin/items/{{ $item->id }}">
+					<form id="modulo" method="POST" action="/admin/items/{{ $item->id }}">
 						{{ csrf_field() }}
 						{{ method_field('PATCH') }}
 						<div class="row">
@@ -156,7 +156,7 @@
 						</div>
 						<div class="row">
 							<div class="update ml-auto mr-auto">
-								<button type="submit" class="btn btn-danger btn-round">Save Item</button>
+								<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save Item</button>
 								<a href="{{ route('items.index') }}" class="btn btn-round">Cancel</a>
 							</div>
 						</div>

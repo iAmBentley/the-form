@@ -12,7 +12,10 @@
 	{{-- ITEMS FORM --}}
 	<div class="row">
 		<div class="col-md-12 ml-auto mr-auto">
-			<form id="OrderForm" method="POST" action="/orders">
+
+			@include('layouts.errors')
+			
+			<form id="modulo" method="POST" action="/orders">
 				{{ csrf_field() }}
 				{{-- ITEMS SETUP CARD --}}
 				<div class="card card-user">

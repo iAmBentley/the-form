@@ -5031,8 +5031,8 @@ License - nucleoapp.com/license/
 
 .main-panel>.content {
   padding: 0 30px 30px;
-  min-height: calc(100vh - 90px); /* calc(100vh - 123px); or calc(100vh - 96px); */
-  margin-top: 90px; /* 93px */
+  min-height: calc(100vh - 40px); /* calc(100vh - 123px); or calc(100vh - 96px); */
+  margin-top: 80px; /* 1st:93px - 2nd:90px; */
 }
 
 .main-panel>.navbar {
@@ -6332,7 +6332,7 @@ License - nucleoapp.com/license/
   .main-panel .content {
     padding-left: 15px;
     padding-right: 15px;
-    margin-top: 90px; /*70px*/
+    margin-top: 80px; /*70px*/
   }
   .footer nav {
     display: block;

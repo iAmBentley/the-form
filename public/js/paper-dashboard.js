@@ -205,6 +205,11 @@ function hexToRGB(hex, alpha) {
 setTimeout(function() {
 	$('#flash-message').fadeOut('2500');
 }, 5000);
+	
+// Disable Submit Button of Form after click - Prevent Multiple Submissions
+$('#modulo').on('submit', function(evt) {
+	$('#submit-btn').attr('disabled','disabled');
+});
 
 
 
