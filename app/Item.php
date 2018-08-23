@@ -10,7 +10,7 @@ class Item extends Model
     public function stores() {
     	return $this->belongsToMany(Store::class);
     }
-    public function vendors() {
+    public function vendor() {
     	return $this->belongsTo(Vendor::class);
     }
     public function sizes() {

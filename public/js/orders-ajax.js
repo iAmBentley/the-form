@@ -72,6 +72,11 @@ $(document).ready(function(){
 		
 	});
 
+	// Disable submit button after submit
+	$("#submit-btn").click(function () {
+		$("#submit-btn").addClass("disabled");
+	});
+
 	// Update Order to Filled on Button Click
 	$('.fill-order').click(function () {
 		// Set order_id variable to be passed to controller below

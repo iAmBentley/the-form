@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Size;
 use App\Item;
+use App\Vendor;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
@@ -28,39 +29,19 @@ class FormController extends Controller
 	/** SHOW TABLE OF ALL ORDERS (INDEX) */
 	public function getFlavorForm(Request $request)
 	{
-		/* SET CORE VARIABLES */
-		// $category_id = $request->selectedCat;
-		// $store_id = $request->selectedStore;
+		$items = Item::whereHas('categories', function ($query) {
+			$query->where('name','=','flavors');
+		})
+		->whereHas('stores', function ($query) {
+			$query->where('id','=', 1);
+		})
+		->with(['categories','stores'])
+		->where('is_active', 1)
+		->orderBy('vendor_id', 'asc')
+		->get();
 
-		/* QUERY ITEMS WITH SELECTED CAT_ID AND SELECTED STORE_ID */
-		// $flavors = Item::whereHas('categories', function ($query) use ($category_id) {
-		// 	$query->where('id','=',$category_id);
-		// })
-		// ->whereHas('stores', function ($query) use ($store_id) {
-		// 	$query->where('id','=',$store_id);
-		// })
-		// ->with(['categories','stores'])
-		// ->where('is_active', 1)
-		// ->get();
-
-		// echo '<pre>';
-		// print_r($flavors);
-		// exit();
-		// echo '</pre>';
-
-		/* PASS JSON BACK TO AJAX FILE */
-		// return response()->json($items);
-		// return view('forms.flavors', compact('flavors'));
-
-		// $flavors = \Session::get($items);
-
-		// echo '<pre>';
-		// print_r($flavors);
-		// exit();
-		// echo '</pre>';
-
-		$flavors = Category::with('items')->where('name', 'flavors')->get();
-		return view('forms.flavors', compact('flavors'));
+		// $flavors = Category::with('items')->where('name', 'flavors')->get();
+		return view('forms.flavors', compact('items'));
 	}
 
 
