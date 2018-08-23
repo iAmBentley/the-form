@@ -27,21 +27,24 @@ class FormController extends Controller
 
 
 	/** SHOW TABLE OF ALL ORDERS (INDEX) */
-	public function getFlavorForm(Request $request)
+	public function getFlavorForm(Request $req)
 	{
-		$items = Item::whereHas('categories', function ($query) {
-			$query->where('name','=','flavors');
-		})
-		->whereHas('stores', function ($query) {
-			$query->where('id','=', 1);
-		})
-		->with(['categories','stores'])
-		->where('is_active', 1)
-		->orderBy('vendor_id', 'asc')
-		->get();
+		// $items = $req->items;
+		// dd($req);
+		// $items = Item::whereHas('categories', function ($query) {
+		// 	$query->where('name','=','flavors');
+		// })
+		// ->whereHas('stores', function ($query) {
+		// 	$query->where('id','=', 1);
+		// })
+		// ->with(['categories','stores'])
+		// ->where('is_active', 1)
+		// ->orderBy('vendor_id', 'asc')
+		// ->get();
 
 		// $flavors = Category::with('items')->where('name', 'flavors')->get();
-		return view('forms.flavors', compact('items'));
+		// $flavors = app('App\Http\Controllers\OrderController')->getFormItems($request);
+		// return view('forms.flavors', compact('items'));
 	}
 
 

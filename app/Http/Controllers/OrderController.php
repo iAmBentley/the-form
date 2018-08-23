@@ -67,17 +67,19 @@ class OrderController extends Controller
 		})
 		->with(['categories','stores'])
 		->where('is_active', 1)
+		->orderBy('name', 'asc')
 		->get();
 
-		// echo '<pre>';
-		// print_r($items);
-		// exit();
-		// echo '</pre>';
+		switch ($category_id) {
+			case 1: $catName = "flavors"; break;
+			case 2: $catName = "labels"; break;
+			case 3: $catName = "supplies"; break;
+			case 4: $catName = "juices"; break;
+			case 5: $catName = "products"; break;
+		};
 
 		/* PASS JSON BACK TO AJAX FILE */
-		// \Session::put($items);
-		return response()->json($items);
-		// return view('forms.flavors', compact('items'));
+		return view("/forms/".$catName , compact('items'));
 	}
 
 

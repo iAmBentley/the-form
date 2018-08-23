@@ -13,7 +13,7 @@ $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // ORDERS
 Route::get('/orders/getStoresByCat', 'OrderController@getStoresByCat');
-Route::get('/orders/getFormItems', 'OrderController@getFormItems');
+Route::get('/orders/getFormItems', 'OrderController@getFormItems'); //
 Route::resource('orders', 'OrderController');
 
 // FORMS

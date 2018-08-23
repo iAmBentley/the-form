@@ -22,14 +22,11 @@ $(document).ready(function(){
 				// Add default option in the store dropdown before for loop below
 				$("#store_select").append("<option value=''>Choose One</option>");
 				// Set the length variable for the for loop below
-				var length = storeData[0].stores.length;
-				for(var i = 0; i<length; i++) {
-					var id = storeData[0].stores[i].id;
-					var name = storeData[0].stores[i].name;
-					$("#store_select").append(
-						"<option value='"+id+"'>"+name+"</option>"
-					);
-				}
+				
+				$.each(storeData[0].stores, function(i, e) {
+					console.log(e);
+					$('#store_select').append($('<option>').val(e.id).text(e.name));
+				});
 			},
 	        error: function (storeData) {
 	            console.log('Error:', storeData);
@@ -43,27 +40,20 @@ $(document).ready(function(){
 
 		// Set variable of the selected category_id to be sent to the controller below
 		_selectedCat = $('#category_select').val();
+		console.log('Selected Cat ID: '+_selectedCat);
 		// Set variable of the selected store_id to be sent to the controller below
 		var selectedStore = $(this).val();
+		console.log('Selected Store ID: '+selectedStore);
 
 		// Pass variables to Order Controller to query items
 		$.ajax({
 			url: formItemsURL,
 			method: 'get',
-			dataType: 'json',
+			// dataType: 'json',
 			data: { selectedStore: selectedStore, selectedCat: _selectedCat },
 			success:function(formData){
-				/* SET CATEGORY NAME VARIABLE BASED ON SELECTED CAT CHOSEN */
-				switch(_selectedCat) {
-					//   cat_id              cat_name
-				    case "1": var category = "flavors"; break;
-				    case "2": var category = "labels"; break;
-				    case "3": var category = "supplies"; break;
-				    case "4": var category = "juices"; break;
-				    case "5": var category = "products"; break;
-				};
-				// BRING IN FORM HTML/PHP FILE
-				$("#form-body").load("/forms/"+category);
+				$('#form-body').html(formData);
+				return;
 			},
 	        error: function (formData) {
 	            console.log('Error:', formData);
@@ -71,9 +61,11 @@ $(document).ready(function(){
 		});
 		
 	});
-
+	$('#OrderForm').on('submit', function(evt) {
+		$('#submit-btn').attr('disabled','disabled');
+	});
 	// Disable submit button after submit
-	$("#submit-btn").click(function () {
+	$("#submit-btn").click(function (evt) {
 		$("#submit-btn").addClass("disabled");
 	});
 

@@ -7,7 +7,7 @@
 		@foreach($items as $flavor)
 			<div id="form-category" class="col-lg-6 col-xl-4">
 				<div class="chekbox-title-dropdowns text-capitalize">
-					{{ $flavor->name }}
+					{{ $flavor->vendor->short_name }} | {{ $flavor->name }}
 				</div>
 				<div class="form-check form-group">
 					<select class="text-capitalize form-control" name="items[{{ $flavor->name }}]" id="category_select">
