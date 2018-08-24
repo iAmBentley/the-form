@@ -19,7 +19,13 @@
 					<div class="collapse " id="userItems">
 						<ul class="nav">
 							<li>
-								<a class="collapse " style="border-bottom: 1px solid rgba(255, 255, 255, .3);"
+								<a href="/admin/users/{{Auth::user()->id}}/edit">
+									<span class="sidebar-mini-icon">&bull;</span>
+									<span class="sidebar-normal">Edit Profile</span>
+								</a>
+							</li>
+							<li>
+								<a class="collapse pb-3" style="border-bottom: 1px solid rgba(255, 255, 255, .3);"
 									href="{{ route('logout') }}" onclick="event.preventDefault();
 									document.getElementById('logout-form').submit();">
 									<span class="sidebar-mini-icon">&bull;</span>

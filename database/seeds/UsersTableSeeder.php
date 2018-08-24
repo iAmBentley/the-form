@@ -20,36 +20,54 @@ class UsersTableSeeder extends Seeder
         			'role_id' => '1',
         			'created_at' => date("Y-m-d H:i:s")
         		],[
-        			'name' => 'john jones',
-        			'email' => 'joey+1@moticorp.com',
-        			'password' => bcrypt('secret'),
+                    'name' => 'yosi',
+                    'email' => 'yosi@moticorp.com',
+                    'password' => bcrypt('1221'),
+                    'role_id' => '1',
+                    'created_at' => date("Y-m-d H:i:s")
+                ],[
+        			'name' => 'john',
+        			'email' => null,
+        			'password' => bcrypt('1234'),
         			'role_id' => '3',
         			'created_at' => date("Y-m-d H:i:s")
         		],[
         			'name' => 'emily',
-        			'email' => 'joey+2@moticorp.com',
-        			'password' => bcrypt('secret'),
+        			'email' => 'emily@moticorp.com',
+        			'password' => bcrypt('1234'),
         			'role_id' => '2',
         			'created_at' => date("Y-m-d H:i:s")
         		],[
-        			'name' => 'jordan',
-        			'email' => 'joey+3@moticorp.com',
-        			'password' => bcrypt('secret'),
-        			'role_id' => '3',
+                    'name' => 'gill',
+                    'email' => 'g@moticorp.com',
+                    'password' => bcrypt('1234'),
+                    'role_id' => '2',
+                    'created_at' => date("Y-m-d H:i:s")
+                ],[
+        			'name' => 'joey',
+        			'email' => 'joey.e@moticorp.com',
+        			'password' => bcrypt('1234'),
+        			'role_id' => '2',
         			'created_at' => date("Y-m-d H:i:s")
         		],[
         			'name' => 'rich',
-        			'email' => 'joey+4@moticorp.com',
-        			'password' => bcrypt('secret'),
+        			'email' => 'rich@moticorp.com',
+        			'password' => bcrypt('1234'),
         			'role_id' => '2',
         			'created_at' => date("Y-m-d H:i:s")
         		],[
         			'name' => 'steve',
-        			'email' => 'joey+5@moticorp.com',
-        			'password' => bcrypt('secret'),
+        			'email' => 'steve@moticorp.com',
+        			'password' => bcrypt('1234'),
         			'role_id' => '2',
         			'created_at' => date("Y-m-d H:i:s")
-        		]
+        		],[
+                    'name' => 'mike',
+                    'email' => 'mike.s@moticorp.com',
+                    'password' => bcrypt('1234'),
+                    'role_id' => '2',
+                    'created_at' => date("Y-m-d H:i:s")
+                ]
         	]
         );
     }

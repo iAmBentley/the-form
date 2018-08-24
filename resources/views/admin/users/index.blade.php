@@ -33,9 +33,19 @@
 										<td class="text-capitalize ">{{ $user->role->name }}</td>
 										<td class="d-none d-sm-block">{{ $user->is_active == 1 ? 'Active' : 'Disabled' }}</td>
 										<td class="text-right">
-											<a href="/admin/users/{{ $user->id }}/edit" class="btn btn-info btn-icon btn-sm">
-												<i class="fa fa-pencil"></i>
-											</a>
+											<form method="POST" action="/admin/users/{{ $user->id }}">
+												{{ csrf_field() }}
+												{{ method_field('DELETE') }}
+												<input type="hidden" name="id" value="{{ $user->id }}">
+												{{-- EDIT BUTTON --}}
+												<a href="/admin/users/{{ $user->id }}/edit" class="btn btn-info btn-icon btn-sm " data-toggle="tooltip" title="Edit User">
+													<i class="fa fa-pencil"></i>
+												</a>
+												{{-- DELETE BUTTON (TRIGGERS UPDATE() ON ORDERS) --}}
+												<button value="{{ $user->id }}" class="delete-user btn-danger btn btn-icon btn-sm" data-toggle="tooltip" title="Delete User">
+													<i class="fa fa-close"></i>
+												</button>
+											</form>
 										</td>
 									</tr>
 								@endforeach

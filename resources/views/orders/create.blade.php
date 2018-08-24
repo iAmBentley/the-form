@@ -20,7 +20,10 @@
 				{{-- ITEMS SETUP CARD --}}
 				<div class="card card-user">
 					<div class="card-header">
-						<h5 class="card-title">Create an Order</h5>
+						<h5 class="card-title pull-left">Create an Order</h5>
+						<a href="/orders" class="create-btn btn btn-default btn-just-icon pull-right">
+							<i class="fa fa-close"></i>
+						</a>
 					</div>
 					<div class="card-body">
 						<div class="row">

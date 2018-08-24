@@ -211,5 +211,26 @@ $('#modulo').on('submit', function(evt) {
 	$('#submit-btn').attr('disabled','disabled');
 });
 
+// Delete User from Users Table
+$('.delete-user').click(function () {
+	// Set order_id variable to be passed to controller below
+    var id = $(this).val();
+    // Pass order_id to Order Controller to Update Order
+    $.ajaxSetup({
+		headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+	})
+    $.ajax({
+        type: "DELETE",
+        url: "/admin/users/"+id,
+        data: {id:id},
+        success: function (itemsData) {
+            console.log('success');
+        },
+        error: function (itemsData) {
+            console.log('Error:', itemsData);
+        }
+    });
+});
+
 
 

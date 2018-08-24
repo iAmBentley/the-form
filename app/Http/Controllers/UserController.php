@@ -88,6 +88,21 @@ class UserController extends Controller
         ])->save();
         /* CONFIRM UPDATE AND REDIRECT USER */
         session()->flash('message', 'User Updated Successfully');
+        /* IF LOGGED IN USER IS NOT STAFF - REDIRECT TO USERS.INDEX - ELSE - GO TO THEIR PROFILE EDIT PAGE */
+        if(\Auth::user()->role_id != 3) {
+            return redirect('admin/users');
+        } else {
+            return back();
+        };
+    }
+
+
+    /** DELETE USER FROM DATABASE */
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        session()->flash('message', 'User Deleted Successfully');
         return redirect('admin/users');
     }
 

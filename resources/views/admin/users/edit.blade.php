@@ -6,7 +6,16 @@
 		<div class="col-md-12 ml-auto mr-auto">
 			<div class="card card-user">
 				<div class="card-header">
-					<h5 class="card-title">Edit a User</h5>
+					<h5 class="card-title pull-left">Edit a User</h5>
+					<form method="POST" action="/admin/users/{{ $user->id }}">
+						{{ csrf_field() }}
+						{{ method_field('DELETE') }}
+						<input type="hidden" name="id" value="{{ $user->id }}">
+						{{-- DELETE BUTTON (TRIGGERS UPDATE() ON ORDERS) --}}
+						<button value="{{ $user->id }}" class="delete-user btn btn-danger btn-round pull-right mt-0" data-toggle="tooltip" title="Delete User">
+							<i class="fa fa-close"></i> Delete User
+						</button>
+					</form>
 				</div>
 				<div class="card-body">
 				
@@ -43,8 +52,8 @@
 								<div class="form-check form-group">
 									<select class="form-control" id="role_id" name="role_id">
 										<option value="3" {{ $user->role_id == 3 ? 'selected' : '' }}>Staff</option>
-										<option value="2" {{ $user->role_id == 2 ? 'selected' : '' }}>Manager</option>
-										<option value="1" {{ $user->role_id == 1 ? 'selected' : '' }}>Admin</option>
+										<option value="2" {{ $user->role_id == 2 ? 'selected' : '' }} {{ Auth::user()->role_id == 3 ? 'disabled' : '' }}>Manager</option>
+										<option value="1" {{ $user->role_id == 1 ? 'selected' : '' }} {{ Auth::user()->role_id != 1 ? 'disabled' : '' }}>Admin</option>
 									</select>
 								</div>
 							</div>
@@ -63,7 +72,14 @@
 						<div class="row">
 							<div class="update ml-auto mr-auto">
 								<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save User</button>
-								<a href="{{ route('users.index') }}" class="btn btn-round">Cancel</a>
+								<a 
+									@if(\Auth::user()->role_id != 3)
+							            href="{{ route('users.index') }}"
+							        @else
+							            href="{{ url('/orders') }}"
+							        @endif
+							        class="btn btn-round">Cancel
+							    </a>
 							</div>
 						</div>
 					</form>

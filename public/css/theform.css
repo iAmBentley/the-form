@@ -145,7 +145,7 @@ input:checked + .slider::before {
 	height: 40px;
 	width: 40px;
 	min-width: 40px;
-	padding: 8px;
+	padding: 7px;
 }
 .td-min-height {
 	min-height: 28px;

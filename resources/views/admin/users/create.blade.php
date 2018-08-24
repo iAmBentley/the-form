@@ -44,7 +44,7 @@
 									<select class="form-control" name="role_id" id="user_role_id">
 										<option value="3">Staff</option>
 										<option value="2">Manager</option>
-										<option value="1">Admin</option>
+										<option value="1" {{ Auth::user()->role_id != 1 ? 'disabled' : '' }}>Admin</option>
 									</select>
 								</div>
 							</div>

@@ -25,7 +25,7 @@
 							<tbody>
 								@foreach($orders as $order)
 									<tr>
-										<td>{{ $order->created_at->diffForHumans() }} {{-- $order->created_at->format('m.d.y') --}}</td>
+										<td>{{-- $order->created_at->diffForHumans() --}} {{ $order->created_at->format('m.d.y') }}</td>
 										<td class="text-capitalize">{{ $order->stores->name }}</td>
 										<td class="d-none d-sm-block text-capitalize">{{ $order->categories->name }}</td>
 										<td class="text-right">
