@@ -41,7 +41,6 @@ class UserController extends Controller
             'email' => 'nullable',
             'password' => 'required|min:4',
             'role_id' => 'required',
-            'is_active' => 'required|boolean',
         ]);
         /* CREATE AND SAVE NEW USER TO DATABASE */
         User::create([
@@ -49,7 +48,6 @@ class UserController extends Controller
             'email' => request('email'),
             'password' => Hash::make(request('password')),
             'role_id' => request('role_id'),
-            'is_active' => request('is_active')
         ]);
         /* REDIRECT USER AFTER SAVE */
         session()->flash('message', 'User Added Successfully');
@@ -76,7 +74,6 @@ class UserController extends Controller
             'email' => 'nullable|email',
             'password' => 'required|min:4',
             'role_id' => 'required',
-            'is_active' => 'required|boolean'
         ]);
         /* SAVE VALIDATED DATA TO DATABASE */
         $user->fill([
@@ -84,7 +81,6 @@ class UserController extends Controller
             'email' => request('email'),
             'password' => Hash::make(request('password')),
             'role_id' => request('role_id'),
-            'is_active' => request('is_active')
         ])->save();
         /* CONFIRM UPDATE AND REDIRECT USER */
         session()->flash('message', 'User Updated Successfully');

@@ -39,13 +39,13 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-4">
+							<div class="col-md-6">
 								<div class="form-group">
 									<label>Password</label>
 									<input type="password" class="form-control" name="password" value="{{ $user->password }}">
 								</div>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-6">
 								<div class="chekbox-title-dropdowns">
 									User Role
 								</div>
@@ -54,17 +54,6 @@
 										<option value="3" {{ $user->role_id == 3 ? 'selected' : '' }}>Staff</option>
 										<option value="2" {{ $user->role_id == 2 ? 'selected' : '' }} {{ Auth::user()->role_id == 3 ? 'disabled' : '' }}>Manager</option>
 										<option value="1" {{ $user->role_id == 1 ? 'selected' : '' }} {{ Auth::user()->role_id != 1 ? 'disabled' : '' }}>Admin</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="chekbox-title-dropdowns">
-									Status
-								</div>
-								<div class="form-check form-group">
-									<select class="form-control" id="status" name="is_active">
-										<option value="1" {{ $user->is_active == 1 ? 'selected' : '' }}>Active</option>
-										<option value="0" {{ $user->is_active == 0 ? 'selected' : '' }}>Disabled</option>
 									</select>
 								</div>
 							</div>

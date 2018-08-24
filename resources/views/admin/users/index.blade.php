@@ -21,7 +21,6 @@
 									<th>Name</th>
 									<th class="d-none d-sm-block td-min-height">Email</th>
 									<th>Role</th>
-									<th class="d-none d-sm-block">Status</th>
 									<th class="text-right">Actions</th>
 								</tr>
 							</thead>
@@ -31,7 +30,6 @@
 										<td class="text-capitalize">{{ $user->name }}</td>
 										<td class="d-none d-sm-block td-min-height">{{ $user->email }}</td>
 										<td class="text-capitalize ">{{ $user->role->name }}</td>
-										<td class="d-none d-sm-block">{{ $user->is_active == 1 ? 'Active' : 'Disabled' }}</td>
 										<td class="text-right">
 											<form method="POST" action="/admin/users/{{ $user->id }}">
 												{{ csrf_field() }}
