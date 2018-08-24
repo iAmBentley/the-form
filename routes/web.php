@@ -1,27 +1,21 @@
 <?php
 
-// HOME / LOGIN ROUTE
+// LOGIN - Redirects to orders.index after login
 Route::get('/', function () {
     return view('auth/login');
 });
 
-// LOGIN/LOGOUT AUTHENTICATION ROUTES...
+// LOGIN/LOGOUT (AUTHENTICATION ROUTES)
 // Prevented Guest Registration by Breaking out Auth Routes Required for login/logout only
+// This replaces the default...  Auth::routes();
 $this->get('/', 'Auth\LoginController@showLoginForm')->name('login');
 $this->post('/', 'Auth\LoginController@login');
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // ORDERS
-Route::get('/orders/getStoresByCat', 'OrderController@getStoresByCat');
-Route::get('/orders/getFormItems', 'OrderController@getFormItems'); //
+Route::get('/orders/getStoresByCat', 'OrderController@getStoresByCat'); // Used on Orders.Create for store data
+Route::get('/orders/getFormItems', 'OrderController@getFormItems'); // Used on Orders.Create for form item data
 Route::resource('orders', 'OrderController');
-
-// FORMS
-Route::get('/forms/juices', 'FormController@getJuiceForm');
-Route::get('/forms/flavors', 'FormController@getFlavorForm');
-Route::get('/forms/products', 'FormController@getProductForm');
-Route::get('/forms/supplies', 'FormController@getSupplyForm');
-Route::get('/forms/labels', 'FormController@getLabelForm');
 
 /* ADMIN SECTION */
 Route::prefix('admin')->group(function () {

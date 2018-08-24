@@ -57,7 +57,6 @@ class OrderController extends Controller
 		/* SET CORE VARIABLES */
 		$category_id = $request->selectedCat;
 		$store_id = $request->selectedStore;
-
 		/* QUERY ITEMS WITH SELECTED CAT_ID AND SELECTED STORE_ID */
 		$items = Item::whereHas('categories', function ($query) use ($category_id){
 			$query->where('id','=',$category_id);
@@ -69,7 +68,7 @@ class OrderController extends Controller
 		->where('is_active', 1)
 		->orderBy('name', 'asc')
 		->get();
-
+		/* SET CATNAME VARIABLE DEPENDING ON SELECTED CAT ID - USED FOR VIEW URL BELOW */
 		switch ($category_id) {
 			case 1: $catName = "flavors"; break;
 			case 2: $catName = "labels"; break;
@@ -77,8 +76,7 @@ class OrderController extends Controller
 			case 4: $catName = "juices"; break;
 			case 5: $catName = "products"; break;
 		};
-
-		/* PASS JSON BACK TO AJAX FILE */
+		/* RETURN THE FORM FILE TO THE ORDER FORM WITH THE ITEMS VARIABLE */
 		return view("/forms/".$catName , compact('items'));
 	}
 
@@ -109,11 +107,11 @@ class OrderController extends Controller
 		/* SAVE NEW ORDER TO DATABASE */
 		$order->save();
 		/* SEND ORDER EMAIL TO MANAGER */
-		$manager = User::where('name', 'bentley')->get();
+		$manager = User::where('name', 'bentley')->first();
 		$items = $order['items'];
 		\Mail::to($manager)->send(new OrderEmail($order, $items));
 		/* REDIRECT USER AND SHOW CONFIRMATION */
-		session()->flash('message', 'Order Created Successfully');
+		session()->flash('message', 'Order Sent Successfully');
 		return redirect('orders');
 	}
 
