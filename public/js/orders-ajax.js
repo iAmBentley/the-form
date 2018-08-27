@@ -22,7 +22,7 @@ $(document).ready(function(){
 				// Add default option in the store_select dropdown before for loop (.each) below
 				$("#store_select").append("<option value=''>Choose One</option>");
 				// Loop through storeData + display options in store_select dropdown
-				$.each(storeData[0].stores, function(i, e) {
+				$.each(storeData, function(i, e) {
 					$('#store_select').append($('<option>').val(e.id).text(e.name));
 				});
 			},

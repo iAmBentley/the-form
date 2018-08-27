@@ -46,38 +46,46 @@ class OrderController extends Controller
 	{
 		/* SET CORE VARIABLES */
 		$selectedCatId = $request->selectedCat;
-		$storesByCat = Category::with('stores')->where('id', $selectedCatId)->get();
+		$storesByCat = Store::whereHas('categories', function ($query) use ($selectedCatId){
+			$query->where('id', $selectedCatId);
+		})
+		->with('categories')
+		->where('is_active', 1)
+		->orderBy('name', 'asc')
+		->get();
 		/* PASS JSON BACK TO AJAX FILE WITH VARIABLES */
 		return response()->json($storesByCat);
 	}
+
 
 	/** GET ITEMS BY STORE BASED ON CATEGORY (AJAX - DROPDOWN ON.CHANGE) */
 	public function getFormItems(Request $request)
 	{
 		/* SET CORE VARIABLES */
-		$category_id = $request->selectedCat;
-		$store_id = $request->selectedStore;
+		$selectedCatId = $request->selectedCat;
+		$selectedStoreId = $request->selectedStore;
 		/* QUERY ITEMS WITH SELECTED CAT_ID AND SELECTED STORE_ID */
-		$items = Item::whereHas('categories', function ($query) use ($category_id){
-			$query->where('id','=',$category_id);
+		$items = Item::whereHas('categories', function ($query) use ($selectedCatId){
+			$query->where('id','=',$selectedCatId);
 		})
-		->whereHas('stores', function ($query) use ($store_id) {
-			$query->where('id','=',$store_id);
+		->whereHas('stores', function ($query) use ($selectedStoreId) {
+			$query->where('id','=',$selectedStoreId);
 		})
 		->with(['categories','stores'])
 		->where('is_active', 1)
 		->orderBy('name', 'asc')
 		->get();
 		/* SET CATNAME VARIABLE DEPENDING ON SELECTED CAT ID - USED FOR VIEW URL BELOW */
-		switch ($category_id) {
+		switch ($selectedCatId) {
 			case 1: $catName = "flavors"; break;
 			case 2: $catName = "labels"; break;
 			case 3: $catName = "supplies"; break;
 			case 4: $catName = "juices"; break;
 			case 5: $catName = "products"; break;
 		};
+		$vendor_id = "";
 		/* RETURN THE FORM FILE TO THE ORDER FORM WITH THE ITEMS VARIABLE */
-		return view("/forms/".$catName , compact('items'));
+		return view("/forms/".$catName , compact('items', 'vendor_id'));
 	}
 
 
@@ -119,8 +127,7 @@ class OrderController extends Controller
 	/** SHOW A SINGLE ORDER (SHOW) */
 	public function show(Order $order)
 	{
-		$items = $order['items'];
-		return view('orders.show', compact('order', 'items'));
+		return view('orders.show', compact('order'));
 	}
 
 

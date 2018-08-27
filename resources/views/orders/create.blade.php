@@ -31,7 +31,7 @@
 							<input type="hidden" class="form-control" name="is_filled" value="0">
 							<div id="form-category" class="col-md-6">
 								<div class="chekbox-title-dropdowns">
-									Form - What do you need?
+									What do you need?
 								</div>
 								<div class="form-check form-group">
 									<select class="text-capitalize form-control" id="category_select" name="category_id">
@@ -44,11 +44,12 @@
 							</div>
 							<div id="form-store" class="col-md-6">
 								<div class="chekbox-title-dropdowns">
-									Store - Where is it needed?
+									Where is it needed?
 								</div>
 								<div class="form-check form-group">
 									<select class="text-capitalize form-control" id="store_select" name="store_id">
 										<option value="" selected>Choose One</option>
+										{{-- STORE OPTIONS INJECTED BY JS BASED ON CATEGORY CHOSEN IN DROPDOWN ABOVE --}}
 									</select>
 								</div>
 							</div>

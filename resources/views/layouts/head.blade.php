@@ -4,7 +4,7 @@
 <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
 <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
 
-<title>Form</title>
+<title>modulo</title>
 
 {{-- BOOTSTRAP, FONTS AND ICONS CSS --}}
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
     integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
     crossorigin="anonymous" />
-<link href="{{ asset('css/bootstrap-switch.css') }}" rel="stylesheet" />
 
 {{-- CUSTOM CSS --}}
 <link href="{{ asset('css/paper-dashboard.css') }}" rel="stylesheet" />

@@ -12,7 +12,7 @@
 		<ul class="nav">
 			@if(Auth::check())
 				<li>
-					<a data-toggle="collapse" href="#userItems" style="border-bottom: 1px solid rgba(255, 255, 255, .3);">
+					<a data-toggle="collapse" href="#userItems" class="border-bottom">
 						<i class="fa fa-user"></i>
 							<p>Hello {{ Auth::user()->name }} <b class="caret"></b></p>
 					</a>
@@ -25,13 +25,13 @@
 								</a>
 							</li>
 							<li>
-								<a class="collapse pb-3" style="border-bottom: 1px solid rgba(255, 255, 255, .3);"
+								<a class="collapse pb-3 border-bottom"
 									href="{{ route('logout') }}" onclick="event.preventDefault();
 									document.getElementById('logout-form').submit();">
 									<span class="sidebar-mini-icon">&bull;</span>
 									<span class="sidebar-normal"> {{ __('Logout') }} </span>
 								</a>
-								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
 									@csrf
 								</form>
 							</li>

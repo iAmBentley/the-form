@@ -1,9 +1,9 @@
 {{-- PRODUCTS FORM --}}
 <div class="card-header">
-	<h5 class="card-title text-capitalize">products</h5>
+	<h5 class="card-title">Products</h5>
 </div>
 <div class="card-body">
-	<div class="row">
+	<div class="row mb-4">
 		@foreach($items as $product)
 			<div class="items col-lg-6">
 				<div class="chekbox-title text-capitalize pull-left">
@@ -16,14 +16,14 @@
 				        <span class="form-check-sign"></span>
 				    </label>
 				</div>
-				<div class="form-check-radio pull-right ml-2">
+				<div class="orange-radio form-check-radio pull-right ml-2">
 				    <label class="form-check-label">
 				        <input class="form-check-input" type="radio" name="items[{{$product->name}}]" value="Yes" >
 				        Yes
-				        <span class="form-check-sign"></span>
+				        <span class="form-check-sign orange-radio-yes"></span>
 				    </label>
 				</div>
-				<hr/>
+				<hr style="{{ $loop->last ? 'display:none' : '' }}">
 			</div>
 		@endforeach
 	</div>

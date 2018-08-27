@@ -121,6 +121,15 @@ class CategoriesStoresTableSeeder extends Seeder
                 ],[
                     'store_id' => '12',
                     'category_id' => '5'
+                ],[
+                    'store_id' => '13',
+                    'category_id' => '3'
+                ],[
+                    'store_id' => '13',
+                    'category_id' => '4'
+                ],[
+                    'store_id' => '13',
+                    'category_id' => '5'
                 ]
         	]
         );

@@ -199,6 +199,11 @@ input:checked + .slider::before {
 	border-top: 1px solid #dee2e6;
 	padding:12px 7px;
 }
+.orange-radio input[type="radio"]:checked+.orange-radio-yes::after {
+  color: #ef8157;
+}
+.pointer {cursor: pointer;}
+.bottom-border {border-bottom: 1px solid rgba(255, 255, 255, .3);}
 
 @media (max-width: 768px) {
 	.full-height {

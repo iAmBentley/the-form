@@ -1,9 +1,9 @@
 {{-- LABELS FORM --}}
 <div class="card-header">
-	<h5 class="card-title text-capitalize">Labels</h5>
+	<h5 class="card-title">Labels</h5>
 </div>
 <div class="card-body">
-	<div class="row">
+	<div class="row mb-4">
 		@foreach($items as $label)
 			<div id="form-category" class="col-lg-6 col-xl-4">
 				<div class="chekbox-title-dropdowns text-capitalize">

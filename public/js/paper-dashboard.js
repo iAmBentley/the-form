@@ -232,5 +232,19 @@ $('.delete-user').click(function () {
     });
 });
 
+// Make table rows clickable - on.click it searches row for href and uses it for the row's href
+$('#clickable-table tr').hover(function() {
+	// search row for href and set as href variable
+    var href = $(this).find("a").attr("href");
+    if(href) {
+    	// set cursor to pointer on hover
+        $(this).css('cursor', 'pointer');
+        // make row clickable - setting <a href="href">
+        $('tr').click(function() {
+        	window.location = href;
+        });
+    }
+});
+
 
 
