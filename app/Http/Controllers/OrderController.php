@@ -73,7 +73,7 @@ class OrderController extends Controller
 		})
 		->with(['categories','stores'])
 		->where('is_active', 1)
-		->orderBy('name', 'asc')
+		->orderBy('vendor_id', 'asc')
 		->get();
 		/* SET CATNAME VARIABLE DEPENDING ON SELECTED CAT ID - USED FOR VIEW URL BELOW */
 		switch ($selectedCatId) {

@@ -142,14 +142,47 @@
 		And repeat the logic
 	 --}}
 	
-	{{-- @php $vendor_id = ""; @endphp --}}
+
+
+	
+
+		@php $vendor_id = "";  @endphp
+		@foreach($items as $flavor)
+			<div class="row mb-4">
+				@if($vendor_id != $flavor->vendor_id)
+					<div class="col-md-12">
+						<h6 class="card-title text-danger text-capitalize">{{ $flavor->vendor->name }}</h6>
+					</div>
+					@php $vendor_id = $flavor->vendor_id; @endphp
+				@endif
+				<div id="form-category" class="col-lg-6 col-xl-4">
+					<div class="chekbox-title-dropdowns text-capitalize">
+						{{ $flavor->vendor->short_name }} - {{ $flavor->name }}
+					</div>
+					<div class="form-check form-group">
+						<select class="text-capitalize form-control" name="items[{{ $flavor->name }}]" id="category_select">
+							<option value="">None</option>
+							@foreach($flavor->sizes as $size)
+								<option value="{{ $size->name }}">{{ $size->name }}</option>
+							@endforeach
+						</select>
+					</div>
+				</div>
+			</div>
+		@endforeach
+
+
+	
+
+
+{{-- 	@php $vendor_id = ""; @endphp
 	@foreach($items as $flavor)
 		<div class="row mb-4">
-			{{-- @while($vendor_id = $flavor->vendor_id) --}}
+			
 			<div class="col-md-12">
 				<h6 class="card-title text-danger text-capitalize">{{ $flavor->vendor->name }}</h6>
 			</div>
-			
+			@if($vendor_id == $flavor->vendor_id)
 			<div id="form-category" class="col-lg-6 col-xl-4">
 				<div class="chekbox-title-dropdowns text-capitalize">
 					{{ $flavor->vendor->short_name }} - {{ $flavor->name }}
@@ -163,9 +196,10 @@
 					</select>
 				</div>
 			</div>
-			{{-- @endwhile --}}
+			@endif
+			
 		</div>
-	@endforeach
+	@endforeach --}}
 	
 	{{-- NOTES FIELD --}}
 	<div class="row">
