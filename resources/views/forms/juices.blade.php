@@ -1,9 +1,9 @@
 {{-- JUICES FORM --}}
 <div class="card-header">
-	<h5 class="card-title">Juices</h5>
+	<h5 class="card-title">Blended Juices</h5>
 </div>
 <div class="card-body">
-	<div class="row mb-4">
+	<div class="row ">
 		@foreach($items as $juice)	
 			<div class="items col-lg-6">
 				<div class="chekbox-title text-capitalize pull-left">
@@ -23,9 +23,16 @@
 				        <span class="form-check-sign orange-radio-yes"></span>
 				    </label>
 				</div>
-				<hr/>
+				<hr style="{{ $loop->last ? 'display:none' : '' }}">
 			</div>
 		@endforeach
+	</div>
+</div>
+<div class="card-header">
+	<h5 class="card-title">Max VG Juices</h5>
+</div>
+<div class="card-body">
+	<div class="row mb-4">
 		@foreach($items as $dripline)
 			@if($dripline->is_drip == 1)
 				<div class="items col-lg-6">

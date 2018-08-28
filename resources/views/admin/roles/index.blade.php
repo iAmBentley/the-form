@@ -7,7 +7,7 @@
 			<div class="card">
 				{{-- TABLE TITLE --}}
 				<div class="card-header">
-					<h4 class="card-title pull-left">Roles <small class="sm-text-jb">({{ $roles->count() }} Total)</small></h4>
+					<h4 class="card-title pull-left">Roles <small class="sm-text-jb">({{ $roles->count() }})</small></h4>
 					<a href="roles/create" class="create-btn btn btn-danger btn-just-icon pull-right">
 						<i class="fa fa-plus"></i>
 					</a>

@@ -7,7 +7,7 @@
 			<div class="card">
 				{{-- TABLE TITLE --}}
 				<div class="card-header">
-					<h4 class="card-title pull-left">Users <small class="sm-text-jb">({{ $users->count() }} Total)</small></h4>
+					<h4 class="card-title pull-left">Users <small class="sm-text-jb">({{ $users->count() }})</small></h4>
 					<a href="users/create" class="create-btn btn btn-danger btn-just-icon pull-right">
 						<i class="fa fa-plus"></i>
 					</a>

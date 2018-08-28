@@ -74,6 +74,7 @@ class OrderController extends Controller
 		->with(['categories','stores'])
 		->where('is_active', 1)
 		->orderBy('vendor_id', 'asc')
+		->orderBy('name', 'asc')
 		->get();
 		/* SET CATNAME VARIABLE DEPENDING ON SELECTED CAT ID - USED FOR VIEW URL BELOW */
 		switch ($selectedCatId) {
@@ -83,9 +84,8 @@ class OrderController extends Controller
 			case 4: $catName = "juices"; break;
 			case 5: $catName = "products"; break;
 		};
-		$vendor_id = "";
 		/* RETURN THE FORM FILE TO THE ORDER FORM WITH THE ITEMS VARIABLE */
-		return view("/forms/".$catName , compact('items', 'vendor_id'));
+		return view("/forms/".$catName , compact('items', 'flavors'));
 	}
 
 
@@ -127,7 +127,8 @@ class OrderController extends Controller
 	/** SHOW A SINGLE ORDER (SHOW) */
 	public function show(Order $order)
 	{
-		return view('orders.show', compact('order'));
+		$items = $order['items'];
+		return view('orders.show', compact('order', 'items'));
 	}
 
 

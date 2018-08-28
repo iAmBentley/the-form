@@ -7,7 +7,7 @@
 			<div class="card">
 				{{-- TABLE TITLE --}}
 				<div class="card-header">
-					<h4 class="card-title pull-left">Stores <small class="sm-text-jb">({{ $stores->count() }} Total)</small></h4>
+					<h4 class="card-title pull-left">Stores <small class="sm-text-jb">({{ $stores->count() }})</small></h4>
 					<a href="stores/create" class="create-btn btn btn-danger btn-just-icon pull-right">
 						<i class="fa fa-plus"></i>
 					</a>
@@ -27,7 +27,7 @@
 							<tbody>
 								@foreach($stores as $store)
 									<tr>
-										<td class="text-capitalized">{{ $store->name }}</td>
+										<td class="text-capitalize">{{ $store->name }}</td>
 										<td class="d-none d-sm-block text-capitalize">
 											@foreach($store->categories as $key => $category)
 												@if($key)

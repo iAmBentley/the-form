@@ -57,7 +57,7 @@
 							</thead>
 							<tbody>
 								{{-- LOOP THROUGH ITEMS ARRAY ON DATABASE --}}
-								@foreach($order->items as $item => $size)
+								@foreach($items as $item => $size)
 									@if($size && $size != "No")
 										<tr>
 									        <td class="text-capitalize"> {{ $item }} </td>
