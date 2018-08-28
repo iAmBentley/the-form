@@ -39,7 +39,13 @@
 									<input type="hidden" name="items[{{$item}}]" value="{{ $size }}">
 								@endforeach
 								{{-- MARK AS FILLED BUTTON (TRIGGERS UPDATE() ON ORDERS) --}}
-								<button value="{{ $order->id }}" class="fill-order {{ $order->is_filled == 1 ? 'btn-success disabled' : 'btn-default' }} btn btn-round pull-right mt-0" data-toggle="tooltip" title="Mark as Filled">
+								<button value="{{ $order->id }}" 
+									class="fill-order btn btn-round pull-right mt-0
+										{{-- If order is filled make fill btn green n disable; Else color it gray --}}
+										{{ $order->is_filled == 1 ? 'btn-success disabled' : 'btn-default' }}
+										{{-- If user logged in is staff, disable mark as filled button --}}
+										{{ Auth::user()->role_id == 3 ? 'disabled' : '' }}" 
+									data-toggle="tooltip" title="Mark as Filled">
 									<i class="fa fa-check"></i>
 								</button>
 							</form>

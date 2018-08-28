@@ -42,7 +42,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Password</label>
-									<input type="password" class="form-control" name="password" value="{{ $user->password }}">
+									<input type="password" class="form-control" name="password" value="">
 								</div>
 							</div>
 							<div class="col-md-6">

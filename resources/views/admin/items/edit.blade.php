@@ -147,7 +147,7 @@
 								<div class="form-check form-check-inline">
 									<label class="form-check-label">
 										<input class="form-check-input only-one-chekbox" type="checkbox" name="is_drip" value="0"
-											{{ $item->is_drip == 0 ? 'checked="checked"' : '' }}>
+											{{ $item->is_drip === 0 ? 'checked="checked"' : '' }}>
 										No
 										<span class="chekbox form-check-sign"></span>
 									</label>

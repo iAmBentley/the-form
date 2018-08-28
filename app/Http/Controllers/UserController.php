@@ -72,7 +72,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'nullable|email',
-            'password' => 'required|min:4',
+            'password' => 'nullable',
             'role_id' => 'required',
         ]);
         /* SAVE VALIDATED DATA TO DATABASE */
@@ -84,11 +84,11 @@ class UserController extends Controller
         ])->save();
         /* CONFIRM UPDATE AND REDIRECT USER */
         session()->flash('message', 'User Updated Successfully');
-        /* IF LOGGED IN USER IS NOT STAFF - REDIRECT TO USERS.INDEX - ELSE - GO TO THEIR PROFILE EDIT PAGE */
+        /* IF LOGGED IN USER IS NOT STAFF - REDIRECT TO USERS.INDEX - ELSE - GO TO ORDERS INDEX */
         if(\Auth::user()->role_id != 3) {
             return redirect('admin/users');
         } else {
-            return back();
+            return redirect('/orders');
         };
     }
 

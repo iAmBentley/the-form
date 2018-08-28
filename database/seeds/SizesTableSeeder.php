@@ -45,11 +45,7 @@ class SizesTableSeeder extends Seeder
         			'name' => '3000',
                     'category_id' => '2',
         			'created_at' => date("Y-m-d H:i:s")
-        		],[
-                    'name' => 'Yes',
-                    'category_id' => '4',
-                    'created_at' => date("Y-m-d H:i:s")
-                ]
+        		]
         	]
         );
     }
