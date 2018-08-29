@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-	{{-- ORDERS TABLE --}}
 	<div class="row">
 		<div class="col-md-12 ml-auto mr-auto">
 			<div class="card">
+				{{-- HEADER TITLE --}}
 				<div class="card-header">
 					<h4 class="card-title pull-left">Orders <small class="sm-text-jb">({{ $orders->count() }})</small></h4>
 					<a href="orders/create" class="create-btn btn btn-danger btn-just-icon pull-right">
@@ -13,7 +13,8 @@
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
-						<table class="table">
+						{{-- ORDERS TABLE --}}
+						<table class="table" id="clickable-table">
 							<thead class="text-primary">
 								<tr>
 									<th>Date</th>
@@ -40,6 +41,10 @@
 												@foreach($order->items as $item => $size)
 													<input type="hidden" name="items[{{$item}}]" value="{{ $size }}">
 												@endforeach
+												{{-- VIEW BUTTON --}}
+												<a href="orders/{{ $order->id }}" class="btn btn-info btn-icon btn-sm " data-toggle="tooltip" title="View Order">
+													<i class="fa fa-eye"></i>
+												</a>
 												{{-- MARK AS FILLED BUTTON (TRIGGERS UPDATE() ON ORDERS) --}}
 												<button value="{{ $order->id }}" 
 													class="fill-order btn btn-icon btn-sm
@@ -50,10 +55,6 @@
 													data-toggle="tooltip" title="Mark as Filled">
 													<i class="fa fa-check"></i>
 												</button>
-												{{-- VIEW BUTTON --}}
-												<a href="orders/{{ $order->id }}" class="btn btn-info btn-icon btn-sm " data-toggle="tooltip" title="View Order">
-													<i class="fa fa-eye"></i>
-												</a>
 											</form>
 										</td>
 									</tr>

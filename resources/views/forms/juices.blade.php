@@ -1,8 +1,9 @@
-{{-- JUICES FORM --}}
+{{-- JUICES ITEM BLOCK FOR ORDER.CREATE AJAX --}}
 <div class="card-header">
 	<h5 class="card-title">Blended Juices</h5>
 </div>
 <div class="card-body">
+	{{-- ITEMS - BLENDED LINE --}}
 	<div class="row ">
 		@foreach($items as $juice)	
 			<div class="items col-lg-6">
@@ -28,10 +29,12 @@
 		@endforeach
 	</div>
 </div>
+{{-- DRIP LINE SECTION --}}
 <div class="card-header">
 	<h5 class="card-title">Max VG Juices</h5>
 </div>
 <div class="card-body">
+	{{-- ITEMS - DRIPLINE --}}
 	<div class="row mb-4">
 		@foreach($items as $dripline)
 			@if($dripline->is_drip == 1)
@@ -58,6 +61,7 @@
 			@endif
 		@endforeach
 	</div>
+	{{-- NOTES --}}
 	<div class="row">
 		<div class="col-md-12">
 			<div class="form-group">
@@ -66,6 +70,7 @@
 			</div>
 		</div>
 	</div>
+	{{-- BUTTONE SET --}}
 	<div class="row">
 		<div class="update ml-auto mr-auto">
 			<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Send Order</button>

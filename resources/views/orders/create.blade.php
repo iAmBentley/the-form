@@ -9,16 +9,15 @@
 @endsection
 
 @section('content')
-	{{-- ITEMS FORM --}}
 	<div class="row">
 		<div class="col-md-12 ml-auto mr-auto">
-
 			@include('layouts.errors')
-			
+			{{-- ITEMS FORM --}}
 			<form id="modulo" method="POST" action="/orders">
 				{{ csrf_field() }}
 				{{-- ITEMS SETUP CARD --}}
 				<div class="card card-user">
+					{{-- HEADER TITLE --}}
 					<div class="card-header">
 						<h5 class="card-title pull-left">Create an Order</h5>
 						<a href="/orders" class="create-btn btn btn-default btn-just-icon pull-right">
@@ -29,6 +28,7 @@
 						<div class="row">
 							<input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id }}">
 							<input type="hidden" class="form-control" name="is_filled" value="0">
+							{{-- CATEGORY DROPDOWN SELECT --}}
 							<div id="form-category" class="col-md-6">
 								<div class="chekbox-title-dropdowns">
 									What do you need?
@@ -42,6 +42,7 @@
 									</select>
 								</div>
 							</div>
+							{{-- STORE DROPDOWN SELECT --}}
 							<div id="form-store" class="col-md-6">
 								<div class="chekbox-title-dropdowns">
 									Where is it needed?

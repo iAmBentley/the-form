@@ -6,6 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\User;
 use App\Role;
+use Illuminate\Support\Facades\Hash;
+
 
 class User extends Authenticatable
 {
@@ -19,6 +21,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
     /** A USER BELONGS TO ONE ROLE */
     public function role() {
         return $this->belongsTo(Role::class);
@@ -26,5 +29,14 @@ class User extends Authenticatable
     /** A USER BELONGS TO ONE ORDER */
     public function orders() {
         return $this->belongsTo(Order::class);
+    }
+
+    /** HASH ALL PASSWORDS BY DEFAULT */
+    public function setPasswordAttribute($password)
+    {
+        if ( $password !== null & $password !== "" )
+        {
+            $this->attributes['password'] = Hash::make(request('password'));
+        }
     }
 }

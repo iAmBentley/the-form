@@ -74,7 +74,7 @@ class OrderController extends Controller
 		->with(['categories','stores'])
 		->where('is_active', 1)
 		->orderBy('vendor_id', 'asc')
-		->orderBy('name', 'asc')
+		->orderBy('name')
 		->get();
 		/* SET CATNAME VARIABLE DEPENDING ON SELECTED CAT ID - USED FOR VIEW URL BELOW */
 		switch ($selectedCatId) {
@@ -127,14 +127,14 @@ class OrderController extends Controller
 	/** SHOW A SINGLE ORDER (SHOW) */
 	public function show(Order $order)
 	{
-		$items = $order['items'];
-		return view('orders.show', compact('order', 'items'));
+		// $items = $order['items'];
+		return view('orders.show', compact('order'));
 	}
 
 
 	/** UPDATE ORDER FROM IS_FILLED=0 TO IS_FILLED=1 + UPDATE ON DB
 		This is done via ajax - see orders-ajax.js
-		Can be done by button click on order view page and orders index page
+		Triggered by button click on orders.show and/or orders.index
 	*/
 	public function update(Request $request, Order $order)
 	{

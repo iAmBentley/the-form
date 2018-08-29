@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-	{{-- ITEMS TABLE --}}
 	<div class="row">
 		<div class="col-md-12 ml-auto mr-auto">
 			<div class="card">
+				{{-- HEADER TITLE --}}
 				<div class="card-header">
 					<h4 class="card-title pull-left">Items <small class="sm-text-jb">({{ $items->count() }})</small></h4>
 					<a href="items/create" class="create-btn btn btn-danger btn-just-icon pull-right">
@@ -13,6 +13,7 @@
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
+						{{-- ITEMS TABLE --}}
 						<table class="table" id="clickable-table">
 							<thead class="text-primary">
 								<tr>

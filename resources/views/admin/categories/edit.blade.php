@@ -1,27 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-	{{-- CATEGORIES FORM --}}
 	<div class="row">
 		<div class="col-md-12 ml-auto mr-auto">
 			<div class="card card-user">
+				{{-- HEADER TITLE --}}
 				<div class="card-header">
 					<h5 class="card-title">Edit a Category</h5>
 				</div>
 				<div class="card-body">
-
 					@include('layouts.errors')
-
+					{{-- CATEGORIES FORM --}}
 					<form id="modulo" method="POST" action="/admin/categories/{{ $category->id }}">
 						{{ csrf_field() }}
 						{{ method_field('PATCH') }}
 						<div class="row">
+							{{-- NAME INPUT --}}
 							<div class="col-md-8">
 								<div class="form-group">
 									<label>Name</label>
-									<input type="text" class="form-control" name="name" value="{{ $category->name}}" autofocus>
+									<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" value="{{ $category->name}}" autofocus>
 								</div>
 							</div>
+							{{-- STATUS DROPDOWN SELECT --}}
 							<div class="col-md-4">
 								<div class="chekbox-title-dropdowns">
 									Status
@@ -35,10 +36,11 @@
 								</div>
 							</div>
 						</div>
+						{{-- BUTTON SET --}}
 						<div class="row">
 							<div class="update ml-auto mr-auto">
-								<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save Category</button>
 								<a href="{{ route('categories.index') }}" class="btn btn-round">Cancel</a>
+								<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save Category</button>
 							</div>
 						</div>
 					</form>

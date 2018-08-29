@@ -32,6 +32,8 @@ Route::prefix('admin')->group(function () {
 	/* SIZES INDEX + CRUD */
 	Route::resource('sizes', 'SizeController');
 	/* USERS INDEX + CRUD */
+	Route::get('users/{user}/edit-pw', 'UserController@editPassword'); // Change Password view
+	Route::put('users/{user}/update-pw', 'UserController@updatePassword'); // Change Password save
 	Route::resource('users', 'UserController');
 	/* ROLES INDEX + CRUD */
 	Route::resource('roles', 'RoleController');

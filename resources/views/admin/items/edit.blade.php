@@ -1,17 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-	{{-- ITEMS FORM --}}
 	<div class="row">
 		<div class="col-md-12 ml-auto mr-auto">
 			<div class="card card-user">
+				{{-- HEADER TILE --}}
 				<div class="card-header">
 					<h5 class="card-title">Edit an Item</h5>
 				</div>
 				<div class="card-body">
-
 					@include('layouts.errors')
-
+					{{-- ITEMS FORM --}}
 					<form id="modulo" method="POST" action="/admin/items/{{ $item->id }}">
 						{{ csrf_field() }}
 						{{ method_field('PATCH') }}
@@ -20,7 +19,7 @@
 							<div class="col-md-8">
 								<div class="form-group">
 									<label>Name</label>
-									<input type="text" class="form-control" name="name" value="{{ $item->name }}" autofocus>
+									<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" value="{{ $item->name }}" autofocus>
 								</div>
 							</div>
 							{{-- ITEM STATUS SELECT DROPDOWN --}}
@@ -154,10 +153,11 @@
 								</div>
 							</div>    
 						</div>
+						{{-- BUTTON SET --}}
 						<div class="row">
 							<div class="update ml-auto mr-auto">
-								<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save Item</button>
 								<a href="{{ route('items.index') }}" class="btn btn-round">Cancel</a>
+								<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save Item</button>
 							</div>
 						</div>
 					</form>

@@ -1,8 +1,9 @@
-{{-- LABELS FORM --}}
+{{-- LABELS ITEM BLOCK FOR ORDER.CREATE AJAX --}}
 <div class="card-header">
 	<h5 class="card-title">Labels</h5>
 </div>
 <div class="card-body">
+	{{-- ITEMS --}}
 	<div class="row mb-4">
 		@foreach($items as $label)
 			<div id="form-category" class="col-lg-6 col-xl-4">
@@ -13,13 +14,16 @@
 					<select class="text-capitalize form-control" id="category_select" name="items[{{ $label->name }}]">
 						<option value="">None</option>
 						@foreach($label->sizes as $size)
+							@if($size->is_active == 1)
 							<option value="{{ $size->name }}">{{ $size->name }}</option>
+							@endif
 						@endforeach
 					</select>
 				</div>
 			</div>
 		@endforeach
 	</div>
+	{{-- NOTES --}}
 	<div class="row">
 		<div class="col-md-12">
 			<div class="form-group">
@@ -28,6 +32,7 @@
 			</div>
 		</div>
 	</div>
+	{{-- BUTTON SET --}}
 	<div class="row">
 		<div class="update ml-auto mr-auto">
 			<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Send Order</button>

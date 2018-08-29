@@ -1,28 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-	{{-- SIZES FORM --}}
 	<div class="row">
 		<div class="col-md-12 ml-auto mr-auto">
 			<div class="card card-user">
+				{{-- HEADER TITLE --}}
 				<div class="card-header">
 					<h5 class="card-title">Create a Size</h5>
 				</div>
 				<div class="card-body">
-
 					@include('layouts.errors')
-
+					{{-- SIZES FORM --}}
 					<form id="modulo" method="POST" action="/admin/sizes">
 						{{ csrf_field() }}
 						<input type="hidden" name="is_active" value="1">
+						{{-- NAME INPUT --}}
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
 									<label>Name</label>
-									<input type="text" class="form-control" name="name" autofocus>
+									<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" autofocus>
 								</div>
 							</div>
 						</div>
+						{{-- CATEGORY CHECKBOXES --}}
 						<div class="row">
 							<div class="col-sm-12">
 								<div class="chekbox-title">
@@ -39,10 +40,11 @@
 								@endforeach
 							</div>
 						</div>
+						{{-- BUTTON SET --}}
 						<div class="row">
 							<div class="update ml-auto mr-auto">
-								<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save Size</button>
 								<a href="{{ route('sizes.index') }}" class="btn btn-round">Cancel</a>
+								<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save Size</button>
 							</div>
 						</div>
 					</form>

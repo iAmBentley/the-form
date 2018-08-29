@@ -1,8 +1,9 @@
-{{-- SUPPLIES FORM --}}	
+{{-- SUPPLIES ITEM BLOCK FOR ORDER.CREATE AJAX --}}
 <div class="card-header">
 	<h5 class="card-title">Supplies</h5>
 </div>
 <div class="card-body">
+	{{-- ITEMS --}}
 	<div class="row mb-4">
 		@foreach($items as $supply)
 			<div class="items col-lg-6">
@@ -27,6 +28,7 @@
 			</div>
 		@endforeach
 	</div>
+	{{-- NOTES --}}
 	<div class="row">
 		<div class="col-md-12">
 			<div class="form-group">
@@ -35,6 +37,7 @@
 			</div>
 		</div>
 	</div>
+	{{-- BUTTON SET --}}
 	<div class="row">
 		<div class="update ml-auto mr-auto">
 			<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Send Order</button>

@@ -57,6 +57,9 @@
 									<p style="padding:12px 7px;">{{ $order->notes }}</p>
 								</div>
 								@endif
+								<div>
+									<a href="http://ilmodulo.xyz/orders" style="background-color:#ef8157;text-transform:uppercase;margin:10px 1px;border-radius:1.5rem;text-decoration:none;padding:11px 0px;color:#FFFFFF;display:inline-block;text-align:center;width:100%;">View Order</a>
+								</div>
 							</div>
 						</div>
 					</div>

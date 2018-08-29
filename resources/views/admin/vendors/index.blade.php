@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-	{{-- VENDORS TABLE --}}
 	<div class="row">
 		<div class="col-md-12 ml-auto mr-auto">
 			<div class="card">
@@ -12,7 +11,7 @@
 						<i class="fa fa-plus"></i>
 					</a>
 				</div>
-				{{-- TABLE --}}
+				{{-- VENDORS TABLE --}}
 				<div class="card-body">
 					<div class="table-responsive">
 						<table class="table" id="clickable-table">

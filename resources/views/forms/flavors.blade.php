@@ -1,9 +1,11 @@
+{{-- FLAVORS ITEM BLOCK FOR ORDER.CREATE AJAX --}}
 <div class="card-header">
 	<h5 class="card-title">Flavors</h5>
 </div>
 <div class="card-body">
 	{{-- FLAVOR AND SIZE DROPDOWN SELECT --}}
 	@php $vendor_id = "";  @endphp
+	{{-- ITEMS --}}
 	<div class="row mb-4">
 		@foreach($items as $flavor)
 				@if($vendor_id != $flavor->vendor_id)

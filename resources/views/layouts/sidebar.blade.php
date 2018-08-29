@@ -1,5 +1,6 @@
 {{-- SIDEBAR --}}
 <div class="sidebar" data-color="" data-active-color="danger">
+	{{-- LOGO SECTION --}}
 	<div class="logo">
 		<a href="/" class="simple-text logo-mini">
 			<div class="logo-image-small">
@@ -8,8 +9,10 @@
 		</a>
 		<a href="/" class="simple-text logo-normal">il modulo</a>
 	</div>
+	{{-- NAVIGATION LINKS --}}
 	<div class="sidebar-wrapper">
 		<ul class="nav">
+			{{-- LOGGED IN USER SECTION - IF USER IS LOGGED IN --}}
 			@if(Auth::check())
 				<li>
 					<a data-toggle="collapse" href="#userItems" class="border-bottom">
@@ -22,6 +25,12 @@
 								<a href="/admin/users/{{Auth::user()->id}}/edit">
 									<span class="sidebar-mini-icon">&bull;</span>
 									<span class="sidebar-normal">Edit Profile</span>
+								</a>
+							</li>
+							<li>
+								<a href="/admin/users/{{Auth::user()->id}}/edit-pw">
+									<span class="sidebar-mini-icon">&bull;</span>
+									<span class="sidebar-normal">Change Password</span>
 								</a>
 							</li>
 							<li>
@@ -39,6 +48,7 @@
 					</div>
 				</li>
 			@endif
+			{{-- ORDER LINKS --}}
 			<li>
 				<a href="/orders/create">
 					<i class="fa fa-plus"></i>
@@ -51,7 +61,7 @@
 					<p>Past Orders</p>
 				</a>
 			</li>
-			{{-- SHOW ADMIN SECTION IF ROLE IS ADMIN OR MANAGER --}}
+			{{-- ADMIN SECTION LINKS - IF ROLE IS NOT STAFF --}}
 			@if( Auth::user()->role_id != 3 )
 				<li>
 					<a data-toggle="collapse" href="#adminItems">
@@ -80,7 +90,7 @@
 									<span class="sidebar-normal"> Vendors </span>
 								</a>
 							</li>
-							{{-- SHOW ADMIN SUB-SECTION IF ROLE IS ADMIN --}}
+							{{-- ADMIN SUB-SECTION - IF ROLE IS ADMIN --}}
 							@if( Auth::user()->role_id == 1 )
 								<li>
 									<a href="/admin/categories">
@@ -111,6 +121,7 @@
 					</div>
 				</li>
 			@endif
+			{{-- COPYRIGHT DATE SIDEBAR FIXED FOOTER --}}
 			<li class="nav-footer">
 				©<script>document.write(new Date().getFullYear());</script> | Moticorp Creative
 			</li>

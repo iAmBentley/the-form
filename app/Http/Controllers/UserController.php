@@ -6,6 +6,7 @@ use App\User;
 use App\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdatePassword;
 
 class UserController extends Controller
 {
@@ -19,7 +20,7 @@ class UserController extends Controller
     /** SHOW TABLE OF ALL USER (INDEX) */
     public function index()
     {
-        $users = User::orderBy('created_at', 'desc')->get();
+        $users = User::orderBy('name')->get();
         return view('admin/users.index', compact('users'));
     }
 
@@ -72,22 +73,50 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'nullable|email',
-            'password' => 'nullable',
             'role_id' => 'required',
         ]);
         /* SAVE VALIDATED DATA TO DATABASE */
         $user->fill([
             'name' => request('name'),
             'email' => request('email'),
-            'password' => Hash::make(request('password')),
             'role_id' => request('role_id'),
         ])->save();
         /* CONFIRM UPDATE AND REDIRECT USER */
         session()->flash('message', 'User Updated Successfully');
-        /* IF LOGGED IN USER IS NOT STAFF - REDIRECT TO USERS.INDEX - ELSE - GO TO ORDERS INDEX */
+        /* REDIRECT USER */
         if(\Auth::user()->role_id != 3) {
+            /* IF ADMIN OR MANAGER GO BACK TO USERS INDEX */
             return redirect('admin/users');
         } else {
+            /* IF STAFF GO BACK TO ORDERS INDEX */
+            return redirect('/orders');
+        };
+    }
+
+
+    /** SHOW FORM FOR EDITING USER PASSWORD */
+    public function editPassword(User $user)
+    {
+        return view('admin/users.edit-pw', compact('user'));
+    }
+
+
+    /** SAVE UPDATED PASSWORD TO DATABASE */
+    public function updatePassword(UpdatePassword $request, User $user)
+    {
+        /* SAVE VALIDATED DATA TO DATABASE */
+        $user->password = request('password');
+        /* SET SESSION MESSAGE AND REDIRECT USER */
+        if ($user->save()) { 
+            session()->flash('message', 'Password Updated Successfully');
+        } else {
+            session()->flash('message', 'Password Update Failed');
+        }
+        if(\Auth::user()->role_id != 3) {
+            /* IF ADMIN OR MANAGER GO BACK TO USERS INDEX */
+            return redirect('admin/users');
+        } else {
+            /* IF STAFF GO BACK TO ORDERS INDEX */
             return redirect('/orders');
         };
     }

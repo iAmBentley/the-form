@@ -1,17 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-	{{-- ITEMS FORM --}}
 	<div class="row">
 		<div class="col-md-12 ml-auto mr-auto">
 			<div class="card card-user">
+				{{-- HEADER TITLE --}}
 				<div class="card-header">
 					<h5 class="card-title">Create an Item</h5>
 				</div>
 				<div class="card-body">
-
 					@include('layouts.errors')
-					
+					{{-- ITEMS FORM --}}
 					<form id="modulo" method="POST" action="/admin/items">
 						{{ csrf_field() }}
 						<input type="hidden" class="form-control" name="is_active" value="1">
@@ -20,7 +19,7 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label>Name</label>
-									<input type="text" class="form-control" name="name" placeholder="Name of Item" autofocus>
+									<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" placeholder="Name of Item" autofocus>
 								</div>
 							</div>
 						</div>
@@ -109,8 +108,8 @@
 						</div>
 						<div class="row">
 							<div class="update ml-auto mr-auto">
-								<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save Item</button>
 								<a href="{{ route('items.index') }}" class="btn btn-round">Cancel</a>
+								<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save Item</button>
 							</div>
 						</div>
 					</form>

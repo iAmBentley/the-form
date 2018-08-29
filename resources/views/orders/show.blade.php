@@ -27,6 +27,7 @@
 							<div class="mb-2"><strong>By: </strong> {{ $order->users->name }} </div>
 						</div>
 						<div class="col-4">
+							{{-- MARK ORDER AS FILLED FORM --}}
 							<form method="POST" action="/orders/{{ $order->id }}">
 								{{ csrf_field() }}
 								{{ method_field('PATCH') }}
@@ -63,7 +64,7 @@
 							</thead>
 							<tbody>
 								{{-- LOOP THROUGH ITEMS ARRAY ON DATABASE --}}
-								@foreach($items as $item => $size)
+								@foreach($order->items as $item => $size)
 									@if($size && $size != "No")
 										<tr>
 									        <td class="text-capitalize"> {{ $item }} </td>
@@ -74,6 +75,7 @@
 							</tbody>
 						</table>
 					</div>
+					{{-- ORDER NOTES - IF THERE ARE ANY --}}
 					@if($order->notes)
 						<div >
 							<h5 class="text-primary note-title">Notes</h5>

@@ -1,27 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-	{{-- SIZES FORM --}}
 	<div class="row">
 		<div class="col-md-12 ml-auto mr-auto">
 			<div class="card card-user">
+				{{-- HEADER TITLE --}}
 				<div class="card-header">
 					<h5 class="card-title">Edit a Size</h5>
 				</div>
 				<div class="card-body">
-
 					@include('layouts.errors')
-
+					{{-- SIZES FORM --}}
 					<form id="modulo" method="POST" action="/admin/sizes/{{ $size->id }}">
 						{{ csrf_field() }}
 						{{ method_field('PATCH') }}
 						<div class="row">
+							{{-- NAME INPUT --}}
 							<div class="col-md-8">
 								<div class="form-group">
 									<label>Name</label>
-									<input type="text" class="form-control" name="name" value="{{ $size->name}}" autofocus>
+									<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" value="{{ $size->name}}" autofocus>
 								</div>
 							</div>
+							{{-- STATUS DROPDOWN SELECT --}}
 							<div class="col-md-4">
 								<div class="chekbox-title-dropdowns">
 									Status
@@ -41,6 +42,7 @@
 							</div>
 						</div>
 						<div class="row">
+							{{-- CATEGORY CHECKBOXES --}}
 							<div class="col-sm-12">
 								<div class="chekbox-title">
 									Category (One Per Size)
@@ -60,10 +62,11 @@
 								@endforeach
 							</div>
 						</div>
+						{{-- BUTTON SET --}}
 						<div class="row">
 							<div class="update ml-auto mr-auto">
-								<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save Size</button>
 								<a href="{{ route('sizes.index') }}" class="btn btn-round">Cancel</a>
+								<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save Size</button>
 							</div>
 						</div>
 					</form>
