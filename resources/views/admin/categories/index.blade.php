@@ -26,7 +26,7 @@
 							<tbody>
 								{{-- BRING IN AND LOOP THROUGH CATEGORIES FROM DATABASE --}}
 								@foreach($categories as $category)
-									<tr>
+									<tr data-id="{{$category->id}}" data-location="/admin/categories/{{$category->id}}/edit">
 										<td class="text-capitalize">{{ $category->name }}</td>
 										{{-- IF CATEGORY IS_ACTIVE MARK ACTIVE ELSE DISABLED --}}
 										<td class="d-none d-sm-block">{{ $category->is_active == 1 ? 'Active' : 'Disabled' }}</td>

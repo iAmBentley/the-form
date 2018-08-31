@@ -52,7 +52,7 @@ class UserController extends Controller
         ]);
         /* REDIRECT USER AFTER SAVE */
         session()->flash('message', 'User Added Successfully');
-        return redirect('admin/users');
+        return redirect('/admin/users');
     }
 
 
@@ -82,11 +82,15 @@ class UserController extends Controller
             'role_id' => request('role_id'),
         ])->save();
         /* CONFIRM UPDATE AND REDIRECT USER */
-        session()->flash('message', 'User Updated Successfully');
+        if(!$user->save()) {
+            session()->flash('message', 'Contact Manager. ERROR: User did not update');
+        } else {
+            session()->flash('message', 'User Updated Successfully');
+        }
         /* REDIRECT USER */
         if(\Auth::user()->role_id != 3) {
             /* IF ADMIN OR MANAGER GO BACK TO USERS INDEX */
-            return redirect('admin/users');
+            return redirect('/admin/users');
         } else {
             /* IF STAFF GO BACK TO ORDERS INDEX */
             return redirect('/orders');
@@ -97,7 +101,7 @@ class UserController extends Controller
     /** SHOW FORM FOR EDITING USER PASSWORD */
     public function editPassword(User $user)
     {
-        return view('admin/users.edit-pw', compact('user'));
+        return view('/admin/users.edit-pw', compact('user'));
     }
 
 
@@ -107,14 +111,14 @@ class UserController extends Controller
         /* SAVE VALIDATED DATA TO DATABASE */
         $user->password = request('password');
         /* SET SESSION MESSAGE AND REDIRECT USER */
-        if ($user->save()) { 
-            session()->flash('message', 'Password Updated Successfully');
+        if (!$user->save()) { 
+            session()->flash('message', 'Contact Manager: ERROR: Password did not update');
         } else {
-            session()->flash('message', 'Password Update Failed');
+            session()->flash('message', 'Password Updated Successfully');
         }
         if(\Auth::user()->role_id != 3) {
             /* IF ADMIN OR MANAGER GO BACK TO USERS INDEX */
-            return redirect('admin/users');
+            return redirect('/admin/users');
         } else {
             /* IF STAFF GO BACK TO ORDERS INDEX */
             return redirect('/orders');
@@ -127,8 +131,12 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        session()->flash('message', 'User Deleted Successfully');
-        return redirect('admin/users');
+        if(!$user->delete()) {
+            session()->flash('message', 'Contact Manager. ERROR: User was not deleted');
+        } else {
+            session()->flash('message', 'User Deleted Successfully');
+        }
+        return redirect('/admin/users');
     }
 
 }

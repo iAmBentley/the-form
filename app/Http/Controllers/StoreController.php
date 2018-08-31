@@ -50,8 +50,12 @@ class StoreController extends Controller
         $store->save();
         $store->categories()->attach($request->category);
         /* CONFIRM CREATION AND REDIRECT USER */
-        session()->flash('message', 'Store Created Successfully');
-        return redirect('admin/stores');
+        if(!$store->save()) {
+            session()->flash('message', 'Contact Manager. ERROR: Store did not get created');
+        } else {
+            session()->flash('message', 'Store Created Successfully');
+        }
+        return redirect('/admin/stores');
     }
 
 
@@ -83,8 +87,12 @@ class StoreController extends Controller
         /* SAVE UPDATED STORE TO DATABASE */
         $store->categories()->sync($request->category);
         /* CONFIRM CREATION AND REDIRECT USER */
-        session()->flash('message', 'Store Updated Successfully');
-        return redirect('admin/stores');
+        if(!$store->update()) {
+            session()->flash('message', 'Contact Manager. ERROR: Store did not update');
+        } else {
+            session()->flash('message', 'Store Updated Successfully');
+        }
+        return redirect('/admin/stores');
     }
 
 }

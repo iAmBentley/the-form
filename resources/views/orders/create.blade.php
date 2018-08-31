@@ -20,7 +20,7 @@
 					{{-- HEADER TITLE --}}
 					<div class="card-header">
 						<h5 class="card-title pull-left">Create an Order</h5>
-						<a href="/orders" class="create-btn btn btn-default btn-just-icon pull-right">
+						<a href="/orders" id="cancel-order-btn" class="create-btn btn btn-default btn-just-icon pull-right">
 							<i class="fa fa-close"></i>
 						</a>
 					</div>

@@ -175,7 +175,11 @@ class OrderController extends Controller
 			'items' => $request->items,
 		]);
 		/* REDIRECT USER AND CONFIRM EDIT  */
-		session()->flash('message', 'Order Marked as Filled');
+		if(!$order->update()) {
+			session()->flash('message', 'Contact Manager. ERROR: Order did not get marked filled');
+		} else {
+			session()->flash('message', 'Order Marked as Filled');
+		}
 		return redirect('orders');
 	}
 

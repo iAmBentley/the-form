@@ -19,7 +19,7 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label>Name</label>
-									<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" placeholder="Store Prefix + Store Street (ex: PH-Saluda)" autofocus>
+									<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" placeholder="Store Prefix + Store Street (ex: PH-Saluda)" value="{{ old('name') }}" autofocus>
 								</div>
 							</div>
 							{{-- CATEGORY CHECKBOX --}}

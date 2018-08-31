@@ -25,7 +25,7 @@
 							</thead>
 							<tbody>
 								@foreach($orders as $order)
-									<tr>
+									<tr data-id="{{$order->id}}" data-location="/orders/{{$order->id}}">
 										<td>{{ $order->created_at->format('m.d.y') }}</td>
 										<td class="text-capitalize">{{ $order->stores->name }}</td>
 										<td class="d-none d-sm-block text-capitalize">{{ $order->categories->name }}</td>

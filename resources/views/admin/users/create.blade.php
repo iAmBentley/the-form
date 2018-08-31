@@ -19,14 +19,14 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Name</label>
-									<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" placeholder="No two names the same" autofocus>
+									<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" placeholder="No two names the same" value="{{ old('name') }}" autofocus>
 								</div>
 							</div>
 							{{-- EMAIL INPUT --}}
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Email</label>
-									<input type="email" class="form-control {{ $errors->has('email') ? 'has-error' : '' }}" name="email" placeholder="Required for Admin + Managers">
+									<input type="email" class="form-control {{ $errors->has('email') ? 'has-error' : '' }}" name="email" value="{{ old('email') }}" placeholder="Required for Admin + Managers">
 								</div>
 							</div>
 						</div>

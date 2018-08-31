@@ -22,7 +22,7 @@
 							<tbody>
 								{{-- BRING IN AND LOOP THROUGH CATEGORIES FROM DATABASE --}}
 								@foreach($roles as $role)
-									<tr>
+									<tr data-id="{{$role->id}}" data-location="/admin/roles/{{$role->id}}/edit">
 										<td class="text-capitalize">{{ $role->name }}</td>
 										<td class="text-right">
 											<a href="/admin/roles/{{ $role->id }}/edit" class="btn btn-info btn-icon btn-sm">

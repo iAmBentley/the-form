@@ -25,7 +25,7 @@
 							</thead>
 							<tbody>
 								@foreach($users as $user)
-									<tr>
+									<tr data-id="{{$user->id}}" data-location="/admin/users/{{$user->id}}/edit">
 										<td class="text-capitalize">{{ $user->name }}</td>
 										<td class="d-none d-sm-block td-min-height">{{ $user->email }}</td>
 										<td class="text-capitalize ">{{ $user->role->name }}</td>

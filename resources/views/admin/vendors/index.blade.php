@@ -26,7 +26,7 @@
 							<tbody>
 								{{-- BRING IN CATEGORIES FROM DATABASE --}}
 								@foreach($vendors as $vendor)
-									<tr>
+									<tr data-id="{{$vendor->id}}" data-location="/admin/vendors/{{$vendor->id}}/edit">
 										<td class="text-capitalize">{{ $vendor->name }}</td>
 										<td class="text-uppercase">{{ $vendor->short_name }}</td>
 										<td class="d-none d-sm-block">{{ $vendor->is_active == 1 ? 'Active' : 'Disabled' }}</td>

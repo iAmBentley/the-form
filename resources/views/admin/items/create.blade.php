@@ -19,7 +19,7 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label>Name</label>
-									<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" placeholder="Name of Item" autofocus>
+									<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" placeholder="Name of Item" value="{{ old('name') }}" autofocus>
 								</div>
 							</div>
 						</div>

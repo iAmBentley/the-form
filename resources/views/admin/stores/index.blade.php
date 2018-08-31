@@ -25,7 +25,7 @@
 							</thead>
 							<tbody>
 								@foreach($stores as $store)
-									<tr>
+									<tr data-id="{{$store->id}}" data-location="/admin/stores/{{$store->id}}/edit">
 										<td class="text-capitalize">{{ $store->name }}</td>
 										<td class="d-none d-sm-block text-capitalize">
 											@foreach($store->categories as $key => $category)
