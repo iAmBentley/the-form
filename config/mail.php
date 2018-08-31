@@ -17,7 +17,13 @@ return [
     */
 
     'driver' => env('MAIL_DRIVER', 'smtp'),
-
+'stream' => [
+    'ssl' => [
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+        'allow_self_signed' => true,
+    ],
+],
     /*
     |--------------------------------------------------------------------------
     | SMTP Host Address
@@ -56,7 +62,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'lorenzo@modulo.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'orders@moticorp.com'),
         'name' => env('MAIL_FROM_NAME', 'Lorenzo'),
     ],
 

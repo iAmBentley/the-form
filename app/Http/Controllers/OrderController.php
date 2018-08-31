@@ -10,6 +10,9 @@ use App\Item;
 use App\Mail\OrderEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
+use Exception;
 
 class OrderController extends Controller
 {
@@ -114,12 +117,28 @@ class OrderController extends Controller
 		);
 		/* SAVE NEW ORDER TO DATABASE */
 		$order->save();
-		/* SEND ORDER EMAIL TO MANAGER */
+		/* SET VARIABLES FOR EMAIL */
 		$manager = User::where('name', 'bentley')->first();
 		$items = $order['items'];
-		\Mail::to($manager)->send(new OrderEmail($order, $items));
+		$message = 'Order Sent Successfully';
+		/* IF ORDER DOESNT SAVE */
+		if(!$order->save()) {
+			/* SET FLASH MESSAGE */
+			$message = 'Contact manager. ERROR: Order could not be saved';
+		} else {
+			try {
+				/* SEND EMAIL */
+				\Mail::to($manager)->send(new OrderEmail($order, $items));
+			} catch (Exception $e){
+				/* SET FLASH AND ERROR MESSAGES */
+	        	$message = 'Contact manager. ERROR: Order could not be emailed';
+	        	$errorMsg = 'Order #'. $order->id . ' was unable to send - '. "\r\n". $e->getMessage();
+	        	/* WRITE ERROR TO EMERGENCY ERROR LOG */
+				Log::emergency($errorMsg);
+	        }
+		};
 		/* REDIRECT USER AND SHOW CONFIRMATION */
-		session()->flash('message', 'Order Sent Successfully');
+		session()->flash('message', $message);
 		return redirect('orders');
 	}
 
@@ -127,7 +146,6 @@ class OrderController extends Controller
 	/** SHOW A SINGLE ORDER (SHOW) */
 	public function show(Order $order)
 	{
-		// $items = $order['items'];
 		return view('orders.show', compact('order'));
 	}
 
