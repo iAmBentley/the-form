@@ -40,6 +40,7 @@ class UserController extends Controller
         $this->validate(request(), [
             'name' => 'required',
             'email' => 'nullable',
+            'is_active' => 'required|boolean',
             'password' => 'required|min:4',
             'role_id' => 'required',
         ]);
@@ -47,6 +48,7 @@ class UserController extends Controller
         User::create([
             'name' => request('name'),
             'email' => request('email'),
+            'is_active' => request('is_active'),
             'password' => Hash::make(request('password')),
             'role_id' => request('role_id'),
         ]);
@@ -73,12 +75,14 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'nullable|email',
+            'is_active' => 'required|boolean',
             'role_id' => 'required',
         ]);
         /* SAVE VALIDATED DATA TO DATABASE */
         $user->fill([
             'name' => request('name'),
             'email' => request('email'),
+            'is_active' => request('is_active'),
             'role_id' => request('role_id'),
         ])->save();
         /* CONFIRM UPDATE AND REDIRECT USER */
@@ -123,20 +127,6 @@ class UserController extends Controller
             /* IF STAFF GO BACK TO ORDERS INDEX */
             return redirect('/orders');
         };
-    }
-
-
-    /** DELETE USER FROM DATABASE */
-    public function destroy($id)
-    {
-        $user = User::findOrFail($id);
-        $user->delete();
-        if(!$user->delete()) {
-            session()->flash('message', 'Contact Manager. ERROR: User was not deleted');
-        } else {
-            session()->flash('message', 'User Deleted Successfully');
-        }
-        return redirect('/admin/users');
     }
 
 }

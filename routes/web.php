@@ -34,6 +34,7 @@ Route::prefix('admin')->group(function () {
 	/* USERS INDEX + CRUD */
 	Route::get('users/{user}/edit-pw', 'UserController@editPassword'); // Change Password view
 	Route::put('users/{user}/update-pw', 'UserController@updatePassword'); // Change Password save
+	Route::delete('users/{user}', 'UserController@destroy');
 	Route::resource('users', 'UserController');
 	/* ROLES INDEX + CRUD */
 	Route::resource('roles', 'RoleController');

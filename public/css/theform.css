@@ -217,6 +217,12 @@ input:checked + .slider::before {
 	}
 }
 
+@media (max-width: 414px) {
+	body {
+		font-size: 1.3em;
+	}
+}
+
 @media (min-width: 992px) {
 	.navbar .navbar-brand {
 		display: none;
