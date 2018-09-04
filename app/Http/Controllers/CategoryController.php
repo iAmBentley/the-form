@@ -44,7 +44,7 @@ class CategoryController extends Controller
         ]);
         /* REDIRECT USER AFTER SAVE */
         session()->flash('message', 'Category Added Successfully');
-        return redirect('admin/categories');
+        return redirect('/admin/categories');
     }
 
 
@@ -70,7 +70,11 @@ class CategoryController extends Controller
         $category->fill($data);
         $category->save();
         /* CONFIRM UPDATE AND REDIRECT USER */
-        session()->flash('message', 'Category Updated Successfully');
-        return redirect('admin/categories');
+        if(!$category->save()) {
+            session()->flash('message', 'Contact Manager. ERROR: Category did not update');
+        } else {
+            session()->flash('message', 'Category Updated Successfully');
+        }
+        return redirect('/admin/categories');
     }
 }

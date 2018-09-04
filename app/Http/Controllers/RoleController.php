@@ -42,7 +42,7 @@ class RoleController extends Controller
         ]);
         /* REDIRECT ROLE AFTER SAVE */
         session()->flash('message', 'Role Added Successfully');
-        return redirect('admin/roles');
+        return redirect('/admin/roles');
     }
 
 
@@ -67,7 +67,11 @@ class RoleController extends Controller
         $role->fill($data);
         $role->save();
         /* CONFIRM UPDATE AND REDIRECT USER */
-        session()->flash('message', 'Role Updated Successfully');
-        return redirect('admin/roles');
+        if(!$role->save()) {
+            session()->flash('message', 'Contact Manager. ERROR: Role did not update');
+        } else {
+            session()->flash('message', 'Role Updated Successfully');
+        }
+        return redirect('/admin/roles');
     }
 }

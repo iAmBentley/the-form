@@ -46,7 +46,7 @@ class VendorController extends Controller
         ]);
         /* REDIRECT USER AFTER SAVE */
         session()->flash('message', 'Vendor Added Successfully');
-        return redirect('admin/vendors');
+        return redirect('/admin/vendors');
     }
 
 
@@ -73,7 +73,11 @@ class VendorController extends Controller
         $vendor->fill($data);
         $vendor->save();
         /* CONFIRM UPDATE AND REDIRECT USER */
-        session()->flash('message', 'Vendor Updated Successfully');
-        return redirect('admin/vendors');
+        if(!$vendor->save()) {
+            session()->flash('message', 'Contact Manager. ERROR: Vendor did not update');
+        } else {
+            session()->flash('message', 'Vendor Updated Successfully');
+        }
+        return redirect('/admin/vendors');
     }
 }

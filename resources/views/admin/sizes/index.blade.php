@@ -26,7 +26,7 @@
 							<tbody>
 								{{-- BRING IN SIZES FROM DATABASE --}}
 								@foreach($sizes as $size)
-								<tr>
+								<tr data-id="{{$size->id}}" data-location="/admin/sizes/{{$size->id}}/edit">
 									<td class="text-capitalize">{{ $size->name }}</td>
 									<td class="text-capitalize">{{ $size->categories->name }}</td>
 									<td class="d-none d-sm-block">{{ $size->is_active == 1 ? 'Active' : 'Disabled' }}</td>

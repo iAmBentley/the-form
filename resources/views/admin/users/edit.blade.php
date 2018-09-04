@@ -7,25 +7,19 @@
 				{{-- HEADER TITLE --}}
 				<div class="card-header">
 					<h5 class="card-title pull-left">Edit a User</h5>
-					<form method="POST" action="/admin/users/{{ $user->id }}">
-						{{ csrf_field() }}
-						{{ method_field('DELETE') }}
-						<input type="hidden" name="id" value="{{ $user->id }}">
-						{{-- IF SIGNED IN USER IS USER SELECTED --}}
-						@if(Auth::user()->id == $user->id)
-							{{-- UPDATE PASSWORD BUTTON (TRIGGERS UPDATEPASSWORD() ON USERS) --}}
-							<a href="/admin/users/{{$user->id}}/edit-pw" class="btn btn-danger btn-round pull-right mt-0" data-toggle="tooltip" title="Delete User">
-								<i class="fa fa-pencil"></i> Change Password
-							</a>
-						@else
+					{{-- @if(Auth::user()->id != $user->id)
+						<form method="POST" action="/admin/users/{{ $user->id }}">
+							{{ csrf_field() }}
+							{{ method_field('DELETE') }}
+							<input type="hidden" name="id" value="{{ $user->id }}"> --}}
+							{{-- IF SIGNED IN USER IS USER SELECTED --}}
 							{{-- DELETE BUTTON (TRIGGERS UPDATE() ON USERS) --}}
-							<button value="{{ $user->id }}" 
-								class="delete-user btn btn-danger btn-round pull-right mt-0" 
-								data-toggle="tooltip" title="Delete User">
-								<i class="fa fa-close"></i> Delete User
+							{{-- <button data-toggle="tooltip" title="Delete User"
+								class="delete-user btn btn-danger btn-round pull-right btn-just-icon mt-0">
+								<i class="fa fa-trash"></i>
 							</button>
-						@endif
-					</form>
+						</form>
+					@endif --}}
 				</div>
 				<div class="card-body">
 					@include('layouts.errors')
@@ -57,7 +51,7 @@
 						</div>
 						<div class="row">
 							{{-- EMAIL INPUT --}}
-							<div class="col-md-12">
+							<div class="col-md-6">
 								<div class="form-group">
 									<label>Email</label>
 									<input type="text" 
@@ -66,12 +60,34 @@
 										value="{{ $user->email }}">
 								</div>
 							</div>
+							{{-- STATUS DROPDOWN --}}
+							<div class="col-md-6">
+								<div class="chekbox-title-dropdowns">
+									Status
+								</div>
+								<div class="form-check form-group">
+									<select class="form-control" id="is_active" name="is_active">
+										<option value="1" {{ $user->is_active == 1 ? 'selected' : '' }}>Active</option>
+										<option value="0" {{ $user->is_active != 1 ? 'selected' : '' }}>Disabled</option>
+									</select>
+								</div>
+							</div>
 						</div>
 						{{-- BUTTON SET --}}
 						<div class="row">
 							<div class="update ml-auto mr-auto">
 								<a class="btn btn-round" @if(Auth::user()->role_id != 3) href="{{ route('users.index') }}" @else href="{{ url('/orders') }}" @endif >Cancel </a>
 							    <button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save User</button>
+							</div>
+						</div>
+						<div class="row">
+							<div class="ml-auto mr-auto mt-2 mb-2">
+								@if(Auth::user()->id == $user->id)
+									{{-- UPDATE PASSWORD BUTTON (TRIGGERS UPDATEPASSWORD() ON USERS) --}}
+									<a href="/admin/users/{{$user->id}}/edit-pw" class="mt-0" data-toggle="tooltip" title="Edit Password">
+										<i class="fa fa-pencil"></i> Change Password
+									</a>
+								@endif
 							</div>
 						</div>
 					</form>

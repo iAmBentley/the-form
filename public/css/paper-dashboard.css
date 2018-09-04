@@ -2686,7 +2686,7 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
   cursor: pointer;
   padding-left: 35px;
   line-height: 26px;
-  margin-bottom: 0;
+  margin-bottom: 1.5em;
 }
 
 .form-check .form-check-sign::before,

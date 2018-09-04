@@ -211,39 +211,17 @@ $('#modulo').on('submit', function(evt) {
 	$('#submit-btn').attr('disabled','disabled');
 });
 
-// Delete User from Users Table
-$('.delete-user').click(function () {
-	// Set order_id variable to be passed to controller below
-    var id = $(this).val();
-    // Pass order_id to Order Controller to Update Order
-    $.ajaxSetup({
-		headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
-	})
-    $.ajax({
-        type: "DELETE",
-        url: "/admin/users/"+id,
-        data: {id:id},
-        success: function (itemsData) {
-            console.log('success');
-        },
-        error: function (itemsData) {
-            console.log('Error:', itemsData);
-        }
-    });
+// Make table rows clickable - on.click it searches row for href and uses it for the row's href
+$('tr').on('click', function(evt) {
+	if ($(this).data('location') !== undefined) {
+		window.location = $(this).data('location');
+	}
 });
 
-// Make table rows clickable - on.click it searches row for href and uses it for the row's href
-$('#clickable-table tr').hover(function() {
-	// search row for href and set as href variable
-    var href = $(this).find("a").attr("href");
-    if(href) {
-    	// set cursor to pointer on hover
-        $(this).css('cursor', 'pointer');
-        // make row clickable - setting <a href="href">
-        $('tr').click(function() {
-        	window.location = href;
-        });
-    }
+// HIDE CANCEL ORDER BUTTON ONCE STORE IS SELECTED ON ORDER.CREATE
+$('#store_select').on('change', function() {
+	var $cob = $('#cancel-order-btn');
+	$(this).val() !== '' ? $cob.hide() : $cob.show();
 });
 
 

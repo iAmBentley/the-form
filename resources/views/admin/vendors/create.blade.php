@@ -19,14 +19,14 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Name</label>
-									<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" autofocus>
+									<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" value="{{ old('name') }}" autofocus>
 								</div>
 							</div>
 							{{-- SHORT_NAME INPUT --}}
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Short Name</label>
-									<input type="text" class="form-control {{ $errors->has('short_name') ? 'has-error' : '' }}" name="short_name" placeholder="Vendor Abbreviation">
+									<input type="text" class="form-control {{ $errors->has('short_name') ? 'has-error' : '' }}" name="short_name" value="{{ old('short_name') }}" placeholder="Vendor Abbreviation">
 								</div>
 							</div>
 						</div>

@@ -48,7 +48,7 @@ class SizeController extends Controller
         ]);
         /* CONFIRM CREATION AND REDIRECT USER */
         session()->flash('message', 'Size Created Successfully');
-        return redirect('admin/sizes');
+        return redirect('/admin/sizes');
     }
 
 
@@ -76,8 +76,12 @@ class SizeController extends Controller
         $size->fill($data);
         $size->save();
         /* CONFIRM UPDATE AND REDIRECT USER */
-        session()->flash('message', 'Size Updated Successfully');
-        return redirect('admin/sizes');
+        if(!$size->save()) {
+            session()->flash('message', 'Contact Manager. ERROR: Size did not update');
+        } else {
+            session()->flash('message', 'Size Updated Successfully');
+        }
+        return redirect('/admin/sizes');
     }
 
 }

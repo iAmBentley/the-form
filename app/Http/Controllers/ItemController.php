@@ -64,8 +64,12 @@ class ItemController extends Controller
         $item->sizes()->attach($request->size);
         $item->stores()->attach($request->store);
         /* CONFIRM CREATION AND REDIRECT USER */
-        session()->flash('message', 'Item Created Successfully');
-        return redirect('admin/items');
+        if (!$item->save()) {
+            session()->flash('message', 'Contact Manager. ERROR: Item did not saved');
+        } else {
+            session()->flash('message', 'Item Created Successfully');
+        }
+        return redirect('/admin/items');
     }
 
 
@@ -104,8 +108,12 @@ class ItemController extends Controller
         $item->sizes()->sync($request->size);
         $item->stores()->sync($request->store);
         /* CONFIRM CREATION AND REDIRECT USER */
-        session()->flash('message', 'Item Updated Successfully');
-        return redirect('admin/items');
+        if(!$item->update()) {
+            session()->flash('message', 'Contact Manager. ERROR: Item did not update');
+        } else {
+            session()->flash('message', 'Item Updated Successfully');
+        }
+        return redirect('/admin/items');
     }
 
 }
