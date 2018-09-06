@@ -221,6 +221,9 @@ input:checked + .slider::before {
 	body {
 		font-size: 1.2em;
 	}
+	.btn-just-icon {
+	    padding: 3px;
+	}
 }
 
 @media (min-width: 992px) {

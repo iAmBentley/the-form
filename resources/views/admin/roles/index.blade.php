@@ -16,7 +16,6 @@
 							<thead class="text-primary">
 								<tr>
 									<th>Name</th>
-									<th class="text-right">Actions</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -24,11 +23,6 @@
 								@foreach($roles as $role)
 									<tr data-id="{{$role->id}}" data-location="/admin/roles/{{$role->id}}/edit">
 										<td class="text-capitalize">{{ $role->name }}</td>
-										<td class="text-right">
-											<a href="/admin/roles/{{ $role->id }}/edit" class="btn btn-info btn-icon btn-sm">
-												<i class="fa fa-pencil"></i>
-											</a>
-										</td>
 									</tr>
 								@endforeach
 							</tbody>

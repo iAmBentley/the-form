@@ -19,8 +19,7 @@
 								<tr>
 									<th>Name</th>
 									<th>Category</th>
-									<th class="d-none d-sm-block">Status</th>
-									<th class="text-right">Actions</th>
+									<th class="d-none d-sm-block">Status</th
 								</tr>
 							</thead>
 							<tbody>
@@ -30,11 +29,6 @@
 									<td class="text-capitalize">{{ $size->name }}</td>
 									<td class="text-capitalize">{{ $size->categories->name }}</td>
 									<td class="d-none d-sm-block">{{ $size->is_active == 1 ? 'Active' : 'Disabled' }}</td>
-									<td class="text-right">
-										<a href="/admin/sizes/{{$size->id}}/edit" class="btn btn-info btn-icon btn-sm">
-											<i class="fa fa-pencil"></i>
-										</a>
-									</td>
 								</tr>
 								@endforeach
 							</tbody>
