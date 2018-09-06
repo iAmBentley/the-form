@@ -20,7 +20,6 @@
 									<th>Name</th>
 									<th>Short Name</th>
 									<th class="d-none d-sm-block">Status</th>
-									<th class="text-right">Actions</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -30,11 +29,6 @@
 										<td class="text-capitalize">{{ $vendor->name }}</td>
 										<td class="text-uppercase">{{ $vendor->short_name }}</td>
 										<td class="d-none d-sm-block">{{ $vendor->is_active == 1 ? 'Active' : 'Disabled' }}</td>
-										<td class="text-right">
-											<a href="/admin/vendors/{{ $vendor->id }}/edit" class="btn btn-info btn-icon btn-sm">
-												<i class="fa fa-pencil"></i>
-											</a>
-										</td>
 									</tr>
 								@endforeach
 							</tbody>

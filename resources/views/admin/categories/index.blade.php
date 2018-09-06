@@ -20,7 +20,6 @@
 								<tr>
 									<th>Name</th>
 									<th class="d-none d-sm-block">Status</th>
-									<th class="text-right">Actions</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -30,11 +29,6 @@
 										<td class="text-capitalize">{{ $category->name }}</td>
 										{{-- IF CATEGORY IS_ACTIVE MARK ACTIVE ELSE DISABLED --}}
 										<td class="d-none d-sm-block">{{ $category->is_active == 1 ? 'Active' : 'Disabled' }}</td>
-										<td class="text-right">
-											<a href="/admin/categories/{{ $category->id }}/edit" class="btn btn-info btn-icon btn-sm">
-												<i class="fa fa-pencil"></i>
-											</a>
-										</td>
 									</tr>
 								@endforeach
 							</tbody>

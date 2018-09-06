@@ -20,7 +20,6 @@
 									<th>Name</th>
 									<th class="d-none d-sm-table-cell">Category</th>
 									<th class="d-none d-sm-table-cell">Status</th>
-									<th class="text-right">Actions</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -36,11 +35,6 @@
 											@endforeach
 										</td>
 										<td class="d-none d-sm-table-cell">{{ $item->is_active == 1 ? 'Active' : 'Disabled' }}</td>
-										<td class="text-right">
-											<a href="items/{{ $item->id }}/edit" class="btn btn-info btn-icon btn-sm">
-												<i class="fa fa-pencil"></i>
-											</a>
-										</td>
 									</tr>
 								@endforeach
 							</tbody>

@@ -1,6 +1,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+<meta name="google" content="notranslate">
 <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
 <title>modulo</title>
 {{-- BOOTSTRAP, FONTS AND ICONS CSS --}}
