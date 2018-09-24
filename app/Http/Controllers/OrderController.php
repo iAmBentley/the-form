@@ -118,7 +118,7 @@ class OrderController extends Controller
 		/* SAVE NEW ORDER TO DATABASE */
 		$order->save();
 		/* SET VARIABLES FOR EMAIL */
-		$manager = User::where('name', 'bentley')->first();
+		$manager = User::where('id', '4')->first();
 		$items = $order['items'];
 		$message = 'Order Sent Successfully';
 		/* IF ORDER DOESNT SAVE */
