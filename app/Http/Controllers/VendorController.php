@@ -17,7 +17,7 @@ class VendorController extends Controller
     /** SHOW TABLE OF ALL VENDORS (INDEX) */
     public function index()
     {
-        $vendors = Vendor::orderBy('created_at', 'desc')->get();
+        $vendors = Vendor::orderBy('name')->get();
         return view('admin/vendors.index', compact('vendors'));
     }
 

@@ -21,7 +21,7 @@ class ItemController extends Controller
     /** SHOW TABLE OF ALL CATEGORIES (INDEX) */
     public function index()
     {
-        $items = Item::orderBy('created_at', 'desc')->get();
+        $items = Item::orderBy('name')->get();
         return view('admin/items.index', compact('items'));
     }
 

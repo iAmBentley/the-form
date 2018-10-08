@@ -18,7 +18,7 @@ class StoreController extends Controller
     /** SHOW TABLE OF ALL STORES (INDEX) */
     public function index()
     {
-        $stores = Store::orderBy('created_at', 'desc')->get();
+        $stores = Store::orderBy('name')->get();
         return view('admin/stores.index', compact('stores'));
     }
 
