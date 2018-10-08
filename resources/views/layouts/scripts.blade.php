@@ -8,3 +8,8 @@
 {{-- CUSTOM JS --}}
 <script src="{{ asset('/js/paper-dashboard.js') }}"></script>
 <script src="{{ asset('/js/jquery-ui-1.12.1.custom.min.js') }}"></script>
+{{-- SORTABLE TABLE COLUMNS JS PLUGIN --}}
+<script src="{{ asset('/js/sorttable.js') }}"></script>
+<script>
+	$("#clickable-table").addSortWidget();
+</script>
