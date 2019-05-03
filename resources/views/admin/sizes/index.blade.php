@@ -7,7 +7,7 @@
 				{{-- TABLE TITLE --}}
 				<div class="card-header">
 					<h4 class="card-title pull-left">Sizes <small class="sm-text-jb">({{ $sizes->count() }})</small></h4>
-					<a href="sizes/create" class="create-btn btn btn-danger btn-just-icon pull-right">
+					<a href="{{ route('sizes.create') }}" class="create-btn btn btn-danger btn-just-icon pull-right">
 						<i class="fa fa-plus"></i>
 					</a>
 				</div>
@@ -19,13 +19,13 @@
 								<tr>
 									<th>Name</th>
 									<th>Category</th>
-									<th class="d-none d-sm-block">Status</th
+									<th class="d-none d-sm-block">Status</th>
 								</tr>
 							</thead>
 							<tbody>
 								{{-- BRING IN SIZES FROM DATABASE --}}
 								@foreach($sizes as $size)
-								<tr data-id="{{$size->id}}" data-location="/admin/sizes/{{$size->id}}/edit">
+								<tr data-id="{{$size->id}}" data-location="{{ route('sizes.edit', $size) }}">
 									<td class="text-capitalize">{{ $size->name }}</td>
 									<td class="text-capitalize">{{ $size->categories->name }}</td>
 									<td class="d-none d-sm-block">{{ $size->is_active == 1 ? 'Active' : 'Disabled' }}</td>
