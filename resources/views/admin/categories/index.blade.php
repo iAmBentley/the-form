@@ -8,7 +8,7 @@
 				{{-- TABLE TITLE --}}
 				<div class="card-header">
 					<h4 class="card-title pull-left">Categories <small class="sm-text-jb">({{ $categories->count() }})</small></h4>
-					<a href="categories/create" class="create-btn btn btn-danger btn-just-icon pull-right">
+					<a href="{{ route('categories.create') }}" class="create-btn btn btn-danger btn-just-icon pull-right">
 						<i class="fa fa-plus"></i>
 					</a>
 				</div>
@@ -25,7 +25,7 @@
 							<tbody>
 								{{-- BRING IN AND LOOP THROUGH CATEGORIES FROM DATABASE --}}
 								@foreach($categories as $category)
-									<tr data-id="{{$category->id}}" data-location="/admin/categories/{{$category->id}}/edit">
+									<tr data-id="{{$category->id}}" data-location="{{ route('categories.edit', $category) }}">
 										<td class="text-capitalize">{{ $category->name }}</td>
 										{{-- IF CATEGORY IS_ACTIVE MARK ACTIVE ELSE DISABLED --}}
 										<td class="d-none d-sm-block">{{ $category->is_active == 1 ? 'Active' : 'Disabled' }}</td>
