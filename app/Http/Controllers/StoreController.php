@@ -19,7 +19,7 @@ class StoreController extends Controller
     public function index()
     {
         $stores = Store::orderBy('created_at', 'desc')->get();
-        return view('admin/stores.index', compact('stores'));
+        return view('admin.stores.index', compact('stores'));
     }
 
 
@@ -27,7 +27,7 @@ class StoreController extends Controller
     public function create()
     {
         $categories = Category::where('is_active', 1)->get();
-        return view('admin/stores.create', compact('store', 'categories'));
+        return view('admin.stores.create', compact('categories'));
     }
 
 
@@ -55,7 +55,7 @@ class StoreController extends Controller
         } else {
             session()->flash('message', 'Store Created Successfully');
         }
-        return redirect('/admin/stores');
+        return redirect()->route('stores.index');
     }
 
 
@@ -65,7 +65,7 @@ class StoreController extends Controller
         /* GET THE CATEGORY */
         $categories = Category::where('is_active', 1)->get();
         /* SHOW THE EDIT FORM FOR THE STORE */
-        return view('admin/stores.edit', compact('store', 'categories'));
+        return view('admin.stores.edit', compact('store', 'categories'));
     }
     
 
@@ -92,7 +92,7 @@ class StoreController extends Controller
         } else {
             session()->flash('message', 'Store Updated Successfully');
         }
-        return redirect('/admin/stores');
+        return redirect()->route('stores.index');
     }
 
 }

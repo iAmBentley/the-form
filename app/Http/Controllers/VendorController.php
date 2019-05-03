@@ -18,14 +18,14 @@ class VendorController extends Controller
     public function index()
     {
         $vendors = Vendor::orderBy('created_at', 'desc')->get();
-        return view('admin/vendors.index', compact('vendors'));
+        return view('admin.vendors.index', compact('vendors'));
     }
 
 
     /** CREATE NEW VENDOR FORM (CREATE) */
     public function create()
     {
-        return view('admin/vendors.create', compact('vendor'));
+        return view('admin.vendors.create');
     }
 
 
@@ -46,17 +46,15 @@ class VendorController extends Controller
         ]);
         /* REDIRECT USER AFTER SAVE */
         session()->flash('message', 'Vendor Added Successfully');
-        return redirect('/admin/vendors');
+        return redirect()->route('vendors.index');
     }
 
 
     /** EDIT A VENDOR FORM (EDIT) */
-    public function edit($id)
+    public function edit(Vendor $vendor)
     {
-        /* GET THE CATEGORY */
-        $vendor = Vendor::find($id);
         /* SHOW THE EDIT FORM FOR THE CATEGORY */
-        return view('admin/vendors.edit', compact('vendor'));
+        return view('admin.vendors.edit', compact('vendor'));
     }
 
 
@@ -78,6 +76,6 @@ class VendorController extends Controller
         } else {
             session()->flash('message', 'Vendor Updated Successfully');
         }
-        return redirect('/admin/vendors');
+        return redirect()->route('vendors.index');
     }
 }

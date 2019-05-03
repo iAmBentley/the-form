@@ -21,7 +21,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::orderBy('name')->get();
-        return view('admin/users.index', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
 
@@ -29,7 +29,7 @@ class UserController extends Controller
     public function create()
     {
         $role = Role::all();
-        return view('admin/users.create', compact('user', 'role'));
+        return view('admin.users.create', compact('role'));
     }
 
 
@@ -54,7 +54,7 @@ class UserController extends Controller
         ]);
         /* REDIRECT USER AFTER SAVE */
         session()->flash('message', 'User Added Successfully');
-        return redirect('/admin/users');
+        return redirect()->route('users.index');
     }
 
 
@@ -64,7 +64,7 @@ class UserController extends Controller
         /* GET THE USER */
         $user = User::find($id);
         /* SHOW THE EDIT FORM FOR THE USER */
-        return view('admin/users.edit', compact('user'));
+        return view('admin.users.edit', compact('user'));
     }
 
 
@@ -94,10 +94,10 @@ class UserController extends Controller
         /* REDIRECT USER */
         if(\Auth::user()->role_id != 3) {
             /* IF ADMIN OR MANAGER GO BACK TO USERS INDEX */
-            return redirect('/admin/users');
+            return redirect()->route('users.index');
         } else {
             /* IF STAFF GO BACK TO ORDERS INDEX */
-            return redirect('/orders');
+            return redirect()->route('orders.index');
         };
     }
 
@@ -105,7 +105,7 @@ class UserController extends Controller
     /** SHOW FORM FOR EDITING USER PASSWORD */
     public function editPassword(User $user)
     {
-        return view('/admin/users.edit-pw', compact('user'));
+        return view('admin.users.edit-pw', compact('user'));
     }
 
 
@@ -122,10 +122,10 @@ class UserController extends Controller
         }
         if(\Auth::user()->role_id != 3) {
             /* IF ADMIN OR MANAGER GO BACK TO USERS INDEX */
-            return redirect('/admin/users');
+            return redirect()->route('users.index');
         } else {
             /* IF STAFF GO BACK TO ORDERS INDEX */
-            return redirect('/orders');
+            return redirect()->route('orders.index');
         };
     }
 

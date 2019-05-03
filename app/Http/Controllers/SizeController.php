@@ -27,7 +27,7 @@ class SizeController extends Controller
     public function create()
     {
         $categories = Category::where('is_active', 1)->get();
-        return view('admin/sizes.create', compact('size', 'categories'));
+        return view('admin.sizes.create', compact('categories'));
     }
 
 
@@ -48,18 +48,17 @@ class SizeController extends Controller
         ]);
         /* CONFIRM CREATION AND REDIRECT USER */
         session()->flash('message', 'Size Created Successfully');
-        return redirect('/admin/sizes');
+        return redirect()->route('sizes.index');
     }
 
 
     /** EDIT A SIZE FORM (EDIT) */
-    public function edit($id)
+    public function edit(Size $size)
     {
-        /* GET THE CATEGORY */
-        $size = Size::find($id);
+        /* GET THE CATEGORIES */
         $categories = Category::where('is_active', 1)->get();
         /* SHOW THE EDIT FORM FOR THE SIZE */
-        return view('admin/sizes.edit', compact('size', 'categories'));
+        return view('admin.sizes.edit', compact('size', 'categories'));
     }
     
 
@@ -81,7 +80,7 @@ class SizeController extends Controller
         } else {
             session()->flash('message', 'Size Updated Successfully');
         }
-        return redirect('/admin/sizes');
+        return redirect()->route('sizes.index');
     }
 
 }

@@ -18,14 +18,14 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::orderBy('created_at', 'desc')->get();
-        return view('admin/categories.index', compact('categories'));
+        return view('admin.categories.index', compact('categories'));
     }
 
 
     /** CREATE NEW CATEGORY FORM (CREATE) */
     public function create()
     {
-       return view('admin/categories.create', compact('category'));
+       return view('admin.categories.create');
     }
 
 
@@ -44,17 +44,15 @@ class CategoryController extends Controller
         ]);
         /* REDIRECT USER AFTER SAVE */
         session()->flash('message', 'Category Added Successfully');
-        return redirect('/admin/categories');
+        return redirect()->route('categories.index');
     }
 
 
     /** EDIT A CATEGORY FORM (EDIT) */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        /* GET THE CATEGORY */
-        $category = Category::find($id);
         /* SHOW THE EDIT FORM FOR THE CATEGORY */
-        return view('admin/categories.edit', compact('category'));
+        return view('admin.categories.edit', compact('category'));
     }
 
 
@@ -75,6 +73,6 @@ class CategoryController extends Controller
         } else {
             session()->flash('message', 'Category Updated Successfully');
         }
-        return redirect('/admin/categories');
+        return redirect()->route('categories.index');
     }
 }

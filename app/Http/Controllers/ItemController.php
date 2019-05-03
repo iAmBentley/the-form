@@ -22,7 +22,7 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::orderBy('created_at', 'desc')->get();
-        return view('admin/items.index', compact('items'));
+        return view('admin.items.index', compact('items'));
     }
 
 
@@ -35,7 +35,7 @@ class ItemController extends Controller
         $vendors = Vendor::where('is_active', 1)->get();
         $sizes = Size::where('is_active', 1)->get();
         /* SHOW THE CREATE FORM FOR THE ITEM */
-        return view('admin/items.create', compact('item', 'categories', 'stores', 'vendors', 'sizes'));
+        return view('admin.items.create', compact('categories', 'stores', 'vendors', 'sizes'));
     }
 
 
@@ -69,7 +69,7 @@ class ItemController extends Controller
         } else {
             session()->flash('message', 'Item Created Successfully');
         }
-        return redirect('/admin/items');
+        return redirect()->route('items.index');
     }
 
 
@@ -82,7 +82,7 @@ class ItemController extends Controller
         $vendors = Vendor::where('is_active', 1)->get();
         $sizes = Size::where('is_active', 1)->get();
         /* SHOW THE EDIT FORM FOR THE ITEM */
-        return view('admin/items.edit', compact('item', 'categories', 'stores', 'vendors', 'sizes'));
+        return view('admin.items.edit', compact('item', 'categories', 'stores', 'vendors', 'sizes'));
     }
 
 
@@ -113,7 +113,7 @@ class ItemController extends Controller
         } else {
             session()->flash('message', 'Item Updated Successfully');
         }
-        return redirect('/admin/items');
+        return redirect()->route('items.index');
     }
 
 }

@@ -18,14 +18,14 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::orderBy('created_at', 'desc')->get();
-        return view('admin/roles.index', compact('roles'));
+        return view('admin.roles.index', compact('roles'));
     }
 
 
     /** CREATE NEW ROLE FORM (CREATE) */
     public function create()
     {
-        return view('admin/roles.create', compact('role'));
+        return view('admin.roles.create');
     }
 
 
@@ -42,17 +42,14 @@ class RoleController extends Controller
         ]);
         /* REDIRECT ROLE AFTER SAVE */
         session()->flash('message', 'Role Added Successfully');
-        return redirect('/admin/roles');
+        return redirect()->route('roles.index');
     }
 
 
     /** EDIT A ROLE FORM (EDIT) */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        /* GET THE ROLE */
-        $role = Role::find($id);
-        /* SHOW THE EDIT FORM FOR THE ROLE */
-        return view('admin/roles.edit', compact('role'));
+        return view('admin.roles.edit', compact('role'));
     }
 
 
@@ -72,6 +69,6 @@ class RoleController extends Controller
         } else {
             session()->flash('message', 'Role Updated Successfully');
         }
-        return redirect('/admin/roles');
+        return redirect()->route('roles.index');
     }
 }

@@ -40,7 +40,7 @@ class OrderController extends Controller
 		$categories = Category::where('is_active', 1)->get();
 		$stores = Store::where('is_active', 1)->get();
 		/* RETURN VIEW AND PASS VARIABLES */
-		return view('orders.create', compact('orders', 'categories', 'stores'));
+		return view('orders.create', compact('categories', 'stores'));
 	}
 
 
@@ -139,7 +139,7 @@ class OrderController extends Controller
 		};
 		/* REDIRECT USER AND SHOW CONFIRMATION */
 		session()->flash('message', $message);
-		return redirect('orders');
+		return redirect()->route('orders.index');
 	}
 
 
@@ -180,7 +180,7 @@ class OrderController extends Controller
 		} else {
 			session()->flash('message', 'Order Marked as Filled');
 		}
-		return redirect('orders');
+		return redirect()->route('orders.index');
 	}
 
 }
