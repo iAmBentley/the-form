@@ -7,7 +7,7 @@
 				{{-- TABLE TITLE --}}
 				<div class="card-header">
 					<h4 class="card-title pull-left">Stores <small class="sm-text-jb">({{ $stores->count() }})</small></h4>
-					<a href="stores/create" class="create-btn btn btn-danger btn-just-icon pull-right">
+					<a href="{{ route('stores.create') }}" class="create-btn btn btn-danger btn-just-icon pull-right">
 						<i class="fa fa-plus"></i>
 					</a>
 				</div>
@@ -24,7 +24,7 @@
 							</thead>
 							<tbody>
 								@foreach($stores as $store)
-									<tr data-id="{{$store->id}}" data-location="/admin/stores/{{$store->id}}/edit">
+									<tr data-id="{{$store->id}}" data-location="{{ route('stores.edit', $store) }}">
 										<td class="text-capitalize">{{ $store->name }}</td>
 										<td class="d-none d-sm-block text-capitalize">
 											@foreach($store->categories as $key => $category)

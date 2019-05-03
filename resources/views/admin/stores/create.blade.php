@@ -11,8 +11,8 @@
 				<div class="card-body">
 					@include('layouts.errors')
 					{{-- STORES FORM --}}
-					<form id="modulo" method="POST" action="/admin/stores">
-						{{ csrf_field() }}
+					<form id="modulo" method="POST" action="{{ route('stores.index') }}">
+						@csrf
 						<input type="hidden" name="is_active" value="1">
 						<div class="row">
 							{{-- NAME INPUT --}}
