@@ -11,9 +11,9 @@
 				<div class="card-body">
 					@include('layouts.errors')
 					{{-- ITEMS FORM --}}
-					<form id="modulo" method="POST" action="/admin/items/{{ $item->id }}">
-						{{ csrf_field() }}
-						{{ method_field('PATCH') }}
+					<form id="modulo" method="POST" action="{{ route('items.update', $item) }}">
+						@csrf @method('PATCH')
+						
 						<div class="row">
 							{{-- ITEM NAME FIELD --}}
 							<div class="col-md-8">
