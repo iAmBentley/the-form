@@ -7,7 +7,7 @@
 				{{-- TABLE TITLE --}}
 				<div class="card-header">
 					<h4 class="card-title pull-left">Vendors <small class="sm-text-jb">({{ $vendors->count() }})</small></h4>
-					<a href="vendors/create" class="create-btn btn btn-danger btn-just-icon pull-right">
+					<a href="{{ route('vendors.create') }}" class="create-btn btn btn-danger btn-just-icon pull-right">
 						<i class="fa fa-plus"></i>
 					</a>
 				</div>
@@ -25,7 +25,7 @@
 							<tbody>
 								{{-- BRING IN CATEGORIES FROM DATABASE --}}
 								@foreach($vendors as $vendor)
-									<tr data-id="{{$vendor->id}}" data-location="/admin/vendors/{{$vendor->id}}/edit">
+									<tr data-id="{{ $vendor->id }}" data-location="{{ route('vendors.edit', $vendor) }}">
 										<td class="text-capitalize">{{ $vendor->name }}</td>
 										<td class="text-uppercase">{{ $vendor->short_name }}</td>
 										<td class="d-none d-sm-block">{{ $vendor->is_active == 1 ? 'Active' : 'Disabled' }}</td>

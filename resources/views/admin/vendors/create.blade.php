@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')\
+@section('content')
 	<div class="row">
 		<div class="col-md-12 ml-auto mr-auto">
 			<div class="card card-user">
@@ -11,8 +11,8 @@
 				<div class="card-body">
 					@include('layouts.errors')
 					{{-- VENDORS FORM --}}
-					<form id="modulo" method="POST" action="/admin/vendors">
-						{{ csrf_field() }}
+					<form id="modulo" method="POST" action="{{ route('vendors.store') }}">
+						@csrf
 						<input type="hidden" name="is_active" value="1">
 						<div class="row">
 							{{-- NAME INPUT --}}
