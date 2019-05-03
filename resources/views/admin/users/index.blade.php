@@ -7,7 +7,7 @@
 				{{-- TABLE TITLE --}}
 				<div class="card-header">
 					<h4 class="card-title pull-left">Users <small class="sm-text-jb">({{ $users->count() }})</small></h4>
-					<a href="users/create" class="create-btn btn btn-danger btn-just-icon pull-right">
+					<a href="{{ route('users.create') }}" class="create-btn btn btn-danger btn-just-icon pull-right">
 						<i class="fa fa-plus"></i>
 					</a>
 				</div>
@@ -25,7 +25,7 @@
 							</thead>
 							<tbody>
 								@foreach($users as $user)
-									<tr data-id="{{$user->id}}" data-location="/admin/users/{{$user->id}}/edit">
+									<tr data-id="{{$user->id}}" data-location="{{ route('users.edit', $user) }}">
 										<td class="text-capitalize">{{ $user->name }}</td>
 										<td class="d-none d-sm-block td-min-height">{{ $user->email }}</td>
 										<td class="text-capitalize ">{{ $user->role->name }}</td>

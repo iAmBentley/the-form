@@ -7,26 +7,13 @@
 				{{-- HEADER TITLE --}}
 				<div class="card-header">
 					<h5 class="card-title pull-left">Edit a User</h5>
-					{{-- @if(Auth::user()->id != $user->id)
-						<form method="POST" action="/admin/users/{{ $user->id }}">
-							{{ csrf_field() }}
-							{{ method_field('DELETE') }}
-							<input type="hidden" name="id" value="{{ $user->id }}"> --}}
-							{{-- IF SIGNED IN USER IS USER SELECTED --}}
-							{{-- DELETE BUTTON (TRIGGERS UPDATE() ON USERS) --}}
-							{{-- <button data-toggle="tooltip" title="Delete User"
-								class="delete-user btn btn-danger btn-round pull-right btn-just-icon mt-0">
-								<i class="fa fa-trash"></i>
-							</button>
-						</form>
-					@endif --}}
 				</div>
 				<div class="card-body">
 					@include('layouts.errors')
 					{{-- USERS FORM --}}
-					<form id="modulo" method="POST" action="/admin/users/{{ $user->id }}">
-						{{ csrf_field() }}
-						{{ method_field('PATCH') }}
+					<form id="modulo" method="POST" action="{{ route('users.update', $user) }}">
+						@csrf @method('PATCH')
+						
 						<div class="row">
 							{{-- NAME INPUT --}}
 							<div class="col-md-6">
@@ -76,7 +63,7 @@
 						{{-- BUTTON SET --}}
 						<div class="row">
 							<div class="update ml-auto mr-auto">
-								<a class="btn btn-round" @if(Auth::user()->role_id != 3) href="{{ route('users.index') }}" @else href="{{ url('/orders') }}" @endif >Cancel </a>
+								<a class="btn btn-round" @if(Auth::user()->role_id != 3) href="{{ route('users.index') }}" @else href="{{ route('orders.index') }}" @endif >Cancel </a>
 							    <button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save User</button>
 							</div>
 						</div>
@@ -84,7 +71,7 @@
 							<div class="ml-auto mr-auto mt-2 mb-2">
 								@if(Auth::user()->id == $user->id)
 									{{-- UPDATE PASSWORD BUTTON (TRIGGERS UPDATEPASSWORD() ON USERS) --}}
-									<a href="/admin/users/{{$user->id}}/edit-pw" class="mt-0" data-toggle="tooltip" title="Edit Password">
+									<a href="{{ route('users.edit-pw', $user) }}" class="mt-0" data-toggle="tooltip" title="Edit Password">
 										<i class="fa fa-pencil"></i> Change Password
 									</a>
 								@endif

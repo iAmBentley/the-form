@@ -11,9 +11,8 @@
 			<div class="card-body">
 				@include('layouts.errors')
 				{{-- USERS FORM --}}
-				<form id="modulo" method="POST" action="/admin/users/{{$user->id}}/update-pw">
-					{{ csrf_field() }}
-					{{ method_field('PUT') }}
+				<form id="modulo" method="POST" action="{{ route('users.update-pw', $user) }}">
+					@csrf @method('PUT')
 					<div class="row">
 						{{-- CURRENT PASSWORD INPUT --}}
 						<div class="col-md-12">
@@ -33,7 +32,7 @@
 					{{-- BUTTON SET --}}
 					<div class="row">
 						<div class="update ml-auto mr-auto">
-							<a class="btn btn-round" @if(Auth::user()->role_id != 3) href="{{ route('users.index') }}" @else href="{{ url('/orders') }}" @endif >Cancel </a>
+							<a class="btn btn-round" @if(Auth::user()->role_id != 3) href="{{ route('users.index') }}" @else href="{{ route('orders.index') }}" @endif >Cancel </a>
 						    <button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save Password</button>
 						</div>
 					</div>
