@@ -11,9 +11,8 @@
 				<div class="card-body">
 					@include('layouts.errors')
 					{{-- USERS ROLES FORM --}}
-					<form id="modulo" method="POST" action="/admin/roles/{{ $role->id }}">
-						{{ csrf_field() }}
-						{{ method_field('PATCH') }}
+					<form id="modulo" method="POST" action="{{ route('roles.update', $role) }}">
+						@csrf @method('PATCH')
 						{{-- NAME INPUT --}}
 						<div class="row">
 							<div class="col-md-12">

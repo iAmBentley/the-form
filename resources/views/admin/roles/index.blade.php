@@ -8,6 +8,9 @@
 				{{-- TABLE TITLE --}}
 				<div class="card-header">
 					<h4 class="card-title pull-left">Roles <small class="sm-text-jb">({{ $roles->count() }})</small></h4>
+					<a href="{{ route('roles.create') }}" class="create-btn btn btn-danger btn-just-icon pull-right">
+						<i class="fa fa-plus"></i>
+					</a>
 				</div>
 				{{-- TABLE --}}
 				<div class="card-body">
@@ -21,7 +24,7 @@
 							<tbody>
 								{{-- BRING IN AND LOOP THROUGH CATEGORIES FROM DATABASE --}}
 								@foreach($roles as $role)
-									<tr data-id="{{$role->id}}" data-location="/admin/roles/{{$role->id}}/edit">
+									<tr data-id="{{$role->id}}" data-location="{{ route('roles.edit', $role) }}">
 										<td class="text-capitalize">{{ $role->name }}</td>
 									</tr>
 								@endforeach
