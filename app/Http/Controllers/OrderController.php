@@ -9,7 +9,7 @@ use App\User;
 use App\Item;
 use App\Mail\OrderEmail;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 
 use Exception;
@@ -88,7 +88,7 @@ class OrderController extends Controller
 			case 5: $catName = "products"; break;
 		};
 		/* RETURN THE FORM FILE TO THE ORDER FORM WITH THE ITEMS VARIABLE */
-		return view("/forms/".$catName , compact('items', 'flavors'));
+		return view("/forms/".$catName , compact('items'));
 	}
 
 
@@ -118,9 +118,8 @@ class OrderController extends Controller
 		/* SAVE NEW ORDER TO DATABASE */
 		$order->save();
 		/* SET VARIABLES FOR EMAIL */
-		$manager = User::where('id', '4')->first();
+		$manager = User::findOrFail('1');
 		$items = $order['items'];
-		$message = 'Order Sent Successfully';
 		/* IF ORDER DOESNT SAVE */
 		if(!$order->save()) {
 			/* SET FLASH MESSAGE */
@@ -128,7 +127,8 @@ class OrderController extends Controller
 		} else {
 			try {
 				/* SEND EMAIL */
-				\Mail::to($manager)->send(new OrderEmail($order, $items));
+				$message = 'Order Sent Successfully';
+				Mail::to($manager)->send(new OrderEmail($order, $items));
 			} catch (Exception $e){
 				/* SET FLASH AND ERROR MESSAGES */
 	        	$message = 'Contact manager. ERROR: Order could not be emailed';

@@ -17,7 +17,7 @@ return [
     */
 
     'driver' => env('MAIL_DRIVER', 'smtp'),
-'stream' => [
+	'stream' => [
     'ssl' => [
         'verify_peer' => false,
         'verify_peer_name' => false,

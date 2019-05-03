@@ -13,14 +13,14 @@
 		<div class="col-md-12 ml-auto mr-auto">
 			@include('layouts.errors')
 			{{-- ITEMS FORM --}}
-			<form id="modulo" method="POST" action="/orders">
-				{{ csrf_field() }}
+			<form id="modulo" method="POST" action="{{ route('orders.store') }}">
+				@csrf
 				{{-- ITEMS SETUP CARD --}}
 				<div class="card card-user">
 					{{-- HEADER TITLE --}}
 					<div class="card-header">
 						<h5 class="card-title pull-left">Create an Order</h5>
-						<a href="/orders" id="cancel-order-btn" class="create-btn btn btn-default btn-just-icon pull-right">
+						<a href="{{ route('orders.create') }}" id="cancel-order-btn" class="create-btn btn btn-default btn-just-icon pull-right">
 							<i class="fa fa-close"></i>
 						</a>
 					</div>

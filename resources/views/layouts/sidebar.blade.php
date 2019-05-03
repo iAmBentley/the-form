@@ -4,10 +4,10 @@
 	<div class="logo">
 		<a href="/" class="simple-text logo-mini">
 			<div class="logo-image-small">
-				<img src="{{asset('img/logo-form.png')}}">
+				<img src="{{ asset('img/logo-form.png') }}">
 			</div>
 		</a>
-		<a href="/" class="simple-text logo-normal">il modulo</a>
+		<a href="{{ route('orders.index') }}" class="simple-text logo-normal">il modulo</a>
 	</div>
 	{{-- NAVIGATION LINKS --}}
 	<div class="sidebar-wrapper">
@@ -17,7 +17,7 @@
 				<li>
 					<a data-toggle="collapse" href="#userItems" class="border-bottom">
 						<i class="fa fa-user"></i>
-							<p>Hello {{ Auth::user()->name }} <b class="caret"></b></p>
+						<p>Hello {{ Auth::user()->name }} <b class="caret"></b></p>
 					</a>
 					<div class="collapse " id="userItems">
 						<ul class="nav">
@@ -50,13 +50,13 @@
 			@endif
 			{{-- ORDER LINKS --}}
 			<li>
-				<a href="/orders/create">
+				<a href="{{ route('orders.create') }}">
 					<i class="fa fa-plus"></i>
 					<p>Create Order</p>
 				</a>
 			</li>
 			<li>
-				<a href="/orders">
+				<a href="{{ route('orders.index') }}">
 					<i class="fa fa-list-ul"></i>
 					<p>Past Orders</p>
 				</a>
@@ -73,19 +73,19 @@
 					<div class="collapse " id="adminItems">
 						<ul class="nav">
 							<li>
-								<a href="/admin/items">
+								<a href="{{ route('items.index') }}">
 									<span class="sidebar-mini-icon">&bull;</span>
 									<span class="sidebar-normal"> Items </span>
 								</a>
 							</li>
 							<li>
-								<a href="/admin/users">
+								<a href="{{ route('users.index') }}">
 									<span class="sidebar-mini-icon">&bull;</span>
 									<span class="sidebar-normal"> Users </span>
 								</a>
 							</li>
 							<li>
-								<a href="/admin/vendors">
+								<a href="{{ route('vendors.index') }}">
 									<span class="sidebar-mini-icon">&bull;</span>
 									<span class="sidebar-normal"> Vendors </span>
 								</a>
@@ -93,25 +93,25 @@
 							{{-- ADMIN SUB-SECTION - IF ROLE IS ADMIN --}}
 							@if( Auth::user()->role_id == 1 )
 								<li>
-									<a href="/admin/categories">
+									<a href="{{ route('categories.index') }}">
 										<span class="sidebar-mini-icon">&bull;</span>
 										<span class="sidebar-normal"> Categories </span>
 									</a>
 								</li>
 								<li>
-									<a href="/admin/sizes">
+									<a href="{{ route('sizes.index') }}">
 										<span class="sidebar-mini-icon">&bull;</span>
 										<span class="sidebar-normal"> Sizes </span>
 									</a>
 								</li>
 								<li>
-									<a href="/admin/stores">
+									<a href="{{ route('stores.index') }}">
 										<span class="sidebar-mini-icon">&bull;</span>
 										<span class="sidebar-normal"> Stores </span>
 									</a>
 								</li>
 								<li>
-									<a href="/admin/roles">
+									<a href="{{ route('roles.index') }}">
 										<span class="sidebar-mini-icon">&bull;</span>
 										<span class="sidebar-normal"> Roles </span>
 									</a>

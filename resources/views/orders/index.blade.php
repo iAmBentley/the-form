@@ -7,7 +7,7 @@
 				{{-- HEADER TITLE --}}
 				<div class="card-header">
 					<h4 class="card-title pull-left">Orders <small class="sm-text-jb">({{ $orders->count() }})</small></h4>
-					<a href="orders/create" class="create-btn btn btn-danger btn-just-icon pull-right">
+					<a href="{{ route('orders.create') }}" class="create-btn btn btn-danger btn-just-icon pull-right">
 						<i class="fa fa-plus"></i>
 					</a>
 				</div>
@@ -25,24 +25,24 @@
 							</thead>
 							<tbody>
 								@foreach($orders as $order)
-									<tr data-id="{{$order->id}}" data-location="/orders/{{$order->id}}">
+									<tr data-id="{{ $order->id }}" data-location="{{ route('orders.show', $order) }}">
 										<td>{{ $order->created_at->format('m.d.y') }}</td>
-										<td class="text-capitalize">{{ $order->stores->name }}</td>
-										<td class="d-none d-sm-block text-capitalize">{{ $order->categories->name }}</td>
+										<td class="text-capitalize">{{ $order->stores->name ?? '' }}</td>
+										<td class="d-none d-sm-block text-capitalize">{{ $order->categories->name ?? '' }}</td>
 										<td class="text-right">
-											<form method="POST" action="/orders/{{ $order->id }}">
-												{{ csrf_field() }}
-												{{ method_field('PATCH') }}
+											<form method="POST" action="{{ route('orders.update', $order) }}">
+												@csrf @method('PATCH')
+
 												<input type="hidden" name="user_id" value="{{ $order->user_id }}">
 												<input type="hidden" name="store_id" value="{{ $order->store_id }}">
 												<input type="hidden" name="is_filled" value="1">
 												<input type="hidden" name="category_id" value="{{ $order->category_id }}">
-												<input type="hidden" name="notes" value="{{ $order->notes }}"
+												<input type="hidden" name="notes" value="{{ $order->notes }}">
 												@foreach($order->items as $item => $size)
 													<input type="hidden" name="items[{{$item}}]" value="{{ $size }}">
 												@endforeach
 												{{-- VIEW BUTTON --}}
-												<a href="orders/{{ $order->id }}" class="btn btn-info btn-icon btn-sm " data-toggle="tooltip" title="View Order">
+												<a href="{{ route('orders.edit', $order) }}" class="btn btn-info btn-icon btn-sm " data-toggle="tooltip" title="View Order">
 													<i class="fa fa-eye"></i>
 												</a>
 												{{-- MARK AS FILLED BUTTON (TRIGGERS UPDATE() ON ORDERS) --}}
