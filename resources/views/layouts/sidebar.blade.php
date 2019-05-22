@@ -123,7 +123,7 @@
 			@endif
 			{{-- COPYRIGHT DATE SIDEBAR FIXED FOOTER --}}
 			<li class="nav-footer">
-				©<script>document.write(new Date().getFullYear());</script> | Moticorp Creative
+				©<script>document.write(new Date().getFullYear());</script> | Identity Media Group
 			</li>
 		</ul>
 	</div>
